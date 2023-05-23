@@ -15,6 +15,7 @@ async function checkLdapUser(username, password, ldapServer = 'ldap.cbm.sc.gov.b
       scope: 'sub',
       attributes: ['dn','employeenumber', 'cpf']
     };
+    erroLdap = "Entrou aki 1";
 
     const res = await client.search('ou=Users,dc=cbm,dc=sc,dc=gov,dc=br', opts);
     if (res.searchEntries.length !== 1) {
@@ -27,12 +28,15 @@ async function checkLdapUser(username, password, ldapServer = 'ldap.cbm.sc.gov.b
       employeenumber: res.searchEntries[0].employeeNumber,
       cpf: res.searchEntries[0].cpf.length > 0 ? res.searchEntries[0].cpf[0] : ''
     };
+    erroLdap = "Entrou aki 2";
+    if (password !== '') {
+      await client.bind(user.dn, password);
+    }
+    erroLdap = "Entrou aki 3";
 
-   // if (password !== '') {
-  //    await client.bind(user.dn, password);
-  //  }
+    client.unbind();
+    erroLdap = "Entrou aki 4";
 
-   // client.unbind();
     return { success: true, error: '', user };
   } catch (err) {
     erroLdap += `NÃO FOI POSSÍVEL ESTABELECER A CONEXÃO: '${ldapServer}'\n`;
