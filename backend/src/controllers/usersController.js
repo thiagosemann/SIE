@@ -2,7 +2,6 @@ const usersModel = require('../models/usersModel');
 const { checkLdapUser } = require('../models/ldap'); 
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
-const SECRET_KEY = process.env.SECRET_KEY; // substitua 'your_secret_key' por uma chave secreta forte
 
 const getAllUsers = async (_request, response) => {
   try {
@@ -33,23 +32,10 @@ const loginUser = async (request, response) => {
       console.error('LDAP Error:', ldapResult);
       return response.status(401).json({ message: 'Credenciais LDAP inválidas', ldapError: ldapResult.error });
     }
-    const token = jwt.sign(
-      { id: ldapResult.employeeNumber, username: ldapResult.dn }, // payload
-      SECRET_KEY, // chave secreta
-      { expiresIn: '1h' } // opções (neste caso, o token expira em 1 hora)
-    );
-    console.log(ldapResult)
 
-     //const user = await usersModel.getUser(ldapResult.user.employeeNumber,ldapResult.user.cpf );
-    // console.log(user)
-     //if (user) {
-     if(true){ 
-     // Autenticação bem-sucedida
-       return response.status(200).json({ message: 'Login bem-sucedido',token });
-     } else {
-       // Autenticação falhou
-       return response.status(401).json({ message: 'Credenciais inválidas' });
-     }
+    console.log(ldapResult)
+      return response.status(200).json({ message: 'Login bem-sucedido' });
+  
   } catch (error) {
     console.error('Erro ao realizar login:', error);
     return response.status(500).json({ error: 'Erro ao realizar login' });
