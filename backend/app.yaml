@@ -1,0 +1,7 @@
+runtime: nodejs16  # ou a versão que você está usando
+
+env_variables:
+  SQL_USER: 'root'
+  SQL_PASSWORD: 'root'
+  SQL_DATABASE: 'sie-db'
+  INSTANCE_CONNECTION_NAME: 'sie-db'
