@@ -28,11 +28,11 @@ async function checkLdapUser(username, password, ldapServer = 'ldap.cbm.sc.gov.b
       cpf: res.searchEntries[0].cpf.length > 0 ? res.searchEntries[0].cpf[0] : ''
     };
 
-    if (password !== '') {
-      await client.bind(user.dn, password);
-    }
+   // if (password !== '') {
+  //    await client.bind(user.dn, password);
+  //  }
 
-    client.unbind();
+   // client.unbind();
     return { success: true, error: '', user };
   } catch (err) {
     erroLdap += `NÃO FOI POSSÍVEL ESTABELECER A CONEXÃO: '${ldapServer}'\n`;
