@@ -8,7 +8,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(router);
-
+console.log("Deu certo")
 // adicionando o endpoint de webhook
 app.post('/webhook', (req, res) => {
   // Aqui você pode verificar a assinatura do webhook para garantir que a solicitação é legítima
