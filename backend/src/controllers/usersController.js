@@ -32,9 +32,9 @@ const loginUser = async (request, response) => {
       console.error('LDAP Error:', ldapResult);
       return response.status(401).json({ message: 'Credenciais LDAP inválidas', ldapError: ldapResult.error });
     }
-
-    console.log(ldapResult)
-      return response.status(200).json({ message: 'Login bem-sucedido' });
+    const user = await usersModel.loginUser(ldapResult.user.employeenumber);
+    console.log("Logou:",ldapResult.user.employeenumber)
+    return response.status(200).json({ message: 'Login bem-sucedido',user });
   
   } catch (error) {
     console.error('Erro ao realizar login:', error);

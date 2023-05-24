@@ -19,12 +19,10 @@ const createUser = async (user) => {
   }
 };
 
-const loginUser = async (email, password) => {
-  //const query = 'SELECT * FROM users WHERE email = ? AND password = ?';
-  //const [user] = await connection.execute(query, [email, password]);
-  
-  
-  //return user[0];
+const loginUser = async (matricula) => {
+  const query = 'SELECT * FROM users WHERE matricula = ?';
+  const [user] = await connection.execute(query, [matricula]);
+  return user[0];
 };
 
 const getUser = async (matricula, cpf) => {
