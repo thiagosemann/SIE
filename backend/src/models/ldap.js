@@ -21,6 +21,7 @@ async function checkLdapUser(username, password, ldapServer = 'ldap.cbm.sc.gov.b
       erroLdap += `ERRO: USUÁRIO ${username} EXISTE MAIS DE UM USUÁRIO\n`;
       throw new Error('More than one user found');
     }
+
     const user = {
       dn: res.searchEntries[0].dn,
       employeenumber: res.searchEntries[0].employeeNumber,
@@ -43,3 +44,4 @@ async function checkLdapUser(username, password, ldapServer = 'ldap.cbm.sc.gov.b
 module.exports = {
   checkLdapUser
 };
+
