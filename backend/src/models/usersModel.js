@@ -48,8 +48,9 @@ const loginUser = async (matricula) => {
   if (users.length > 0) {
     const user = users[0];
     // Gerar o token com o ID e a matrícula do usuário
+   
     const token = jwt.sign(
-      { id: user.id, matricula: user.mtcl },
+      { id: user.id, matricula: matricula },
       SECRET_KEY,
       { expiresIn: '1h' }
     );

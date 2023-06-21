@@ -47,7 +47,7 @@ const loginUser = async (request, response) => {
 const getUserbyId = async (request, response) => {
   try {
     const { id } = request.params;
-    const user = await usersModel.getUser(id);
+    const user = await usersModel.getUserbyId(id);
 
     if (user) {
       return response.status(200).json(user);
@@ -63,7 +63,7 @@ const getUserbyId = async (request, response) => {
 const getUserByMtcl = async (request, response) => {
   try {
     const { mtcl } = request.params;
-    const user = await usersModel.getUser(mtcl);
+    const user = await usersModel.getUserByMtcl(mtcl);
 
     if (user) {
       return response.status(200).json(user);
