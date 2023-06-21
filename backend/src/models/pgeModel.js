@@ -165,15 +165,6 @@ const createPge = async (pge) => {
   }
 };
 
-
-
-
-
-
-
-
-
-
 module.exports = {
   getAllPge,
   getPgeByProcNum,
