@@ -39,20 +39,17 @@ const updateUserByMtcl = async (mtcl, updatedUserData) => {
 
 
 const loginUser = async (matricula) => {
-  // Remover os caracteres "-" da matrícula
-  const cleanedMatricula = matricula.replace(/-/g, '');
-
-  // Pegar apenas os primeiros 6 dígitos da matrícula
-  const truncatedMatricula = cleanedMatricula.substring(0, 6);
-
-  const query = 'SELECT * FROM users WHERE matricula = ?';
-  const [users] = await connection.execute(query, [truncatedMatricula]);
+  matricula = `0${matricula.slice(0, -1)}-${matricula.slice(-1)}`; // Adicionar um 0 antes da matricula e um - antes do último dígito
+  console.log(matricula);
+  
+  const query = 'SELECT * FROM users WHERE mtcl LIKE ?';
+  const [users] = await connection.execute(query, [`%${matricula}%`]);
 
   if (users.length > 0) {
     const user = users[0];
     // Gerar o token com o ID e a matrícula do usuário
     const token = jwt.sign(
-      { id: user.id, matricula: user.matricula },
+      { id: user.id, matricula: user.mtcl },
       SECRET_KEY,
       { expiresIn: '1h' }
     );
@@ -64,20 +61,21 @@ const loginUser = async (matricula) => {
 
 
 
-const getUser = async (matricula, cpf) => {
-  let query = 'SELECT * FROM users WHERE matricula = ?';
-  let [user] = await connection.execute(query, [matricula]);
 
-  if (user.length === 0) {
-    query = 'SELECT * FROM users WHERE cpf = ?';
-    [user] = await connection.execute(query, [cpf]);
+const getUserbyId = async (id) => {
+  const query = 'SELECT * FROM users WHERE id = ?';
+  const values = [id];
+
+  try {
+    const [rows] = await connection.execute(query, values);
+    if (rows.length === 0) {
+      return null; // Retorna null se o usuário não for encontrado
+    }
+    return rows[0]; // Retorna o primeiro usuário encontrado
+  } catch (error) {
+    console.error('Erro ao obter usuário por id:', error);
+    throw error;
   }
-
-  if (user.length === 0) {
-    throw new Error('Usuário não encontrado');
-  }
-
-  return user[0];
 };
 
 const getUserByMtcl = async (mtcl) => {
@@ -103,7 +101,7 @@ module.exports = {
   getAllUsers,
   createUser,
   loginUser,
-  getUser,
+  getUserbyId,
   updateUserByMtcl,
   getUserByMtcl
 };

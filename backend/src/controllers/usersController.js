@@ -44,7 +44,7 @@ const loginUser = async (request, response) => {
   }
 };
 
-const getUser = async (request, response) => {
+const getUserbyId = async (request, response) => {
   try {
     const { id } = request.params;
     const user = await usersModel.getUser(id);
@@ -59,6 +59,23 @@ const getUser = async (request, response) => {
     return response.status(500).json({ error: 'Erro ao obter usuário' });
   }
 };
+
+const getUserByMtcl = async (request, response) => {
+  try {
+    const { mtcl } = request.params;
+    const user = await usersModel.getUser(mtcl);
+
+    if (user) {
+      return response.status(200).json(user);
+    } else {
+      return response.status(404).json({ message: 'Usuário não encontrado' });
+    }
+  } catch (error) {
+    console.error('Erro ao obter usuário:', error);
+    return response.status(500).json({ error: 'Erro ao obter usuário' });
+  }
+};
+
 async function fetchUserDataAndSaveToDatabase() {
   try {
     const response = await axios.get('https://script.google.com/macros/s/AKfycbzl89Tsxh1ZPU3UHM2K0kCffi_mpbcrqCPnwEl-18UkPUNPZniqNRj_2HzCt7o5KzR2DA/exec?action=getEfetivo');
@@ -126,15 +143,22 @@ async function fetchUserDataAndSaveToDatabase() {
 }
 
 
+  //fetchDataAndSaveToDatabase() 
+  function scheduleFunction() {
+    const d = new Date();
+    const currentMinutes = d.getMinutes();
+  
+    // Verifica se o minuto atual é igual a 30
+    if (currentMinutes === 00) {
+      fetchUserDataAndSaveToDatabase();
+    }
+  }
+  
+  // Chamando a função inicialmente para verificar se deve ser executada imediatamente
+  scheduleFunction();
 
-
-
-
-
-
-
-
-fetchUserDataAndSaveToDatabase()
+  // Configurando o setInterval para chamar a função a cada minuto
+  setInterval(scheduleFunction, 60000); // 60000 milissegundos = 1 minuto
 
 
 
@@ -142,6 +166,7 @@ module.exports = {
   getAllUsers,
   createUser,
   loginUser,
-  getUser
+  getUserbyId,
+  getUserByMtcl
   
 };
