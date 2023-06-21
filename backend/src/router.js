@@ -10,8 +10,7 @@ const verifyToken = require('./middlewares/authMiddleware'); // Adicione esta li
 // ROTAS USERS
 router.get('/users', verifyToken, usersController.getAllUsers);
 router.get('/user/:id', verifyToken, usersController.getUser);
-router.delete('/users/:id', verifyToken, usersController.deleteTask);
-router.put('/users/:id', verifyToken, usersController.updateTask);
+
 // ROTA LOGIN
 router.post('/login', usersController.loginUser);
 

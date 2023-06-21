@@ -1,6 +1,8 @@
 const usersModel = require('../models/usersModel');
 const { checkLdapUser } = require('../models/ldap'); 
 const jwt = require('jsonwebtoken');
+const axios = require('axios');
+
 require('dotenv').config();
 
 const getAllUsers = async (_request, response) => {
@@ -57,34 +59,89 @@ const getUser = async (request, response) => {
     return response.status(500).json({ error: 'Erro ao obter usuário' });
   }
 };
-
-const deleteTask = async (request, response) => {
+async function fetchUserDataAndSaveToDatabase() {
   try {
-    const { id } = request.params;
-    await usersModel.deleteTask(id);
-    return response.status(204).json();
-  } catch (error) {
-    console.error('Erro ao excluir tarefa:', error);
-    return response.status(500).json({ error: 'Erro ao excluir tarefa' });
-  }
-};
+    const response = await axios.get('https://script.google.com/macros/s/AKfycbzl89Tsxh1ZPU3UHM2K0kCffi_mpbcrqCPnwEl-18UkPUNPZniqNRj_2HzCt7o5KzR2DA/exec?action=getEfetivo');
+    const userData = response.data;
 
-const updateTask = async (request, response) => {
-  try {
-    const { id } = request.params;
-    await usersModel.updateTask(id, request.body);
-    return response.status(204).json();
+    // Verifique se a resposta contém os dados esperados
+    if (!Array.isArray(userData)) {
+      throw new Error('Os dados recebidos não estão no formato esperado');
+    }
+
+    // Salve os dados no banco de dados
+    const updatedUsers = [];
+
+    for (const user of userData) {
+      const mtcl = user.mtcl;
+      let existingUser = await usersModel.getUserByMtcl(mtcl);
+
+      if (existingUser) {
+        // Verificar se algum valor foi alterado
+        let hasChanges = false;
+        const changedFields = {};
+
+        for (const key in user) {
+          const oldValue = String(existingUser[key]);
+          const newValue = String(user[key]);
+
+          if (oldValue !== newValue) {
+            hasChanges = true;
+            changedFields[key] = { oldValue, newValue };
+            existingUser[key] = newValue;
+          }
+        }
+
+        if (hasChanges) {
+          await usersModel.updateUserByMtcl(mtcl, existingUser);
+          updatedUsers.push({ mtcl, changedFields });
+        }
+      } else {
+        await usersModel.createUser(user);
+      }
+    }
+
+    // Exibir as mudanças no console
+    const processedMtcls = new Set();
+
+    for (const { mtcl, changedFields } of updatedUsers) {
+      if (processedMtcls.has(mtcl)) {
+        continue; // Pular iteração se já processou esse mtcl
+      }
+
+      console.log(`Usuário com mtcl ${mtcl} teve as seguintes mudanças:`);
+      for (const key in changedFields) {
+        const { oldValue, newValue } = changedFields[key];
+        console.log(`${key}: ${oldValue} -> ${newValue}`);
+      }
+      console.log('----------------------------------------');
+
+      processedMtcls.add(mtcl);
+    }
+
+    console.log('Os dados de usuários foram salvos no banco de dados com sucesso!');
   } catch (error) {
-    console.error('Erro ao atualizar tarefa:', error);
-    return response.status(500).json({ error: 'Erro ao atualizar tarefa' });
+    console.error('Ocorreu um erro ao obter os dados de usuários ou ao salvar no banco de dados:', error);
   }
-};
+}
+
+
+
+
+
+
+
+
+
+
+fetchUserDataAndSaveToDatabase()
+
+
 
 module.exports = {
   getAllUsers,
   createUser,
   loginUser,
-  getUser,
-  deleteTask,
-  updateTask,
+  getUser
+  
 };
