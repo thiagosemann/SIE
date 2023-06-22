@@ -77,29 +77,27 @@ const getUserByMtcl = async (request, response) => {
 
 async function fetchUserDataAndSaveToDatabase() {
   try {
-    const response = await axios.get('https://script.google.com/macros/s/AKfycbwpHri5-ilDJSIUfjTm7f_7BUyeaBUhhZF4VOduMxOMF1nz3pulOMGYY95fQ-Rzr3IzHQ/exec?action=getEfetivo');
+    const response = await axios.get('https://script.google.com/macros/s/AKfycbzjR6h6qjE9CugIUQeDUVGI5gpSdepizUkXk3oMbnFKTn50H9aH6gjJS8SoRTADhzo5-Q/exec?action=getEfetivo');
     const userData = response.data;
 
-    // Verifique se a resposta contém os dados esperados
     if (!Array.isArray(userData)) {
       throw new Error('Os dados recebidos não estão no formato esperado');
     }
 
-    // Salve os dados no banco de dados
     const updatedUsers = [];
-
     for (const user of userData) {
-
       const mtcl = user.mtcl;
-
       let existingUser = await usersModel.getUserByMtcl(mtcl);
 
       if (existingUser) {
-        // Verificar se algum valor foi alterado
         let hasChanges = false;
         const changedFields = {};
 
         for (const key in user) {
+          if (key === 'ldap') {
+            continue; // Ignorar o campo "ldap" na comparação
+          }
+
           const oldValue = String(existingUser[key]);
           const newValue = String(user[key]);
 
@@ -113,29 +111,17 @@ async function fetchUserDataAndSaveToDatabase() {
         if (hasChanges) {
           await usersModel.updateUserByMtcl(mtcl, existingUser);
           updatedUsers.push({ mtcl, changedFields });
+
+          console.log(`Usuário com mtcl ${mtcl} teve as seguintes mudanças:`);
+          for (const key in changedFields) {
+            const { oldValue, newValue } = changedFields[key];
+            console.log(`${key}: ${oldValue} -> ${newValue}`);
+          }
+          console.log('----------------------------------------');
         }
       } else {
-
         await usersModel.createUser(user);
       }
-    }
-
-    // Exibir as mudanças no console
-    const processedMtcls = new Set();
-
-    for (const { mtcl, changedFields } of updatedUsers) {
-      if (processedMtcls.has(mtcl)) {
-        continue; // Pular iteração se já processou esse mtcl
-      }
-
-      console.log(`Usuário com mtcl ${mtcl} teve as seguintes mudanças:`);
-      for (const key in changedFields) {
-        const { oldValue, newValue } = changedFields[key];
-        console.log(`${key}: ${oldValue} -> ${newValue}`);
-      }
-      console.log('----------------------------------------');
-
-      processedMtcls.add(mtcl);
     }
 
     console.log('Os dados de usuários foram salvos no banco de dados com sucesso!');
@@ -145,7 +131,9 @@ async function fetchUserDataAndSaveToDatabase() {
 }
 
 
-  //fetchDataAndSaveToDatabase() 
+
+
+fetchUserDataAndSaveToDatabase(); 
   function scheduleFunction() {
     const d = new Date();
     const currentMinutes = d.getMinutes();

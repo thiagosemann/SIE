@@ -21,6 +21,9 @@ const createUser = async (user) => {
   }
 };
 const updateUserByMtcl = async (mtcl, updatedUserData) => {
+  console.log('Matrícula:', mtcl); // Adicione esta linha para exibir a matrícula no console
+  console.log('Matrícula:', updatedUserData); // Adicione esta linha para exibir a matrícula no console
+
   const { name, cpf, graduacao, escolaridade } = updatedUserData;
   const query = 'UPDATE users SET name = ?, cpf = ?, graduacao = ?, escolaridade = ? WHERE mtcl = ?';
   const values = [name, cpf, graduacao, escolaridade, mtcl];
@@ -28,7 +31,8 @@ const updateUserByMtcl = async (mtcl, updatedUserData) => {
   try {
     const [result] = await connection.execute(query, values);
     if (result.affectedRows === 0) {
-      throw new Error('Usuário não encontrado');
+      console.error(`Usuário com a matrícula ${mtcl} não encontrado`);
+      throw new Error(`Usuário com a matrícula ${mtcl} não encontrado`);
     }
     return { success: true };
   } catch (error) {
@@ -36,6 +40,8 @@ const updateUserByMtcl = async (mtcl, updatedUserData) => {
     throw error;
   }
 };
+
+
 
 
 const loginUser = async (matricula) => {
