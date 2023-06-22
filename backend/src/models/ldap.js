@@ -2,7 +2,6 @@ const { Client } = require('ldapts');
 
 async function checkLdapUser(username, password, ldapServer = 'ldap.cbm.sc.gov.br') {
   let erroLdap = '';
-
   const client = new Client({
     url: `ldap://${ldapServer}`
   });
@@ -15,7 +14,6 @@ async function checkLdapUser(username, password, ldapServer = 'ldap.cbm.sc.gov.b
       scope: 'sub',
       attributes: ['dn','employeenumber', 'cpf']
     };
-
     const res = await client.search('ou=Users,dc=cbm,dc=sc,dc=gov,dc=br', opts);
     if (res.searchEntries.length !== 1) {
       erroLdap += `ERRO: USUÁRIO ${username} EXISTE MAIS DE UM USUÁRIO\n`;

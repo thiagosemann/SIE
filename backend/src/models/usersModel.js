@@ -8,9 +8,9 @@ const getAllUsers = async () => {
 };
 
 const createUser = async (user) => {
-  const { mtcl, name, cpf, graduacao, escolaridade } = user;
-  const query = 'INSERT INTO users (mtcl, name, cpf, graduacao, escolaridade) VALUES (?, ?, ?, ?, ?)';
-  const values = [mtcl, name, cpf, graduacao, escolaridade];
+  const { ldap, mtcl, name, cpf, graduacao, escolaridade } = user;
+  const query = 'INSERT INTO users (ldap, mtcl, name, cpf, graduacao, escolaridade) VALUES (?, ?, ?, ?, ?, ?)';
+  const values = [ldap, mtcl, name, cpf, graduacao, escolaridade];
 
   try {
     const [result] = await connection.execute(query, values);
@@ -40,7 +40,6 @@ const updateUserByMtcl = async (mtcl, updatedUserData) => {
 
 const loginUser = async (matricula) => {
   matricula = `0${matricula.slice(0, -1)}-${matricula.slice(-1)}`; // Adicionar um 0 antes da matricula e um - antes do último dígito
-  console.log(matricula);
   
   const query = 'SELECT * FROM users WHERE mtcl LIKE ?';
   const [users] = await connection.execute(query, [`%${matricula}%`]);
@@ -52,7 +51,7 @@ const loginUser = async (matricula) => {
     const token = jwt.sign(
       { id: user.id, matricula: matricula },
       SECRET_KEY,
-      { expiresIn: '1h' }
+      { expiresIn: '24h' }
     );
     return { user, token };
   }
@@ -80,19 +79,16 @@ const getUserbyId = async (id) => {
 };
 
 const getUserByMtcl = async (mtcl) => {
-  const query = 'SELECT * FROM users WHERE mtcl = ?';
-  const values = [mtcl];
+  
+  const query = 'SELECT * FROM users WHERE mtcl LIKE ?';
+  const [users] = await connection.execute(query, [`%${mtcl}%`]);
 
-  try {
-    const [rows] = await connection.execute(query, values);
-    if (rows.length === 0) {
-      return null; // Retorna null se o usuário não for encontrado
-    }
-    return rows[0]; // Retorna o primeiro usuário encontrado
-  } catch (error) {
-    console.error('Erro ao obter usuário por mtcl:', error);
-    throw error;
+  if (users.length > 0) {
+    return users[0]
+    ;
   }
+
+  return null; // Se não encontrarmos o usuário, lançamos um erro
 };
 
 

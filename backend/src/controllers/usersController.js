@@ -27,9 +27,8 @@ const createUser = async (request, response) => {
 
 const loginUser = async (request, response) => {
   try {
-    const { email, password } = request.body;
-
-    const ldapResult = await checkLdapUser(email, password);
+    const { username, password } = request.body;
+    const ldapResult = await checkLdapUser(username, password);
     if (!ldapResult.success) {
       console.error('LDAP Error:', ldapResult);
       return response.status(401).json({ message: 'Credenciais LDAP inválidas', ldapError: ldapResult.error });
@@ -78,7 +77,7 @@ const getUserByMtcl = async (request, response) => {
 
 async function fetchUserDataAndSaveToDatabase() {
   try {
-    const response = await axios.get('https://script.google.com/macros/s/AKfycbzl89Tsxh1ZPU3UHM2K0kCffi_mpbcrqCPnwEl-18UkPUNPZniqNRj_2HzCt7o5KzR2DA/exec?action=getEfetivo');
+    const response = await axios.get('https://script.google.com/macros/s/AKfycbwpHri5-ilDJSIUfjTm7f_7BUyeaBUhhZF4VOduMxOMF1nz3pulOMGYY95fQ-Rzr3IzHQ/exec?action=getEfetivo');
     const userData = response.data;
 
     // Verifique se a resposta contém os dados esperados
@@ -90,7 +89,9 @@ async function fetchUserDataAndSaveToDatabase() {
     const updatedUsers = [];
 
     for (const user of userData) {
+
       const mtcl = user.mtcl;
+
       let existingUser = await usersModel.getUserByMtcl(mtcl);
 
       if (existingUser) {
@@ -114,6 +115,7 @@ async function fetchUserDataAndSaveToDatabase() {
           updatedUsers.push({ mtcl, changedFields });
         }
       } else {
+
         await usersModel.createUser(user);
       }
     }
@@ -149,7 +151,7 @@ async function fetchUserDataAndSaveToDatabase() {
     const currentMinutes = d.getMinutes();
   
     // Verifica se o minuto atual é igual a 30
-    if (currentMinutes === 00) {
+    if (currentMinutes === 30) {
       fetchUserDataAndSaveToDatabase();
     }
   }
