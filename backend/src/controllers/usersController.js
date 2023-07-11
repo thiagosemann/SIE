@@ -130,10 +130,6 @@ async function fetchUserDataAndSaveToDatabase() {
   }
 }
 
-
-
-
-fetchUserDataAndSaveToDatabase(); 
   function scheduleFunction() {
     const d = new Date();
     const currentMinutes = d.getMinutes();
