@@ -1,4 +1,4 @@
-const connection = require('./connection');
+const connection = require('./connection/connectionSie');
 const jwt = require('jsonwebtoken');
 const SECRET_KEY = 'X8J6kZ8mD4G58N5M5x7GJ5v77h36Hk75c6n3Bz7R'; // Substitua pelo seu segredo JWT
 

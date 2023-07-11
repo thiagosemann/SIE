@@ -1,4 +1,4 @@
-const connection = require('./connection');
+const connection = require('./connection/connectionSie');
 
 const getAllPge = async () => {
   const [pges] = await connection.execute('SELECT * FROM pge');
