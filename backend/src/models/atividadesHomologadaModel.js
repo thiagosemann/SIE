@@ -18,9 +18,8 @@ const getAtividadeHomologadaBySigla = async (sigla) => {
 };
 
 
-const updateAtividadeHomologadaById = async (id, atividade) => {
+const updateAtividadeHomologadaBySigla = async (sigla, atividade) => {
   const {
-    sigla,
     name,
     sgpe,
     ha,
@@ -35,10 +34,9 @@ const updateAtividadeHomologadaById = async (id, atividade) => {
     atividadesPreliminares
   } = atividade;
 
-  const query = `UPDATE atividadeHomologada SET sigla = ?, name = ?, sgpe = ?, ha = ?, hai = ?, tipo = ?, areaConhecimento = ?, modalidade = ?, vagas = ?, finalidade = ?, reqEspecifico = ?, processoSeletivo = ?, atividadesPreliminares = ? WHERE id = ?`;
+  const query = `UPDATE atividadeHomologada SET name = ?, sgpe = ?, ha = ?, hai = ?, tipo = ?, areaConhecimento = ?, modalidade = ?, vagas = ?, finalidade = ?, reqEspecifico = ?, processoSeletivo = ?, atividadesPreliminares = ? WHERE sigla = ?`;
 
   const values = [
-    sigla,
     name,
     sgpe,
     ha,
@@ -51,7 +49,7 @@ const updateAtividadeHomologadaById = async (id, atividade) => {
     reqEspecifico,
     processoSeletivo,
     atividadesPreliminares,
-    id
+    sigla
   ];
 
   try {
@@ -111,7 +109,7 @@ const createAtividadeHomologada = async (atividade) => {
 module.exports = {
   getAllAtividadeHomologada,
   getAtividadeHomologadaById,
-  updateAtividadeHomologadaById,
+  updateAtividadeHomologadaBySigla,
   createAtividadeHomologada,
   getAtividadeHomologadaBySigla
 };

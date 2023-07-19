@@ -55,97 +55,104 @@ const createAtividadeHomologada = async (request, response) => {
 };
 
 async function fetchAtividadeDataAndSaveToDatabase() {
-    try {
-      const response = await axios.get('https://script.google.com/macros/s/AKfycbwR9H0B38QWLnPIseirpslrFZf-_0ze36GkgLIOAzMqvWARqu9D-n8OAtdSBmlVeasW/exec?action=getAtividadeHomologada');
-      const atividadesData = response.data;
-  
-      // Verifique se a resposta contém os dados esperados
-      if (!Array.isArray(atividadesData)) {
-        throw new Error('Os dados recebidos não estão no formato esperado');
+  try {
+    const response = await axios.get('https://script.google.com/macros/s/AKfycbz7564LnI_qSBAcvpWWN8r_5gMUGAuSAdPM0qkjIf40PpVGWGOkjDpjQ_a3OzJ2Q9-o0Q/exec?action=getAtividadeHomologada');
+    const atividadesData = response.data;
+
+    // Verifique se a resposta contém os dados esperados
+    if (!Array.isArray(atividadesData)) {
+      throw new Error('Os dados recebidos não estão no formato esperado');
+    }
+
+    // Salve os dados no banco de dados
+    const updatedAtividades = [];
+
+    for (const atividade of atividadesData) {
+      const sigla = atividade.sigla;
+
+      // Verificar se a sigla está definida
+      if (sigla === undefined) {
+        atividade.sigla = null;
+      } else {
+        atividade.sigla = sigla;
       }
-  
-      // Salve os dados no banco de dados
-      const updatedAtividades = [];
-  
-      for (const atividade of atividadesData) {
-        const id = atividade.id;
-        atividade.id = id;
-        delete atividade.id; // Remova o campo 'id'
-  
-        // Converter o campo 'vagas' para um valor inteiro
-        atividade.vagas = atividade.vagas !== '' ? parseInt(atividade.vagas) : null;
-  
-        // Converter todos os campos para strings
-        Object.keys(atividade).forEach((key) => {
-          if (typeof atividade[key] !== 'string' && atividade[key] !== null && atividade[key] !== undefined) {
-            atividade[key] = atividade[key].toString();
+
+      // Converter o campo 'vagas' para um valor inteiro, se não for nulo; caso contrário, atribuir 0
+      atividade.vagas = atividade.vagas !== null && atividade.vagas !== '' ? parseInt(atividade.vagas) : 0;
+
+      // Converter todos os campos para strings
+      Object.keys(atividade).forEach((key) => {
+        if (typeof atividade[key] !== 'string' && atividade[key] !== null && atividade[key] !== undefined) {
+          atividade[key] = atividade[key].toString();
+        }
+      });
+
+      const existingAtividade = await atividadeHomologadaModel.getAtividadeHomologadaBySigla(sigla);
+
+      if (existingAtividade) {
+        // Verificar se algum valor foi alterado
+        let hasChanges = false;
+        const changedFields = {};
+
+        for (const key in atividade) {
+          const oldValue = String(existingAtividade[key]);
+          const newValue = String(atividade[key]);
+
+          if (oldValue !== newValue) {
+            hasChanges = true;
+            changedFields[key] = { oldValue, newValue };
+            existingAtividade[key] = newValue;
           }
-        });
-  
-        const existingAtividade = await atividadeHomologadaModel.getAtividadeHomologadaById(id);
-  
-        if (existingAtividade) {
-          // Verificar se algum valor foi alterado
-          let hasChanges = false;
-          const changedFields = {};
-  
-          for (const key in atividade) {
-            const oldValue = String(existingAtividade[key]);
-            const newValue = String(atividade[key]);
-  
-            if (oldValue !== newValue) {
-              hasChanges = true;
-              changedFields[key] = { oldValue, newValue };
-              existingAtividade[key] = newValue;
-            }
-          }
-  
-          if (hasChanges) {
-            // Atualizar valores undefined para null
-            Object.keys(existingAtividade).forEach((key) => {
-              if (existingAtividade[key] === undefined) {
-                existingAtividade[key] = null;
-              }
-            });
-  
-            await atividadeHomologadaModel.updateAtividadeHomologadaById(id, existingAtividade);
-            updatedAtividades.push({ id, changedFields });
-          }
-        } else {
-          // Definir valores undefined como null antes de criar a atividade
-          Object.keys(atividade).forEach((key) => {
-            if (atividade[key] === undefined) {
-              atividade[key] = null;
+        }
+
+        if (hasChanges) {
+          // Atualizar valores undefined para null
+          Object.keys(existingAtividade).forEach((key) => {
+            if (existingAtividade[key] === undefined) {
+              existingAtividade[key] = null;
             }
           });
-  
-          await atividadeHomologadaModel.createAtividadeHomologada(atividade);
+
+          await atividadeHomologadaModel.updateAtividadeHomologadaBySigla(sigla, existingAtividade);
+          updatedAtividades.push({ sigla, changedFields });
         }
+      } else {
+        // Definir valores undefined como null antes de criar a atividade
+        Object.keys(atividade).forEach((key) => {
+          if (atividade[key] === undefined) {
+            atividade[key] = null;
+          }
+        });
+
+        await atividadeHomologadaModel.createAtividadeHomologada(atividade);
       }
-  
-      // Exibir as mudanças no console
-      const processedIds = new Set();
-  
-      for (const { id, changedFields } of updatedAtividades) {
-        if (processedIds.has(id)) {
-          continue; // Pular iteração se já processou esse ID
-        }
-  
-        console.log(`Atividade com ID ${id} teve as seguintes mudanças:`);
-        for (const key in changedFields) {
-          const { oldValue, newValue } = changedFields[key];
-          console.log(`${key}: ${oldValue} -> ${newValue}`);
-        }
-        console.log('----------------------------------------');
-  
-        processedIds.add(id);
-      }
-  
-      console.log('Os dados das atividades foram salvos no banco de dados com sucesso!');
-    } catch (error) {
-      console.error('Ocorreu um erro ao obter os dados do servidor ou ao salvar no banco de dados:', error);
     }
+
+    // Exibir as mudanças no console
+    const processedSiglas = new Set();
+
+    for (const { sigla, changedFields } of updatedAtividades) {
+      if (processedSiglas.has(sigla)) {
+        continue; // Pular iteração se já processou essa sigla
+      }
+
+      console.log(`Atividade com sigla ${sigla} teve as seguintes mudanças:`);
+      for (const key in changedFields) {
+        const { oldValue, newValue } = changedFields[key];
+        console.log(`${key}: ${oldValue} -> ${newValue}`);
+      }
+      console.log('----------------------------------------');
+
+      processedSiglas.add(sigla);
+    }
+
+    console.log('Os dados das atividades foram salvos no banco de dados com sucesso!');
+  } catch (error) {
+    console.error('Ocorreu um erro ao obter os dados do servidor ou ao salvar no banco de dados:', error);
   }
+}
+
+
   
   
 
@@ -159,6 +166,7 @@ function scheduleAtividadeFunction() {
 
 // Chamando a função inicialmente para verificar se deve ser executada imediatamente
 scheduleAtividadeFunction();
+fetchAtividadeDataAndSaveToDatabase();
 
 // Configurando o setInterval para chamar a função a cada minuto
 setInterval(scheduleAtividadeFunction, 60000); // 60000 milissegundos = 1 minuto
