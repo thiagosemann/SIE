@@ -166,7 +166,6 @@ function scheduleAtividadeFunction() {
 
 // Chamando a função inicialmente para verificar se deve ser executada imediatamente
 scheduleAtividadeFunction();
-fetchAtividadeDataAndSaveToDatabase();
 
 // Configurando o setInterval para chamar a função a cada minuto
 setInterval(scheduleAtividadeFunction, 60000); // 60000 milissegundos = 1 minuto

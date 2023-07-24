@@ -21,7 +21,7 @@ router.post('/documents', verifyToken, documentsController.createDocument);
 router.delete('/documents/:id', verifyToken, documentsController.deleteDocumentById);
 router.put('/documents/:id', verifyToken, documentsController.updateDocumentById);
 router.get('/documents/:id', verifyToken, documentsController.getDocumentById);
-router.get('/documents/name/:name',verifyToken, documentsController.getDocumentByName);
+router.get('/documents/name/:name', documentsController.getDocumentByName);
 
 // ROTAS PGE
 router.get('/pge',verifyToken,pgeController.getAllPge)

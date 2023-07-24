@@ -91,7 +91,7 @@ async function fetchDataAndSaveToDatabase() {
     }
   }
   //fetchDataAndSaveToDatabase() 
-  function scheduleFunction() {
+  function scheduleFunction( ) {
     const d = new Date();
     const currentMinutes = d.getMinutes();
   
