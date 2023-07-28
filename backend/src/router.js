@@ -30,5 +30,13 @@ router.get('/pge',verifyToken,pgeController.getAllPge)
 router.get('/atividadeHomologada',verifyToken,atividadeHomologadaController.getAllAtividadeHomologada)
 router.get('/atividadeHomologada/sigla/:sigla',verifyToken,atividadeHomologadaController.getAtividadeHomologadaBySigla)
 
+// ROTAS CURSOS
+router.get('/cursos', verifyToken, cursosController.getAllCourses);
+router.post('/cursos', verifyToken, cursosController.createCourse);
+router.delete('/cursos/:id', verifyToken, cursosController.deleteCourseById);
+router.put('/cursos/:id', verifyToken, cursosController.updateCourseById);
+router.get('/cursos/:id', verifyToken, cursosController.getCourseById);
+router.get('/cursos/auth/:auth', cursosController.getCourseByAuth);
+
 
 module.exports = router;
