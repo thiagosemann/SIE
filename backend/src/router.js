@@ -4,8 +4,9 @@ const router = express.Router();
 
 const usersController = require('./controllers/usersController');
 const documentsController = require('./controllers/documentoController'); // Importe o controlador dos documentos
-const pgeController = require('./controllers/pgeController')
-const atividadeHomologadaController = require('./controllers/atividadeHomologadaController')
+const pgeController = require('./controllers/pgeController');
+const atividadeHomologadaController = require('./controllers/atividadeHomologadaController');
+const cursosController = require('./controllers/cursosController')
 const verifyToken = require('./middlewares/authMiddleware'); // Importe o middleware de autenticação
 
 // ROTAS USERS
