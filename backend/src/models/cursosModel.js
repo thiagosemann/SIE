@@ -1,9 +1,9 @@
 const connection = require('./connection');
 
 const createCourse = async (course) => {
-  const { nome, dados, tipo } = course;
-  const query = 'INSERT INTO cursos (nome, dados, tipo) VALUES (?, ?, ?)';
-  const values = [nome, JSON.stringify(dados), tipo];
+  const { auth, dados, tipo, id_pge } = course;
+  const query = 'INSERT INTO documentosCriados (auth, dados, tipo, id_pge) VALUES (?, ?, ?, ?)';
+  const values = [auth, JSON.stringify(dados), tipo, id_pge];
 
   try {
     const [result] = await connection.execute(query, values);
@@ -15,7 +15,7 @@ const createCourse = async (course) => {
 };
 
 const deleteCourseById = async (id) => {
-  const query = 'DELETE FROM cursos WHERE id = ?';
+  const query = 'DELETE FROM documentosCriados WHERE id = ?';
   const values = [id];
 
   try {
@@ -33,7 +33,7 @@ const deleteCourseById = async (id) => {
 
 const updateCourseById = async (id, updatedData) => {
   const { nome, dados, tipo } = updatedData;
-  const query = 'UPDATE cursos SET nome = ?, dados = ?, tipo = ? WHERE id = ?';
+  const query = 'UPDATE documentosCriados SET nome = ?, dados = ?, tipo = ? WHERE id = ?';
   const values = [nome, JSON.stringify(dados), tipo, id];
 
   try {
@@ -50,7 +50,7 @@ const updateCourseById = async (id, updatedData) => {
 };
 
 const getCourseById = async (id) => {
-  const query = 'SELECT * FROM cursos WHERE id = ?';
+  const query = 'SELECT * FROM documentosCriados WHERE id_pge = ?';
   const values = [id];
 
   try {
@@ -59,7 +59,6 @@ const getCourseById = async (id) => {
       return null;
     }
     const course = rows[0];
-    course.dados = JSON.parse(course.dados);
     return course;
   } catch (error) {
     console.error('Erro ao obter curso por ID:', error);
@@ -68,7 +67,7 @@ const getCourseById = async (id) => {
 };
 
 const getCourseByAuth = async (auth) => {
-  const query = 'SELECT * FROM cursos WHERE auth = ?';
+  const query = 'SELECT * FROM documentosCriados WHERE auth = ?';
   const values = [auth];
 
   try {
@@ -77,7 +76,6 @@ const getCourseByAuth = async (auth) => {
       return null;
     }
     const course = rows[0];
-    course.dados = JSON.parse(course.dados);
     return course;
   } catch (error) {
     console.error('Erro ao obter curso por auth:', error);
@@ -86,7 +84,7 @@ const getCourseByAuth = async (auth) => {
 };
 
 const getAllCourses = async () => {
-  const [courses] = await connection.execute('SELECT * FROM cursos');
+  const [courses] = await connection.execute('SELECT * FROM documentosCriados');
   return courses;
 };
 

@@ -7,6 +7,8 @@ const documentsController = require('./controllers/documentoController'); // Imp
 const pgeController = require('./controllers/pgeController');
 const atividadeHomologadaController = require('./controllers/atividadeHomologadaController');
 const cursosController = require('./controllers/cursosController')
+const licoesController = require('./controllers/licoesAtividadeHomologadaController');
+
 const verifyToken = require('./middlewares/authMiddleware'); // Importe o middleware de autenticação
 
 // ROTAS USERS
@@ -32,12 +34,16 @@ router.get('/atividadeHomologada',verifyToken,atividadeHomologadaController.getA
 router.get('/atividadeHomologada/sigla/:sigla',verifyToken,atividadeHomologadaController.getAtividadeHomologadaBySigla)
 
 // ROTAS CURSOS
-router.get('/cursos', verifyToken, cursosController.getAllCourses);
-router.post('/cursos', verifyToken, cursosController.createCourse);
-router.delete('/cursos/:id', verifyToken, cursosController.deleteCourseById);
-router.put('/cursos/:id', verifyToken, cursosController.updateCourseById);
-router.get('/cursos/:id', verifyToken, cursosController.getCourseById);
-router.get('/cursos/auth/:auth', cursosController.getCourseByAuth);
+router.get('/documentosCriados', verifyToken, cursosController.getAllCourses);
+router.post('/documentosCriados', verifyToken, cursosController.createCourse);
+router.delete('/documentosCriados/:id', verifyToken, cursosController.deleteCourseById);
+router.put('/documentosCriados/:id', verifyToken, cursosController.updateCourseById);
+router.get('/documentosCriados/id/:id', cursosController.getCourseById);
+router.get('/documentosCriados/auth/:auth', cursosController.getCourseByAuth);
+
+// Rotas para Lições
+router.get('/licoes', verifyToken, licoesController.getAllLicoes);
+router.get('/licoes/sigla/:sigla', licoesController.getLicoesBySigla);
 
 
 module.exports = router;
