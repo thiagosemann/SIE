@@ -36,12 +36,20 @@
                     "{nomeCurso}"
                   ],
                   [
+                    "Promotor da atividade de ensino",
+                    "Corpo de Bombeiros Militar de {promoAtiMunicipio}, {promoAtiRua}, {promoAtiNumeral}, {promoAtiBairro}, {promoAtiMunicipio}/SC"
+                  ],
+                  [
                     "Período de inscrição",
                     "{periodoInscricao}"
                   ],
                   [
                     "Período da atividade de ensino",
                     "{periodoAtividade}"
+                  ],
+                  [
+                    "Meio de divulgação dos resultados",
+                    "Diretamente no Quartel do Corpo de Bombeiros Militar de {promoAtiMunicipio} e pelas redes sociais: {redesSociais} "
                   ],
                   [
                     "Local de apresentação dos alunos",
@@ -57,11 +65,11 @@
                   ],
                   [
                     "Carga horária indenizável",
-                    "{haCurso}"
+                    "{haiCurso}"
                   ],
                   [
                     "Finalidade",
-                    "{finalidade}"
+                    "Desenvolver habilidades e atitudes de conhecimentos previamente adquiridos no Curso Básico de Atendimento a Emergências."
                   ]
                 ],
                 "content": "left",
@@ -77,8 +85,33 @@
               {
                 "tipo": "item",
                 "letra": "a)",
-                "texto": "A atividade de ensino tem previsto um total de {totalVagas} vagas, as quais estão distriuídas da seguinte forma:",
+                "texto": "Serão disponibilizadas 30 (trinta) vagas, preferencialmente destinadas a candidatos que residam ou exerçam atividade profissional no(s) município(s) de {vagasMunicipio}",
                 "subsubitens": []
+              },
+              {
+                "tipo": "item",
+                "letra": "b)",
+                "texto": "O treinamento somente ocorrerá com os seguintes números mínimos de alunos matriculados:",
+                "subsubitens": [ 
+                  {
+                    "tipo": "subsubitem",
+                    "letra": "(1)",
+                    "texto": "Municípios com até 20 mil habitantes: 12 alunos;",
+                    "subsubsubitens": []
+                  },
+                  {
+                    "tipo": "subsubitem",
+                    "letra": "(2)",
+                    "texto": "Municípios com até 50 mil habitantes: 15 alunos;",
+                    "subsubsubitens": []
+                  },
+                  {
+                    "tipo": "subsubitem",
+                    "letra": "(3)",
+                    "texto": "Municípios com mais de 50 mil habitantes: 20 alunos.",
+                    "subsubsubitens": []
+                  }
+                ]
               }
             ]
           },
@@ -96,8 +129,66 @@
               {
                 "tipo": "item",
                 "letra": "a)",
-                "texto": "A atividade de ensino ocorrerá dentro do período {dataAtiviExtenso} e observará as unidades didáticas:",
-                "subsubitens":[]
+                "texto": "A atividade de ensino ocorrerá dentro do período de {periodoAtividade} e observará as unidades didáticas:",
+                "subsubitens":[                 
+                   {
+                    "tipo": "subsubitem",
+                    "letra": "(1)",
+                    "texto": "Oficinas de combate a incêndio",
+                    "subsubsubitens": [
+                      {
+                        "tipo": "subitem",
+                        "letra": "(a)",
+                        "texto": "Oficina de operação com extintor portátil: 1 Hora aula."
+                      },
+                      {
+                        "tipo": "subitem",
+                        "letra": "(b)",
+                        "texto": "Oficina de montagem de estabelecimento do Sistema Hidráulico Preventivo: 1 Hora Aula."
+                      }
+                    ]
+                   },
+                   {
+                    "tipo": "subsubitem",
+                    "letra": "(2)",
+                    "texto": "Oficinas de noções básicas de atendimento pré-hospitalar",
+                    "subsubsubitens": [
+                      {
+                        "tipo": "subitem",
+                        "letra": "(a)",
+                        "texto": "Oficina de reanimação cardiopulmonar adulto para leigo (somente com as mãos): 1 Hora aula."
+                      },
+                      {
+                        "tipo": "subitem",
+                        "letra": "(b)",
+                        "texto": "Oficina de controle de hemorragia: 1 Hora aula."
+                      }
+                    ]
+                   },
+                   {
+                    "tipo": "subsubitem",
+                    "letra": "(3)",
+                    "texto": "Verificação final",
+                    "subsubsubitens": [
+                      {
+                        "tipo": "subitem",
+                        "letra": "(a)",
+                        "texto": "Orientações gerais: 2 Horas aulas."
+                      },
+                      {
+                        "tipo": "subitem",
+                        "letra": "(b)",
+                        "texto": "Avaliação prática: 2 Horas aulas."
+                      }
+                    ]
+                   },
+                   {
+                    "tipo": "subsubitem",
+                    "letra": "(4)",
+                    "texto": "Carga horária total: 8 horas aulas.",
+                    "subsubsubitens": []
+                   }
+              ]
               },
               {
                 "tipo": "item",
@@ -153,7 +244,7 @@
               {
                 "tipo": "subitem",
                 "letra": "b)",
-                "texto": "Contato: {coordContato}"
+                "texto": "{coordenadorContato}"
               }
             ]
           },
@@ -356,8 +447,23 @@
         "itens": [
           {
             "tipo": "item",
-            "texto": "Os esclarecimentos e dúvidas relativos à operacionalização e execução da presente atividade de ensino, serão de responsabilidade do coordenador da atividade de ensino.",
-            "numero": ""
+            "texto": "Não serão pagas diárias de curso para treinamentos e cursos de formação, bem como para civis, conforme legislação vigente.",
+            "numero": "5.1"
+          },
+          {
+            "tipo": "item",
+            "texto": "Ao final do treinamento, se aprovado, o participante receberá certificado de conclusão  emitido pela Diretoria de Instrução e Ensino.",
+            "numero": "5.2"
+          },
+          {
+            "tipo": "item",
+            "texto": "Caso não se atinja o número mínimo de alunos para o funcionamento do treinamento, a coordenação por meio da B-3 do batalhão, poderá solicitar à Diretoria de Instrução e Ensino (DIE), no SGPe e pelo mesmo processo do treinamento, o funcionamento com número menor de alunos, justificando a motivação, podendo a DIE autorizar ou não, conforme o caso.",
+            "numero": "5.3"
+          },
+          {
+            "tipo": "item",
+            "texto": "Caso não se atinja o número mínimo de alunos para o funcionamento do treinamento, a coordenação por meio da B-3 do batalhão, poderá solicitar à Diretoria de Instrução e Ensino (DIE), no SGPe e pelo mesmo processo do treinamento, o funcionamento com número menor de alunos, justificando a motivação, podendo a DIE autorizar ou não, conforme o caso.",
+            "numero": "5.4"
           }
         ],
         "texto": "PRESCRIÇÕES DIVERSAS",
