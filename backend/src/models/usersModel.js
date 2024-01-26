@@ -7,10 +7,27 @@ const getAllUsers = async () => {
   return users;
 };
 
+const getUserByLdap = async (ldap) => {
+  const query = 'SELECT * FROM users WHERE ldap = ?';
+  const values = [ldap];
+
+  try {
+    const [rows] = await connection.execute(query, values);
+    if (rows.length === 0) {
+      return null; // Retorna null se o usuário não for encontrado
+    }
+    return rows[0]; // Retorna o primeiro usuário encontrado
+  } catch (error) {
+    console.error('Erro ao obter usuário por LDAP:', error);
+    throw error;
+  }
+};
+
+
 const createUser = async (user) => {
-  const { ldap, mtcl, name, cpf, graduacao, escolaridade } = user;
-  const query = 'INSERT INTO users (ldap, mtcl, name, cpf, graduacao, escolaridade) VALUES (?, ?, ?, ?, ?, ?)';
-  const values = [ldap, mtcl, name, cpf, graduacao, escolaridade];
+  const { ldap, mtcl, name, cpf, graduacao, escolaridade, role, dateFilter } = user;
+  const query = 'INSERT INTO users (ldap, mtcl, name, cpf, graduacao, escolaridade, role, dateFilter) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+  const values = [ldap, mtcl, name, cpf, graduacao, escolaridade, role, dateFilter];
 
   try {
     const [result] = await connection.execute(query, values);
@@ -20,11 +37,8 @@ const createUser = async (user) => {
     throw error;
   }
 };
-const updateUserByMtcl = async (mtcl, updatedUserData) => {
-  console.log('Matrícula:', mtcl); // Adicione esta linha para exibir a matrícula no console
-  console.log('Matrícula:', updatedUserData); // Adicione esta linha para exibir a matrícula no console
-
-  const { name, cpf, graduacao, escolaridade } = updatedUserData;
+const updateUserByMtcl = async ( updatedUserData) => {
+  const {mtcl, name, cpf, graduacao, escolaridade } = updatedUserData;
   const query = 'UPDATE users SET name = ?, cpf = ?, graduacao = ?, escolaridade = ? WHERE mtcl = ?';
   const values = [name, cpf, graduacao, escolaridade, mtcl];
 
@@ -41,11 +55,23 @@ const updateUserByMtcl = async (mtcl, updatedUserData) => {
   }
 };
 
+const updateUser = async (updatedUserData) => {
+  console.log(updatedUserData)
+  const { name, cpf, graduacao, escolaridade, role, dateFilter, id } = updatedUserData;
+  const query = 'UPDATE users SET name = ?, cpf = ?, graduacao = ?, escolaridade = ?, role = ?, dateFilter = ? WHERE id = ?';
+  const values = [name, cpf, graduacao, escolaridade, role, dateFilter, id];
+  await connection.execute(query, values);
+
+  return { success: true };
+};
+
 
 
 
 const loginUser = async (matricula) => {
-  matricula = `0${matricula.slice(0, -1)}-${matricula.slice(-1)}`; // Adicionar um 0 antes da matricula e um - antes do último dígito
+  if(matricula.length<11){
+    matricula = `0${matricula.slice(0, -1)}-${matricula.slice(-1)}`; // Adicionar um 0 antes da matricula e um - antes do último dígito
+  }
   
   const query = 'SELECT * FROM users WHERE mtcl LIKE ?';
   const [users] = await connection.execute(query, [`%${matricula}%`]);
@@ -104,7 +130,9 @@ module.exports = {
   getAllUsers,
   createUser,
   loginUser,
+  getUserByLdap,
   getUserbyId,
   updateUserByMtcl,
-  getUserByMtcl
+  getUserByMtcl,
+  updateUser
 };

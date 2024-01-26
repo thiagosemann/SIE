@@ -13,7 +13,7 @@ const getAllPge = async (_request, response) => {
 
 async function fetchDataAndSaveToDatabase() {
     try {
-      const response = await axios.get('https://script.google.com/macros/s/AKfycbzl89Tsxh1ZPU3UHM2K0kCffi_mpbcrqCPnwEl-18UkPUNPZniqNRj_2HzCt7o5KzR2DA/exec?action=getPGE');
+      const response = await axios.get('https://script.google.com/macros/s/AKfycbw8kj_kuzysGzXrYEk6y7b7KUBOL5eJ9N9O0vRRW9ssKKFNATVzOKndbF8dhYZ4aYuK/exec?action=getPGE');
       const pgeData = response.data;
   
       // Verifique se a resposta contém os dados esperados

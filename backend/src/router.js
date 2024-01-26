@@ -14,6 +14,9 @@ const verifyToken = require('./middlewares/authMiddleware'); // Importe o middle
 // ROTAS USERS
 router.get('/users', verifyToken, usersController.getAllUsers);
 router.get('/users/:mtcl', verifyToken, usersController.getUserByMtcl);
+router.put('/users/:id', verifyToken, usersController.updateUser);
+router.post('/users', verifyToken, usersController.createUser);
+router.post('/users/batch', verifyToken, usersController.batchUpdateUsers);
 
 // ROTA LOGIN
 router.post('/login', usersController.loginUser);
@@ -32,6 +35,8 @@ router.get('/pge',verifyToken,pgeController.getAllPge)
 //ROTAS ATIVIDADE DE ENSINO HOMOLOGADA
 router.get('/atividadeHomologada',verifyToken,atividadeHomologadaController.getAllAtividadeHomologada)
 router.get('/atividadeHomologada/sigla/:sigla',verifyToken,atividadeHomologadaController.getAtividadeHomologadaBySigla)
+router.get('/atividadeHomologada/versions/:id', verifyToken, atividadeHomologadaController.getAllAtividadeHomologadaVersionsById);
+router.put('/atividadeHomologada/:id', verifyToken, atividadeHomologadaController.updateAtividadeHomologadaById);
 
 // ROTAS CURSOS
 router.get('/documentosCriados', verifyToken, cursosController.getAllCourses);

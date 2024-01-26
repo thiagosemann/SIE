@@ -4,19 +4,62 @@ const axios = require('axios');
 const getAllAtividadeHomologada = async (_request, response) => {
   try {
     const atividades = await atividadeHomologadaModel.getAllAtividadeHomologada();
-    return response.status(200).json(atividades);
+
+    // Itera sobre cada atividade para obter a última versão de sgpe e linkSgpe
+    const atividadesComUltimaVersao = await Promise.all(atividades.map(async (atividade) => {
+      const versions = await atividadeHomologadaModel.getAllAtividadeHomologadaVersionsById(atividade.id);
+
+      // Encontra a última versão
+      const ultimaVersao = versions.length > 0 ? versions[versions.length - 1] : null;
+
+      // Adiciona sgpe e linkSgpe da última versão à atividade
+      if (ultimaVersao) {
+        atividade.sgpe = ultimaVersao.sgpe;
+        atividade.linkSgpe = ultimaVersao.linkSgpe;
+      }
+
+      return atividade;
+    }));
+
+    return response.status(200).json(atividadesComUltimaVersao);
   } catch (error) {
     console.error('Erro ao obter atividadeHomologada:', error);
     return response.status(500).json({ error: 'Erro ao obter atividades homologadas' });
+  }
+};
+const getAllAtividadeHomologadaVersionsById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const versions = await atividadeHomologadaModel.getAllAtividadeHomologadaVersionsById(id);
+    return res.status(200).json(versions);
+  } catch (error) {
+    console.error('Erro ao obter versões da atividadeHomologada:', error);
+    return res.status(500).json({ error: 'Erro ao obter versões da atividade homologada' });
   }
 };
 
 const updateAtividadeHomologadaById = async (request, response) => {
   const { id } = request.params;
   const atividade = request.body;
-
+  console.log(id)
+  console.log(atividade)
+  
   try {
+    // Obtém a atividade homologada atual pelo ID
+    const versions = await atividadeHomologadaModel.getAllAtividadeHomologadaVersionsById(atividade.id);
+
+    // Encontra a última versão
+    const ultimaVersao = versions.length > 0 ? versions[versions.length - 1] : null;
+
+    // Verifica se o SGPE é diferente do último valor inserido
+    if (ultimaVersao.sgpe !== atividade.sgpe) {
+      // Cria uma nova versão na tabela de versionamento
+      await atividadeHomologadaModel.createAtividadeHomologadaVersion(id, atividade.sgpe, atividade.linkSgpe);
+    }
+
+    // Atualiza a atividade homologada na tabela principal
     const result = await atividadeHomologadaModel.updateAtividadeHomologadaById(id, atividade);
+    console.log(result)
     return response.status(200).json(result);
   } catch (error) {
     console.error('Erro ao atualizar atividadeHomologada:', error);
@@ -38,9 +81,6 @@ const getAtividadeHomologadaBySigla = async (req, res) => {
       return res.status(500).json({ error: 'Erro ao obter atividade' });
     }
   };
-  
-
-
 
 const createAtividadeHomologada = async (request, response) => {
   const atividade = request.body;
@@ -54,125 +94,11 @@ const createAtividadeHomologada = async (request, response) => {
   }
 };
 
-async function fetchAtividadeDataAndSaveToDatabase() {
-  try {
-    const response = await axios.get('https://script.google.com/macros/s/AKfycbz7564LnI_qSBAcvpWWN8r_5gMUGAuSAdPM0qkjIf40PpVGWGOkjDpjQ_a3OzJ2Q9-o0Q/exec?action=getAtividadeHomologada');
-    const atividadesData = response.data;
-
-    // Verifique se a resposta contém os dados esperados
-    if (!Array.isArray(atividadesData)) {
-      throw new Error('Os dados recebidos não estão no formato esperado');
-    }
-
-    // Salve os dados no banco de dados
-    const updatedAtividades = [];
-
-    for (const atividade of atividadesData) {
-      const sigla = atividade.sigla;
-
-      // Verificar se a sigla está definida
-      if (sigla === undefined) {
-        atividade.sigla = null;
-      } else {
-        atividade.sigla = sigla;
-      }
-
-      // Converter o campo 'vagas' para um valor inteiro, se não for nulo; caso contrário, atribuir 0
-      atividade.vagas = atividade.vagas !== null && atividade.vagas !== '' ? parseInt(atividade.vagas) : 0;
-
-      // Converter todos os campos para strings
-      Object.keys(atividade).forEach((key) => {
-        if (typeof atividade[key] !== 'string' && atividade[key] !== null && atividade[key] !== undefined) {
-          atividade[key] = atividade[key].toString();
-        }
-      });
-
-      const existingAtividade = await atividadeHomologadaModel.getAtividadeHomologadaBySigla(sigla);
-
-      if (existingAtividade) {
-        // Verificar se algum valor foi alterado
-        let hasChanges = false;
-        const changedFields = {};
-
-        for (const key in atividade) {
-          const oldValue = String(existingAtividade[key]);
-          const newValue = String(atividade[key]);
-
-          if (oldValue !== newValue) {
-            hasChanges = true;
-            changedFields[key] = { oldValue, newValue };
-            existingAtividade[key] = newValue;
-          }
-        }
-
-        if (hasChanges) {
-          // Atualizar valores undefined para null
-          Object.keys(existingAtividade).forEach((key) => {
-            if (existingAtividade[key] === undefined) {
-              existingAtividade[key] = null;
-            }
-          });
-
-          await atividadeHomologadaModel.updateAtividadeHomologadaBySigla(sigla, existingAtividade);
-          updatedAtividades.push({ sigla, changedFields });
-        }
-      } else {
-        // Definir valores undefined como null antes de criar a atividade
-        Object.keys(atividade).forEach((key) => {
-          if (atividade[key] === undefined) {
-            atividade[key] = null;
-          }
-        });
-
-        await atividadeHomologadaModel.createAtividadeHomologada(atividade);
-      }
-    }
-
-    // Exibir as mudanças no console
-    const processedSiglas = new Set();
-
-    for (const { sigla, changedFields } of updatedAtividades) {
-      if (processedSiglas.has(sigla)) {
-        continue; // Pular iteração se já processou essa sigla
-      }
-
-      console.log(`Atividade com sigla ${sigla} teve as seguintes mudanças:`);
-      for (const key in changedFields) {
-        const { oldValue, newValue } = changedFields[key];
-        console.log(`${key}: ${oldValue} -> ${newValue}`);
-      }
-      console.log('----------------------------------------');
-
-      processedSiglas.add(sigla);
-    }
-
-    console.log('Os dados das atividades foram salvos no banco de dados com sucesso!');
-  } catch (error) {
-    console.error('Ocorreu um erro ao obter os dados do servidor ou ao salvar no banco de dados:', error);
-  }
-}
-
-
-  
-  
-
-function scheduleAtividadeFunction() {
-  const d = new Date();
-  const currentMinutes = d.getMinutes();
-  if (currentMinutes === 30) {
-    fetchAtividadeDataAndSaveToDatabase();
-  }
-}
-
-// Chamando a função inicialmente para verificar se deve ser executada imediatamente
-scheduleAtividadeFunction();
-
-// Configurando o setInterval para chamar a função a cada minuto
-setInterval(scheduleAtividadeFunction, 60000); // 60000 milissegundos = 1 minuto
 
 module.exports = {
   getAllAtividadeHomologada,
   updateAtividadeHomologadaById,
   createAtividadeHomologada,
-  getAtividadeHomologadaBySigla
+  getAtividadeHomologadaBySigla,
+  getAllAtividadeHomologadaVersionsById
 };
