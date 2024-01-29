@@ -82,17 +82,47 @@ const getAtividadeHomologadaBySigla = async (req, res) => {
     }
   };
 
-const createAtividadeHomologada = async (request, response) => {
-  const atividade = request.body;
+  const createAtividadeHomologada = async (request, response) => {
+    const atividade = request.body;
+  
+    try {
+      // Cria a atividade principal
+      const { insertId } = await atividadeHomologadaModel.createAtividadeHomologada(atividade);
+  
+      // Cria a versão na tabela de versionamento
+      await atividadeHomologadaModel.createAtividadeHomologadaVersion(insertId, atividade.sgpe, atividade.linkSgpe);
+  
+      return response.status(201).json({ insertId });
+    } catch (error) {
+      console.error('Erro ao criar atividadeHomologada:', error);
+      return response.status(500).json({ error: 'Erro ao criar atividade homologada' });
+    }
+  };
+  
+  const deleteAtividadeHomologadaById = async (request, response) => {
+    const { id } = request.params;
+  
+    try {
+      // Verificar se a atividade existe antes de excluí-la
+      const atividadeExistente = await atividadeHomologadaModel.getAtividadeHomologadaById(id);
+  
+      if (!atividadeExistente) {
+        return response.status(404).json({ error: 'Atividade homologada não encontrada' });
+      }
+  
+      // Excluir a atividade homologada
+      const result = await atividadeHomologadaModel.deleteAtividadeHomologadaById(id);
+  
+      // Excluir todas as versões associadas
+      await atividadeHomologadaModel.deleteAtividadeHomologadaVersionsById(id);
+  
+      return response.status(200).json(result);
+    } catch (error) {
+      console.error('Erro ao excluir atividadeHomologada:', error);
+      return response.status(500).json({ error: 'Erro ao excluir atividade homologada' });
+    }
+  };
 
-  try {
-    const result = await atividadeHomologadaModel.createAtividadeHomologada(atividade);
-    return response.status(201).json(result);
-  } catch (error) {
-    console.error('Erro ao criar atividadeHomologada:', error);
-    return response.status(500).json({ error: 'Erro ao criar atividade homologada' });
-  }
-};
 
 
 module.exports = {
@@ -100,5 +130,6 @@ module.exports = {
   updateAtividadeHomologadaById,
   createAtividadeHomologada,
   getAtividadeHomologadaBySigla,
-  getAllAtividadeHomologadaVersionsById
+  getAllAtividadeHomologadaVersionsById,
+  deleteAtividadeHomologadaById
 };

@@ -96,7 +96,7 @@ const createAtividadeHomologada = async (atividade) => {
     atividadesPreliminares
   } = atividade;
 
-  const query = `INSERT INTO atividadeHomologada (sigla, name, ha, hai, tipo, areaConhecimento, modalidade, vagas, finalidade, reqEspecifico, processoSeletivo, atividadesPreliminares) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+  const query = `INSERT INTO atividadeHomologada (sigla, name, ha, hai, tipo, areaConhecimento, modalidade, vagas, finalidade, reqEspecifico, processoSeletivo, atividadesPreliminares) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
   const values = [
     sigla,
@@ -122,7 +122,32 @@ const createAtividadeHomologada = async (atividade) => {
   }
 };
 
+const deleteAtividadeHomologadaById = async (id) => {
+  try {
+    // Excluir todas as versões associadas
+    await deleteAtividadeHomologadaVersionsById(id);
 
+    // Agora, excluir a atividade homologada principal
+    const query = 'DELETE FROM atividadeHomologada WHERE id = ?';
+    const [result] = await connection.execute(query, [id]);
+    return { affectedRows: result.affectedRows };
+  } catch (error) {
+    console.error('Erro ao excluir atividadeHomologada:', error);
+    throw error;
+  }
+};
+
+const deleteAtividadeHomologadaVersionsById = async (atividadeId) => {
+  const query = 'DELETE FROM atividadehomologada_version WHERE atividadehomologada_id = ?';
+
+  try {
+    const [result] = await connection.execute(query, [atividadeId]);
+    return { affectedRows: result.affectedRows };
+  } catch (error) {
+    console.error('Erro ao excluir versões da atividadeHomologada:', error);
+    throw error;
+  }
+};
 module.exports = {
   getAllAtividadeHomologada,
   getAtividadeHomologadaById,
@@ -130,5 +155,7 @@ module.exports = {
   createAtividadeHomologada,
   getAtividadeHomologadaBySigla,
   createAtividadeHomologadaVersion,
-  getAllAtividadeHomologadaVersionsById
+  getAllAtividadeHomologadaVersionsById,
+  deleteAtividadeHomologadaById,
+  deleteAtividadeHomologadaVersionsById
 };

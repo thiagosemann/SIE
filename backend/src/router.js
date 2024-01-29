@@ -37,6 +37,8 @@ router.get('/atividadeHomologada',verifyToken,atividadeHomologadaController.getA
 router.get('/atividadeHomologada/sigla/:sigla',verifyToken,atividadeHomologadaController.getAtividadeHomologadaBySigla)
 router.get('/atividadeHomologada/versions/:id', verifyToken, atividadeHomologadaController.getAllAtividadeHomologadaVersionsById);
 router.put('/atividadeHomologada/:id', verifyToken, atividadeHomologadaController.updateAtividadeHomologadaById);
+router.delete('/atividadehomologada/:id',verifyToken, atividadeHomologadaController.deleteAtividadeHomologadaById);
+router.post('/atividadehomologada/',verifyToken, atividadeHomologadaController.createAtividadeHomologada);
 
 // ROTAS CURSOS
 router.get('/documentosCriados', verifyToken, cursosController.getAllCourses);
