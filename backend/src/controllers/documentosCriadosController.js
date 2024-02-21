@@ -1,4 +1,4 @@
-const cursosModel = require('../models/cursosModel');
+const cursosModel = require('../models/documentosCriadosModel');
 
 const getAllCourses = async (_request, response) => {
   try {
@@ -71,6 +71,7 @@ const getCourseByAuth = async (req, res) => {
     return res.status(500).json({ error: 'Erro ao obter curso' });
   }
 };
+
 
 module.exports = {
   createCourse,

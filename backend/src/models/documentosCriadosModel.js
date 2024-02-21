@@ -4,10 +4,14 @@ const createCourse = async (course) => {
   const { auth, dados, tipo, id_pge } = course;
   const query = 'INSERT INTO documentosCriados (auth, dados, tipo, id_pge) VALUES (?, ?, ?, ?)';
   const values = [auth, JSON.stringify(dados), tipo, id_pge];
-
+  console.log(values)
+  console.log(dados)
+  
   try {
     const [result] = await connection.execute(query, values);
-    return { insertId: result.insertId };
+    const documentosCriadosId = result.insertId;
+
+    return { insertId: documentosCriadosId };
   } catch (error) {
     console.error('Erro ao inserir curso:', error);
     throw error;
@@ -50,7 +54,7 @@ const updateCourseById = async (id, updatedData) => {
 };
 
 const getCourseById = async (id) => {
-  const query = 'SELECT * FROM documentosCriados WHERE id_pge = ?';
+  const query = 'SELECT * FROM documentosCriados WHERE id = ?';
   const values = [id];
 
   try {
