@@ -1,0 +1,381 @@
+{
+    "documento": [
+      {
+        "data": [
+          "EDITAL {numeroProcesso}/{anoAtual}/DIE/CBMSC",
+          "Código de autenticação para uso da DIE: {auth}",
+          "{nomeCurso} ({sigla})"
+        ],
+        "tipo": "preambulo"
+      },
+      {
+        "tipo": "intro",
+        "texto": "O Tenente-Coronel BM Túlio Tartari Zanin, respondendo pela Diretoria de Instrução e Ensino do Corpo de Bombeiros Militar de Santa Catarina (CBMSC), de acordo com o Plano Geral de Ensino, torna público que no período de {periodoInscricao}, encontram-se abertas as inscrições da seleção para o {nomeCurso} ({sigla}), a ser realizado no(a) {bbm} - {localAtiMunicipio}"
+      },
+      {
+        "tipo": "capitulo",
+        "itens": [
+          {
+            "tipo": "tabela",
+            "dados": [
+              [
+                "Nome da atividade de ensino",
+                "{nomeCurso}"
+              ],
+              [
+                "Promotor da atividade de ensino",
+                "Corpo de Bombeiros Militar de {promoAtiMunicipio}, {promoAtiRua}, {promoAtiNumeral}, {promoAtiBairro}, {promoAtiMunicipio}/SC"
+              ],
+              [
+                "Coordenador da atividade de ensino",
+                "{coordenadorDescricao}"
+              ],
+              [
+                "Período de inscrição",
+                "{periodoInscricao}"
+              ],
+              [
+                "Período da atividade de ensino",
+                "{periodoAtividade}"
+              ],
+              [
+                "Meio de divulgação dos resultados",
+                "Diretamente no Quartel do Corpo de Bombeiros Militar de {promoAtiMunicipio} e pelas redes sociais: {redesSociais} "
+              ],
+              [
+                "Local de apresentação dos alunos",
+                "{localApresentacao}"
+              ],
+              [
+                "Data e hora de apresentação dos alunos",
+                "{iniCur} {apresentacaoHorario}h"
+              ],
+              [
+                "Carga horária total",
+                "{haCurso}h"
+              ],
+              [
+                "Finalidade",
+                "Desenvolver habilidades e atitudes de conhecimentos previamente adquiridos no Curso Básico de Atendimento a Emergências."
+              ]
+            ],
+            "content": "left",
+            "hasHeader": false
+          },
+          {
+            "tipo": "item",
+            "texto": "Calendário das atividades de ensino:",
+            "numero": "1.1",
+            "subitens": [
+              {
+                "tipo": "item",
+                "letra": "a)",
+                "texto": "A atividade de ensino ocorrerá dentro do período de {periodoAtividade} e observará as unidades didáticas:",
+                "subsubitens": [
+                  {
+                    "tipo": "subsubitem",
+                    "letra": "(1)",
+                    "texto": "Oficinas de combate a incêndio",
+                    "subsubsubitens": [
+                      {
+                        "tipo": "subitem",
+                        "letra": "(a)",
+                        "texto": "Oficina de operação com extintor portátil: 1 Hora aula."
+                      },
+                      {
+                        "tipo": "subitem",
+                        "letra": "(b)",
+                        "texto": "Oficina de montagem de estabelecimento do Sistema Hidráulico Preventivo: 1 Hora Aula."
+                      }
+                    ]
+                  },
+                  {
+                    "tipo": "subsubitem",
+                    "letra": "(2)",
+                    "texto": "Oficinas de noções básicas de atendimento pré-hospitalar",
+                    "subsubsubitens": [
+                      {
+                        "tipo": "subitem",
+                        "letra": "(a)",
+                        "texto": "Oficina de reanimação cardiopulmonar adulto para leigo (somente com as mãos): 1 Hora aula."
+                      },
+                      {
+                        "tipo": "subitem",
+                        "letra": "(b)",
+                        "texto": "Oficina de controle de hemorragia: 1 Hora aula."
+                      }
+                    ]
+                  },
+                  {
+                    "tipo": "subsubitem",
+                    "letra": "(3)",
+                    "texto": "Verificação final",
+                    "subsubsubitens": [
+                      {
+                        "tipo": "subitem",
+                        "letra": "(a)",
+                        "texto": "Orientações gerais: 2 Horas aulas."
+                      },
+                      {
+                        "tipo": "subitem",
+                        "letra": "(b)",
+                        "texto": "Avaliação prática: 2 Horas aulas."
+                      }
+                    ]
+                  },
+                  {
+                    "tipo": "subsubitem",
+                    "letra": "(4)",
+                    "texto": "Carga horária total: 8 horas aulas.",
+                    "subsubsubitens": []
+                  }
+                ]
+              },
+              {
+                "tipo": "item",
+                "letra": "b)",
+                "texto": "É responsabilidade do coordenador distribuir a execução do conteúdo dentro do período previsto para a realização da atividade de ensino. "
+              }
+            ]
+          }
+        ],
+        "texto": "SÍNTESE",
+        "numero": "1"
+      },
+      {
+        "tipo": "capitulo",
+        "itens": [
+          {
+            "tipo": "item",
+            "texto": "Serão disponibilizadas 30 (trinta) vagas, preferencialmente destinadas a candidatos que residam ou exerçam atividade profissional no(s) município(s) de {vagasMunicipio}",
+            "numero": "2.1)",
+            "subitens": []
+          },
+          {
+            "tipo": "item",
+            "texto": "O treinamento somente ocorrerá com os seguintes números mínimos de alunos matriculados:",
+            "numero": "2.2)",
+            "subitens": [
+              {
+                "tipo": "subsubitem",
+                "letra": "a)",
+                "texto": "Municípios com até 20 mil habitantes: 12 alunos;",
+                "subsubitens": []
+              },
+              {
+                "tipo": "subsubitem",
+                "letra": "b)",
+                "texto": "Municípios com até 50 mil habitantes: 15 alunos;",
+                "subsubitens": []
+              },
+              {
+                "tipo": "subsubitem",
+                "letra": "c)",
+                "texto": "Municípios com mais de 50 mil habitantes: 20 alunos.",
+                "subsubitens": []
+              }
+            ]
+          }
+        ],
+        "texto": "VAGAS",
+        "numero": "2"
+      },
+      {
+        "tipo": "capitulo",
+        "itens": [
+          {
+            "tipo": "item",
+            "texto": "É requisito para concorrer às vagas disponibilizadas haver concluído com aproveitamento, até a data final do período de inscrição, o Curso Básico de Atendimento a Emergências (CBAE), na modalidade presencial ou à distância, devendo a conclusão do CBAE ter ocorrido há menos de 3 (três) anos.",
+            "numero": ""
+          }
+        ],
+        "texto": "REQUISITOS",
+        "numero": "3"
+      },
+      {
+        "tipo": "capitulo",
+        "itens": [
+          {
+            "tipo": "item",
+            "texto": "As inscrições deverão ser realizadas das {startInscritionHorario}h de {startInscritiondate} às {endInscritionHorario}h de {endInscritiondate}",
+            "numero": "4.1"
+          },
+          {
+            "tipo": "item",
+            "texto": "Mediante o preenchimento do formulário com acesso pelo seguinte link, sendo esta a única opção para a inscrição: {linkInscrition}",
+            "numero": "4.2"
+          },
+          {
+            "tipo": "item",
+            "texto": "Os pedidos de inscrições recebidos pelas autoridades acima citadas poderão ser indeferidos na origem, a seus respectivos e justificados critérios ou conveniência.",
+            "numero": "4.3"
+          },
+          {
+            "tipo": "item",
+            "texto": "A coordenadoria da atividade de ensino em questão, ao receber as notas eletrônicas dos pedidos de inscrição oriundas das autoridades constantes no item 4.2, poderá, a seus respectivos e justificados critérios ou conveniência, indeferir determinadas inscrições",
+            "numero": "4.4"
+          }
+        ],
+        "texto": "INSCRIÇÕES",
+        "numero": "4"
+      },
+      {
+        "tipo": "capitulo",
+        "itens": [
+          {
+            "tipo": "item",
+            "texto": "A seleção para o preenchimento das vagas será definida pela maior nota no Curso Básico de Atendimento a Emergências (CBAE).",
+            "numero": "5.1"
+          },
+          {
+            "tipo": "item",
+            "texto": "Em caso de empate na nota do CBAE, os critérios para desempate serão:",
+            "numero": "5.2",
+            "subitens": [
+              {
+                "tipo": "subsubitem",
+                "letra": "a)",
+                "texto": "Candidatos que residam no(s) município(s) de {vagasMunicipio};",
+                "subsubitens": []
+              },
+              {
+                "tipo": "subsubitem",
+                "letra": "b)",
+                "texto": "Candidatos que exerçam atividade profissional no(s) município(s) de {vagasMunicipio};",
+                "subsubitens": []
+              },
+              {
+                "tipo": "subsubitem",
+                "letra": "c)",
+                "texto": "Persistindo o empate, o acesso à vaga será definido pela maior idade.",
+                "subsubitens": []
+              }
+            ]
+          },
+          {
+            "tipo": "item",
+            "texto": "Serão causas de desclassificação e eliminação no processo seletivo:",
+            "numero": "5.3",
+            "subitens": [
+              {
+                "tipo": "subsubitem",
+                "letra": "a)",
+                "texto": "A constatação de omissão, falsificação ou adulteração de documentos;",
+                "subsubitens": []
+              },
+              {
+                "tipo": "subsubitem",
+                "letra": "b)",
+                "texto": "A omissão ou inverdade de informações prestadas;",
+                "subsubitens": []
+              },
+              {
+                "tipo": "subsubitem",
+                "letra": "c)",
+                "texto": "A constatação de haver o candidato/aluno sido excluído do serviço voluntário do CBMSC, em quaisquer de suas modalidades.",
+                "subsubitens": []
+              }
+            ]
+          },
+          {
+            "tipo": "item",
+            "texto": "A divulgação do resultado final do processo seletivo será realizada a partir das {processoSeletivoHorario}h de {processoSeletivoDate}, pelos seguintes meios:",
+            "numero": "5.3",
+            "subitens": [
+              {
+                "tipo": "subsubitem",
+                "letra": "a)",
+                "texto": "Diretamente no Quartel do Corpo de Bombeiros Militar de {promoAtiMunicipio};",
+                "subsubitens": []
+              },
+              {
+                "tipo": "subsubitem",
+                "letra": "b)",
+                "texto": "Pelas redes sociais, conforme definido no item 1 deste edital.",
+                "subsubitens": []
+              }
+            ]
+          }
+        ],
+        "texto": "PROCESSO SELETIVO",
+        "numero": "5"
+      },
+      {
+        "tipo": "capitulo",
+        "itens": [
+          {
+            "tipo": "item",
+            "texto": "O treinamento será realizado no(a) {localApresentacao}.",
+            "numero": "6.1"
+          },
+          {
+            "tipo": "item",
+            "texto": "O treinamento será realizado {periodoAtividade}, sendo desenvolvido da seguinte forma e horários: {promoAtiDescricao}",
+            "numero": "6.2"
+          }
+        ],
+        "texto": "LOCAL E PERÍODO DE REALIZAÇÃO DO TREINAMENTO",
+        "numero": "6"
+      },
+      {
+        "tipo": "capitulo",
+        "itens": [
+          {
+            "tipo": "item",
+            "texto": "Uniforme: Não há necessidade de vestimenta específica para realização do treinamento, mas recomenda-se o uso de roupas leves e folgadas (porém sem pontas soltas) e tênis ou sapato sem salto.",
+            "numero": "7.1"
+          },
+          {
+            "tipo": "item",
+            "texto": "Material Didático: Os materiais didáticos (manuais) necessários ao treinamento serão fornecidos ao aluno por meio digital.",
+            "numero": "7.2"
+          }
+        ],
+        "texto": "LOGÍSTICA",
+        "numero": "7"
+      },
+      {
+        "tipo": "capitulo",
+        "itens": [
+          {
+            "tipo": "item",
+            "texto": "É de inteira responsabilidade do candidato acompanhar a divulgação de todos os atos e comunicados referentes a este edital, incluídos os que forem publicados nos endereços eletrônicos do CBMSC (www.cbm.sc.gov.br).",
+            "numero": "8.1",
+            "subitens": []
+          },
+          {
+            "tipo": "item",
+            "texto": "Ao final do treinamento o aluno será avaliado conforme seu desempenho, podendo ser considerado apto ou inapto. A frequência do aluno deverá ser de 100%, sendo que em caso de falta(s) o mesmo será considerado inapto por falta.",
+            "numero": "8.2",
+            "subitens": []
+          },
+          {
+            "tipo": "item",
+            "texto": "O aluno considerado apto receberá o certificado de conclusão do TBAE, ficando habilitado para inscrever-se no Curso de Bombeiro Comunitário, se assim o desejar.",
+            "numero": "8.3",
+            "subitens": []
+          },
+          {
+            "tipo": "item",
+            "texto": "Caso não se atinja o número mínimo de alunos para o funcionamento do treinamento, a coordenação por meio da B-3 do batalhão, poderá solicitar à Diretoria de Instrução e Ensino (DIE), no SGPe e pelo mesmo processo do treinamento, o funcionamento com número menor de alunos, justificando a motivação, podendo a DIE autorizar ou não, conforme o caso.",
+            "numero": "8.4",
+            "subitens": []
+          },
+          {
+            "tipo": "item",
+            "texto": "Para outros esclarecimentos, o candidato deverá entrar em contato com o quartel do Corpo de Bombeiros Militar, promotor do treinamento.",
+            "numero": "8.5",
+            "subitens": []
+          },
+          {
+            "tipo": "item",
+            "texto": "As situações que porventura não estiverem previstas neste edital serão resolvidas pela Diretoria de Instrução e Ensino.",
+            "numero": "8.6",
+            "subitens": []
+          }
+        ],
+        "texto": "PRESCRIÇÕES DIVERSAS",
+        "numero": "8"
+      }
+    ]
+  }

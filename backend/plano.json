@@ -69,7 +69,7 @@
                   ],
                   [
                     "Finalidade",
-                    "Desenvolver habilidades e atitudes de conhecimentos previamente adquiridos no Curso Básico de Atendimento a Emergências."
+                    "{finalidade}"
                   ]
                 ],
                 "content": "left",
@@ -85,33 +85,14 @@
               {
                 "tipo": "item",
                 "letra": "a)",
-                "texto": "Serão disponibilizadas 30 (trinta) vagas, preferencialmente destinadas a candidatos que residam ou exerçam atividade profissional no(s) município(s) de {vagasMunicipio}",
+                "texto": "Serão disponibilizadas 40 (quarenta) vagas.",
                 "subsubitens": []
               },
               {
                 "tipo": "item",
                 "letra": "b)",
-                "texto": "O treinamento somente ocorrerá com os seguintes números mínimos de alunos matriculados:",
-                "subsubitens": [ 
-                  {
-                    "tipo": "subsubitem",
-                    "letra": "(1)",
-                    "texto": "Municípios com até 20 mil habitantes: 12 alunos;",
-                    "subsubsubitens": []
-                  },
-                  {
-                    "tipo": "subsubitem",
-                    "letra": "(2)",
-                    "texto": "Municípios com até 50 mil habitantes: 15 alunos;",
-                    "subsubsubitens": []
-                  },
-                  {
-                    "tipo": "subsubitem",
-                    "letra": "(3)",
-                    "texto": "Municípios com mais de 50 mil habitantes: 20 alunos.",
-                    "subsubsubitens": []
-                  }
-                ]
+                "texto": "O curso somente ocorrerá com o mínimo de 30 (trinta) alunos matriculados.",
+                "subsubitens": []
               }
             ]
           },
@@ -129,66 +110,8 @@
               {
                 "tipo": "item",
                 "letra": "a)",
-                "texto": "A atividade de ensino ocorrerá dentro do período de {periodoAtividade} e observará as unidades didáticas:",
-                "subsubitens":[                 
-                   {
-                    "tipo": "subsubitem",
-                    "letra": "(1)",
-                    "texto": "Oficinas de combate a incêndio",
-                    "subsubsubitens": [
-                      {
-                        "tipo": "subitem",
-                        "letra": "(a)",
-                        "texto": "Oficina de operação com extintor portátil: 1 Hora aula."
-                      },
-                      {
-                        "tipo": "subitem",
-                        "letra": "(b)",
-                        "texto": "Oficina de montagem de estabelecimento do Sistema Hidráulico Preventivo: 1 Hora Aula."
-                      }
-                    ]
-                   },
-                   {
-                    "tipo": "subsubitem",
-                    "letra": "(2)",
-                    "texto": "Oficinas de noções básicas de atendimento pré-hospitalar",
-                    "subsubsubitens": [
-                      {
-                        "tipo": "subitem",
-                        "letra": "(a)",
-                        "texto": "Oficina de reanimação cardiopulmonar adulto para leigo (somente com as mãos): 1 Hora aula."
-                      },
-                      {
-                        "tipo": "subitem",
-                        "letra": "(b)",
-                        "texto": "Oficina de controle de hemorragia: 1 Hora aula."
-                      }
-                    ]
-                   },
-                   {
-                    "tipo": "subsubitem",
-                    "letra": "(3)",
-                    "texto": "Verificação final",
-                    "subsubsubitens": [
-                      {
-                        "tipo": "subitem",
-                        "letra": "(a)",
-                        "texto": "Orientações gerais: 2 Horas aulas."
-                      },
-                      {
-                        "tipo": "subitem",
-                        "letra": "(b)",
-                        "texto": "Avaliação prática: 2 Horas aulas."
-                      }
-                    ]
-                   },
-                   {
-                    "tipo": "subsubitem",
-                    "letra": "(4)",
-                    "texto": "Carga horária total: 8 horas aulas.",
-                    "subsubsubitens": []
-                   }
-              ]
+                "texto": "A atividade de ensino ocorrerá dentro do período {dataAtiviExtenso} e observará o currículo e o programa de matérias/plano de unidades didáticas (PROMAPUD), mais atuais, constante do processo de homologação, conforme SGPe {sgpe}.",
+                "subsubitens":[]
               },
               {
                 "tipo": "item",
@@ -245,6 +168,11 @@
                 "tipo": "subitem",
                 "letra": "b)",
                 "texto": "{coordenadorContato}"
+              },
+              {
+                "tipo": "subitem",
+                "letra": "c)",
+                "texto": "Além das obrigações decorrentes deste Plano de Ensino, é responsabilidade do coordenador a organização e a execução do previsto no edital correspondente.  "
               }
             ]
           },
@@ -326,117 +254,45 @@
       },
       {
         "tipo": "capitulo",
-        "itens": [
+        "itens": [ 
           {
             "tipo": "item",
-            "texto": "Diárias Militares",
+            "texto": "O(a) aluno(a) deverá providenciar por seus próprios meios os seguintes itens ",
             "numero": "4.1",
             "subitens": [
               {
                 "tipo": "subitem",
-                "letra": "",
-                "texto": "Não serão pagas diárias militares aos alunos e instrutores."
-              }
-            ]
-          },
-          {
-            "tipo": "item",
-            "texto": "Alimentação",
-            "numero": "4.2",
-            "subitens": [
-              {
-                "tipo": "subitem",
                 "letra": "a)",
-                "texto": "Será fornecido alimentação (café, almoço e janta) pela OBM receptora da atividade de ensino aos alunos e instrutores, se necessário."
+                "texto": "Sunga preta para os homens e maiô preto para as mulheres."
               },
               {
                 "tipo": "subitem",
                 "letra": "b)",
-                "texto": "O aluno deverá levar para a atividade de ensino os seguintes gêneros alimentícios, os quais deverão ser fornecidos por sua OBM de origem:",
-                "subsubitens": []
-              }
-            ]
-          },
-          {
-            "tipo": "item",
-            "texto": "Hospedagem",
-            "numero": "4.3",
-            "subitens": [
-              {
-                "tipo": "subitem",
-                "letra": "",
-                "texto": "Será fornecido hospedagem pela OBM receptora da atividade de ensino aos alunos e instrutores, se necessário."
-              }
-            ]
-          },
-          {
-            "tipo": "item",
-            "texto": "Diárias de Curso",
-            "numero": "4.4",
-            "subitens": [
-              {
-                "tipo": "subitem",
-                "letra": "a)",
-                "texto": "Serão pagas diárias de curso aos alunos que não fizerem jus à diárias militares."
-              },
-              {
-                "tipo": "subitem",
-                "letra": "b)",
-                "texto": "Não serão pagas diárias de curso aos alunos que fizerem jus à diárias militares, visto que o pagamento cumulativo é vedado pela legislação vigente."
+                "texto": "Touca de natação preferencialmente preta."
               },
               {
                 "tipo": "subitem",
                 "letra": "c)",
-                "texto": "Não serão pagas diárias de curso para civis, visto não haver previsão legal."
+                "texto": "Nadadeira."
+              },
+              {
+                "tipo": "subitem",
+                "letra": "d)",
+                "texto": "Óculos de natação (opcional)."
               }
             ]
           },
           {
             "tipo": "item",
             "texto": "Transporte",
-            "numero": "4.5",
+            "numero": "4.2",
             "subitens": [
               {
                 "tipo": "subitem",
                 "letra": "",
-                "texto": "Será disponibilizado aos alunos e instrutores transporte para os deslocamentos decorrentes da atividade de ensino."
+                "texto": " Demais materiais e equipamentos necessários serão fornecidos pela coordenação do curso."
               }
             ]
-          },
-          {
-            "tipo": "item",
-            "texto": "Uniforme",
-            "numero": "4.6",
-            "subitens": [
-              {
-                "tipo": "subitem",
-                "letra": "",
-                "texto": "5A operacional"
-              }
-            ]
-          },
-          {
-            "tipo": "item",
-            "texto": "Materiais e quantitativos necessários",
-            "numero": "4.7",
-            "subitens": [
-              {
-                "tipo": "subitem",
-                "letra": "a)",
-                "texto": "Materiais individuais",
-                "subsubitens": []
-              },
-              {
-                "tipo": "subitem",
-                "letra": "b)",
-                "texto": "Materiais coletivos"
-              }
-            ]
-          },
-          {
-            "tipo": "item",
-            "texto": "As despesas de alimentação, hospedagem, transporte e diárias referente às vagas externas (se houver), correrão por conta do órgão ou entidade do aluno ou conforme definição dos mesmos.",
-            "numero": "4.8"
           }
         ],
         "texto": "LOGÍSTICA",
@@ -452,17 +308,17 @@
           },
           {
             "tipo": "item",
-            "texto": "Ao final do treinamento, se aprovado, o participante receberá certificado de conclusão  emitido pela Diretoria de Instrução e Ensino.",
+            "texto": "Ao final do curso, se aprovado, o participante receberá certificado de conclusão emitido pela Diretoria de Instrução e Ensino.",
             "numero": "5.2"
           },
           {
             "tipo": "item",
-            "texto": "Caso não se atinja o número mínimo de alunos para o funcionamento do treinamento, a coordenação por meio da B-3 do batalhão, poderá solicitar à Diretoria de Instrução e Ensino (DIE), no SGPe e pelo mesmo processo do treinamento, o funcionamento com número menor de alunos, justificando a motivação, podendo a DIE autorizar ou não, conforme o caso.",
+            "texto": "Caso não se atinja o número mínimo de alunos para o funcionamento do curso, a coordenação por meio da B-3 do batalhão, poderá solicitar à Diretoria de Instrução e Ensino (DIE), no SGPe e pelo mesmo processo do curso, o funcionamento com número menor de alunos, justificando a motivação, podendo a DIE autorizar ou não, conforme o caso.",
             "numero": "5.3"
           },
           {
             "tipo": "item",
-            "texto": "Caso não se atinja o número mínimo de alunos para o funcionamento do treinamento, a coordenação por meio da B-3 do batalhão, poderá solicitar à Diretoria de Instrução e Ensino (DIE), no SGPe e pelo mesmo processo do treinamento, o funcionamento com número menor de alunos, justificando a motivação, podendo a DIE autorizar ou não, conforme o caso.",
+            "texto": "Os esclarecimentos e dúvidas relativos à operacionalização e execução da presente atividade de ensino, serão de responsabilidade do coordenador da atividade de ensino.",
             "numero": "5.4"
           }
         ],

@@ -136,7 +136,7 @@ const updateEditaisPeriodically = async () => {
 };
 
   // Inicia a atualização no início e repete em intervalos
-  // updateEditais();
+   updateEditais();
    setInterval(updateEditais, updateInterval);
 };
 

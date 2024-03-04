@@ -1,0 +1,642 @@
+{
+    "documento": [
+      {
+        "data": [
+          "EDITAL {numeroProcesso}/{anoAtual}/DIE/CBMSC",
+          "Código de autenticação para uso da DIE: {auth}",
+          "{nomeCurso} ({sigla})"
+        ],
+        "tipo": "preambulo"
+      },
+      {
+        "tipo": "intro",
+        "texto": "O Tenente-Coronel BM Túlio Tartari Zanin, respondendo pela Diretoria de Instrução e Ensino do Corpo de Bombeiros Militar de Santa Catarina (CBMSC), de acordo com o Plano Geral de Ensino, torna público que no período de {periodoInscricao}, encontram-se abertas as inscrições da seleção para o {nomeCurso} ({sigla}), a ser realizado no(a) {bbm} - {localAtiMunicipio}"
+      },
+      {
+        "tipo": "capitulo",
+        "itens": [
+          {
+            "tipo": "tabela",
+            "dados": [
+              [
+                "Nome da atividade de ensino",
+                "{nomeCurso}"
+              ],
+              [
+                "Promotor da atividade de ensino",
+                "{promoApresentacao}"
+              ],
+              [
+                "Coordenador da atividade de ensino",
+                "{coordenadorDescricao}"
+              ],
+              [
+                "Período de inscrição",
+                "{periodoInscricao}"
+              ],
+              [
+                "Período da atividade de ensino",
+                "{periodoAtividade}"
+              ],
+              [
+                "Meio de divulgação dos resultados",
+                "Diretamente no Quartel do Corpo de Bombeiros Militar de {promoAtiMunicipio} e pelas redes sociais: {redesSociais} "
+              ],
+              [
+                "Local de apresentação dos alunos",
+                "{localApresentacao}"
+              ],
+              [
+                "Data e hora de apresentação dos alunos",
+                "{iniCur} {apresentacaoHorario}h"
+              ],
+              [
+                "Carga horária total",
+                "{haCurso}h"
+              ],
+              [
+                "Finalidade",
+                "{finalidade}"
+              ]
+            ],
+            "content": "left",
+            "hasHeader": false
+          }
+        ],
+        "texto": "SÍNTESE",
+        "numero": "1"
+      },
+      {
+        "tipo": "capitulo",
+        "itens": [
+          {
+            "tipo": "item",
+            "texto": "Serão disponibilizadas 40 (quarenta) vagas.",
+            "numero": "2.1",
+            "subitens": []
+          },
+          {
+            "tipo": "item",
+            "texto": "O curso somente ocorrerá com o mínimo de 30 (trinta) alunos matriculados.",
+            "numero": "2.2",
+            "subitens": []
+          }
+        ],
+        "texto": "VAGAS",
+        "numero": "2"
+      },
+      {
+        "tipo": "capitulo",
+        "itens": [
+          {
+            "tipo": "item",
+            "texto": "Haver concluído com aproveitamento o Curso de Guarda-Vidas Civil Voluntário.",
+            "numero": "3.1",
+            "subitens": []
+          },
+          {
+            "tipo": "item",
+            "texto": "Ter no mínimo 18 (dezoito) anos de idade na data de início do curso, comprovado por documento oficial de identificação.",
+            "numero": "3.2",
+            "subitens": []
+          },
+          {
+            "tipo": "item",
+            "texto": "Possuir histórico comportamental compatível com a conduta de Guarda-Vidas Civil Voluntário, caso tenha prestado o serviço em temporadas anteriores.",
+            "numero": "3.3",
+            "subitens": []
+          },
+          {
+            "tipo": "item",
+            "texto": "Não ter sido excluído do serviço voluntário do CBMSC, em qualquer de seus projetos ou programas institucionais.",
+            "numero": "3.4",
+            "subitens": []
+          },
+          {
+            "tipo": "item",
+            "texto": "Não possuir antecedentes criminais.",
+            "numero": "3.5",
+            "subitens": []
+          }
+        ],
+        "texto": "REQUISITOS",
+        "numero": "3"
+      },
+      {
+        "tipo": "capitulo",
+        "itens": [
+          {
+            "tipo": "item",
+            "texto": "As inscrições deverão ser realizadas das {startInscritionHorario}h de {startInscritiondate} às {endInscritionHorario}h de {endInscritiondate}",
+            "numero": "4.1"
+          },
+          {
+            "tipo": "item",
+            "texto": "Mediante o preenchimento do formulário com acesso pelo seguinte link, sendo esta a única opção para a inscrição: {linkInscrition}",
+            "numero": "4.2"
+          },
+          {
+            "tipo": "item",
+            "texto": "Serão deferidas pela coordenação do curso todas as inscrições que tenham preenchido corretamente o formulário de inscrição e que atendam a todos os requisitos previstos neste edital.",
+            "numero": "4.3"
+          },
+          {
+            "tipo": "item",
+            "texto": "A relação das inscrições deferidas será divulgada a partir das {divulgacaoInscritiondateHorario}h de {divulgacaoInscritiondate}, pelos seguintes meios: ",
+            "numero": "4.4",
+            "subitens": [
+              {
+                "tipo": "subsubitem",
+                "letra": "a)",
+                "texto": "Diretamente no Quartel do Corpo de Bombeiros Militar de {promoAtiMunicipio};",
+                "subsubitens": []
+              },
+              {
+                "tipo": "subsubitem",
+                "letra": "b)",
+                "texto": "Pelas redes sociais, conforme definido no item 1 deste edital.",
+                "subsubitens": []
+              }
+            ]
+          },
+          {
+            "tipo": "item",
+            "texto": "Serão de responsabilidade do candidato os dados cadastrais informados no ato de sua inscrição. O CBMSC não se responsabiliza por quaisquer atos ou fatos decorrentes de informações incorretas ou incompletas fornecidas pelo candidato.",
+            "numero": "4.5"
+          }
+        ],
+        "texto": "INSCRIÇÕES",
+        "numero": "4"
+      },
+      {
+        "tipo": "capitulo",
+        "itens": [
+          {
+            "tipo": "item",
+            "texto": "O processo seletivo,  observado os requisitos, consistirá da análise dos documentos a seguir descritos, sendo que em caso de maior número de inscritos do que vagas disponíveis, serão utilizados os seguintes critérios para a seleção:",
+            "numero": "5.1",
+            "subitens": [
+              {
+                "tipo": "subsubitem",
+                "letra": "a)",
+                "texto": "Maior número de temporadas trabalhadas como Guarda Vida Civil Voluntário em Santa Catarina",
+                "subsubitens": []
+              },
+              {
+                "tipo": "subsubitem",
+                "letra": "b)",
+                "texto": "Maior idade.",
+                "subsubitens": []
+              }
+            ]
+          },
+          {
+            "tipo": "item",
+            "texto": "Apresentação de documentos:",
+            "numero": "5.2",
+            "subitens": [
+              {
+                "tipo": "subsubitem",
+                "letra": "a)",
+                "texto": "A apresentação dos documentos deverá ser realizada de {dataDocumentosExtenso}.",
+                "subsubitens": []
+              },
+              {
+                "tipo": "subsubitem",
+                "letra": "b)",
+                "texto": "Os documentos deverão ser apresentados no Quartel do Corpo de Bombeiros Militar de {procMunicipio}",
+                "subsubitens": []
+              },
+              {
+                "tipo": "subsubitem",
+                "letra": "c)",
+                "texto": "A falta da apresentação dos documentos, a apresentação dos documentos fora de suas respectivas validades, a apresentação de documentos que demonstrem o não cumprimento dos requisitos previstos ou a apresentação fora do prazo definido, ensejará a eliminação do candidato do processo seletivo. ",
+                "subsubitens": []
+              },
+              {
+                "tipo": "subsubitem",
+                "letra": "d)",
+                "texto": "Os candidatos classificados dentro das vagas previstas para o curso, deverão apresentar os seguintes documentos:",
+                "subsubitens": [
+                  {
+                    "tipo": "subsubitem",
+                    "letra": "(1)",
+                    "texto": "Documento oficial de identificação, válido no território nacional, sendo o original e fotocópia (frente e verso);",
+                    "subsubsubitens": []
+                  },
+                  {
+                    "tipo": "subsubitem",
+                    "letra": "(2)",
+                    "texto": "Cadastro de Pessoa Física (CPF)  original. Dispensa-se a apresentação do CPF caso  esteja contido no documento oficial de identificação apresentado.",
+                    "subsubsubitens": []
+                  },
+                  {
+                    "tipo": "subsubitem",
+                    "letra": "(3)",
+                    "texto": "Certidão original de antecedentes criminais da Justiça Federal (expedida pelo Tribunal Regional Federal – TRF - da região nacional onde o candidato reside), com o “nada consta”, emitida no máximo há 3 (três) meses. No caso de residentes nos estados de Santa Catarina, Paraná e Rio Grande do Sul, a certidão é expedida pelo TRF-4 (https://www.trf4.jus.br);",
+                    "subsubsubitens": []
+                  },
+                  {
+                    "tipo": "subsubitem",
+                    "letra": "(4)",
+                    "texto": "Certidão original de antecedentes criminais da Justiça Estadual (expedida pelo Tribunal de Justiça do Estado onde o candidato reside),  com o “nada consta”, emitida no máximo há 3 (três) meses. No caso de residentes no Estado de Santa Catarina, a certidão é expedida pelo TJSC (https://esaj.tjsc.jus.br/sco/abrirCadastro.do);",
+                    "subsubsubitens": []
+                  },
+                  {
+                    "tipo": "subsubitem",
+                    "letra": "(5)",
+                    "texto": "Certidão original de antecedentes criminais da Justiça Estadual da Comarca em que reside (expedida pelo Tribunal de Justiça do Estado onde o candidato reside),  com o “nada consta”, emitida no máximo há 3 (três) meses. No caso de residentes no Estado de Santa Catarina, a certidão é expedida pelo TJSC (https://esaj.tjsc.jus.br/sco/abrirCadastro.do);",
+                    "subsubsubitens": []
+                  },
+                  {
+                    "tipo": "subsubitem",
+                    "letra": "(6)",
+                    "texto": " Comprovante de residência, sendo o original e fotocópia, ou declaração de residência;",
+                    "subsubsubitens": []
+                  },
+                  {
+                    "tipo": "subsubitem",
+                    "letra": "(7)",
+                    "texto": "Para candidatos estrangeiros, será exigida a Certidão de Regularidade de Entrada e Permanência no Brasil, além de certificado de proficiência na Língua Portuguesa para estrangeiros (http://portal.mec.gov.br/celpe-bras);",
+                    "subsubsubitens": []
+                  },
+                  {
+                    "tipo": "subsubitem",
+                    "letra": "(8)",
+                    "texto": "Apresentar atestado médico original comprovando a sanidade mental e a capacidade física do candidato, para o desempenho do serviço de salvamento aquático, emitido no máximo há 30 dias;",
+                    "subsubsubitens": []
+                  },
+                  {
+                    "tipo": "subsubitem",
+                    "letra": "(9)",
+                    "texto": "Apresentar laudo original de exame toxicológico de urina, negativo para canabinóides e dosagem do metabólito da cocaína, conforme Portaria do Corpo de Bombeiros Militar de Santa Catarina.",
+                    "subsubsubitens": []
+                  },
+                  {
+                    "tipo": "subsubitem",
+                    "letra": "(10)",
+                    "texto": "Certificado de conclusão com aproveitamento do Curso de Guarda-Vidas Civil Voluntário, emitido pelo CBMSC.",
+                    "subsubsubitens": []
+                  }
+                ]
+              },
+              {
+                "tipo": "subsubitem",
+                "letra": "e)",
+                "texto": "As fotocópias e as autenticidades dos documentos serão conferidas pelo Bombeiro Militar responsável designado.",
+                "subsubitens": []
+              }
+            ]
+          },
+          {
+            "tipo": "item",
+            "texto": "Além das possibilidades decorrentes das etapas descritas, podem também constituir motivo para a eliminação no processo seletivo, a qualquer tempo, mesmo que no decorrer do curso:",
+            "numero": "5.3",
+            "subitens": [
+              {
+                "tipo": "subsubitem",
+                "letra": "a)",
+                "texto": "Não apresentação dos documentos exigidos.",
+                "subsubitens": []
+              },
+              {
+                "tipo": "subsubitem",
+                "letra": "b)",
+                "texto": "A constatação de omissão, falsificação ou adulteração de documentos;",
+                "subsubitens": []
+              },
+              {
+                "tipo": "subsubitem",
+                "letra": "c)",
+                "texto": "A omissão ou inverdade de informações prestadas;",
+                "subsubitens": []
+              },
+              {
+                "tipo": "subsubitem",
+                "letra": "d)",
+                "texto": "A constatação de haver o candidato/aluno sido excluído do serviço voluntário do CBMSC, em quaisquer de suas modalidades.",
+                "subsubitens": []
+              }
+            ]
+          },
+          {
+            "tipo": "item",
+            "texto": "Divulgação do resultado final:",
+            "numero": "5.4",
+            "subitens": [
+              {
+                "tipo": "subsubitem",
+                "letra": "a)",
+                "texto": "A divulgação do resultado final do processo seletivo será realizada após o processamento da documentação, sendo a partir das {startFinalResultsTime}h de {startFinalResultsDate}, pelos seguintes meios:  ",
+                "subsubitens": [
+                  {
+                    "tipo": "subsubitem",
+                    "letra": "(1)",
+                    "texto": "Diretamente no Quartel do Corpo de Bombeiros Militar de {promoAtiMunicipio};",
+                    "subsubsubitens": []
+                  },
+                  {
+                    "tipo": "subsubitem",
+                    "letra": "(2)",
+                    "texto": "Pelas redes sociais, conforme definido no item 1 deste edital.",
+                    "subsubsubitens": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tipo": "item",
+            "texto": "Cronograma resumido do processo seletivo:",
+            "numero": "5.5",
+            "subitens": [
+              {
+                "tipo": "subsubitem",
+                "letra": "a)",
+                "texto": "Apresentação de documentos (início): ",
+                "subsubitens": [
+                  {
+                    "tipo": "subsubitem",
+                    "letra": "(1)",
+                    "texto": "Data: {startDocumentSubmissionDate}",
+                    "subsubsubitens": []
+                  },
+                  {
+                    "tipo": "subsubitem",
+                    "letra": "(2)",
+                    "texto": "Hora: {startDocumentSubmissionTime}",
+                    "subsubsubitens": []
+                  }
+                ]
+              },
+              {
+                "tipo": "subsubitem",
+                "letra": "b)",
+                "texto": "Apresentação de documentos (término): ",
+                "subsubitens": [
+                  {
+                    "tipo": "subsubitem",
+                    "letra": "(1)",
+                    "texto": "Data: {divulgacaoDocumentSubmissionDate}",
+                    "subsubsubitens": []
+                  },
+                  {
+                    "tipo": "subsubitem",
+                    "letra": "(2)",
+                    "texto": "Hora: {divulgacaoDocumentSubmissionTime}",
+                    "subsubsubitens": []
+                  }
+                ]
+              },
+              {
+                "tipo": "subsubitem",
+                "letra": "c)",
+                "texto": "Divulgação do resultado final do processo seletivo: ",
+                "subsubitens": [
+                  {
+                    "tipo": "subsubitem",
+                    "letra": "(1)",
+                    "texto": "Data: {startFinalResultsDate}",
+                    "subsubsubitens": []
+                  },
+                  {
+                    "tipo": "subsubitem",
+                    "letra": "(2)",
+                    "texto": "Hora: {startFinalResultsTime}",
+                    "subsubsubitens": []
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "texto": "PROCESSO SELETIVO",
+        "numero": "5"
+      },
+      {
+        "tipo": "capitulo",
+        "itens": [
+          {
+            "tipo": "item",
+            "texto": "O candidato considerado inapto e eliminado em qualquer etapa do processo seletivo ou que considere haver sido prejudicado na classificação da prova teórica de conhecimentos específicos, poderá ingressar com recurso em até 2 (dois) úteis da divulgação do resultado em contestação.",
+            "numero": "6.1"
+          },
+          {
+            "tipo": "item",
+            "texto": "O recurso deverá ser por escrito e assinado pelo candidato e apresentado no quartel do Corpo de Bombeiros Militar, promotor do curso. ",
+            "numero": "6.2"
+          },
+          {
+            "tipo": "item",
+            "texto": "O recurso será analisado pela coordenação do curso, cujo parecer deverá ser homologado pelo Comandante da OBM e divulgado na sede do quartel, em até 2 (dois) úteis após o seu recebimento. ",
+            "numero": "6.3"
+          }
+        ],
+        "texto": "DOS RECURSOS",
+        "numero": "6"
+      },
+      {
+        "tipo": "capitulo",
+        "itens": [
+          {
+            "tipo": "item",
+            "texto": "O Curso de Recertificação de Guarda-Vidas Civil Voluntário{deRio} será realizado no(a) {localApresentacao}.",
+            "numero": "7.1"
+          },
+          {
+            "tipo": "item",
+            "texto": "O curso será realizado {periodoAtividade}, sendo desenvolvido da seguinte forma e horários: {promoAtiDescricao}",
+            "numero": "7.2"
+          }
+        ],
+        "texto": "LOCAL E PERÍODOS DE REALIZAÇÃO DO CURSO",
+        "numero": "7"
+      },
+      {
+        "tipo": "capitulo",
+        "itens": [
+          {
+            "tipo": "item",
+            "texto": "O(a) aluno(a) deverá providenciar por seus próprios meios os seguintes itens: ",
+            "numero": "8.1",
+            "subitens": [
+              {
+                "tipo": "subitem",
+                "letra": "a)",
+                "texto": "Sunga preta para os homens e maiô preto para as mulheres."
+              },
+              {
+                "tipo": "subitem",
+                "letra": "b)",
+                "texto": "Touca de natação preferencialmente preta."
+              },
+              {
+                "tipo": "subitem",
+                "letra": "c)",
+                "texto": "Nadadeira."
+              },
+              {
+                "tipo": "subitem",
+                "letra": "d)",
+                "texto": "Óculos de natação (opcional)."
+              }
+            ]
+          },
+          {
+            "tipo": "item",
+            "texto": "Demais materiais e equipamentos necessários serão fornecidos pela coordenação do curso.",
+            "numero": "8.2",
+            "subitens": []
+          }
+        ],
+        "texto": "LOGÍSTICA ",
+        "numero": "8"
+      },
+      {
+        "tipo": "capitulo",
+        "itens": [
+          {
+            "tipo": "item",
+            "texto": "O Curso de Recertificação de Guarda-Vidas Civil Voluntário{deRio} confere ao formando a habilitação para exercer a atividade de salvamento aquático para a temporada da Operação Veraneio vigente, devendo o candidato realizar o novo curso de recertificação nos anos seguintes, se desejar continuar prestando o serviço de guarda-vidas civil voluntário{derio} junto ao CBMSC.",
+            "numero": "9.1"
+          },
+          {
+            "tipo": "item",
+            "texto": "A conclusão da Recertificação de Guarda-Vidas Civil Voluntário{deRio} não garante vaga entre os guarda-vidas civis voluntários{derio} designados para atuar na Operação Veraneio do Corpo de Bombeiros Militar de Santa Catarina, sendo que a precedência se dará aos que apresentarem os melhores resultados ao final do curso (média final).",
+            "numero": "9.2"
+          },
+          {
+            "tipo": "item",
+            "texto": "Para a conclusão com aproveitamento do curso e para fazer jus ao certificado de conclusão, o candidato deverá atender os requisitos previstos em Portaria do Corpo de Bombeiros Militar de Santa Catarina.",
+            "numero": "9.3"
+          }
+        ],
+        "texto": "PRESCRIÇÕES DIVERSAS ",
+        "numero": "9"
+      },
+      {
+        "tipo": "capitulo",
+        "itens": [
+          {
+            "tipo": "item",
+            "texto": "Generalidades",
+            "numero": "10.1",
+            "subitens": [
+              {
+                "tipo": "subitem",
+                "letra": "a)",
+                "texto": "Os concluintes com aproveitamento no Curso de Recertificação de Guarda-Vidas Civil Voluntário {deRio}, poderão atuar no serviço de salvamento aquático {derio} como guarda-vidas civis voluntários em rios, lagos, lagoas, represas, açudes e similares, recebendo ressarcimento das despesas efetuadas com alimentação e transporte, conforme legislação vigente."
+              },
+              {
+                "tipo": "subitem",
+                "letra": "b)",
+                "texto": "Os valores referentes ao ressarcimento do serviço voluntário serão depositados em conta-corrente de agência do Banco do Brasil, em nome do guarda-vidas civil voluntário, no prazo máximo de 30 (trinta) dias após o encerramento de um determinado período de serviço voluntário prestado (semanal ou quinzenal)."
+              },
+              {
+                "tipo": "subitem",
+                "letra": "c)",
+                "texto": "O guarda-vidas civil voluntário {derio} que for designado para atuar na Operação Veraneio do CBMSC, serão regidos no que couber pela Diretriz de Procedimento Operacional Padrão Dtz POP - 09-2019 e pelo Código de Conduta previsto em Portaria do Corpo de Bombeiros Militar de Santa Catarina."
+              },
+              {
+                "tipo": "subitem",
+                "letra": "d)",
+                "texto": "Para a execução do serviço os guarda-vidas civis voluntários {derio} deverão utilizar os uniformes e equipamentos designados pelo CBMSC."
+              }
+            ]
+          },
+          {
+            "tipo": "item",
+            "texto": "São requisitos para ingresso e atuação no serviço de guarda-vidas civil voluntário (Lei nº 13.880, de 4 de dezembro de 2006):",
+            "numero": "10.2",
+            "subitens": [
+              {
+                "tipo": "subitem",
+                "letra": "a)",
+                "texto": "Ter no mínimo 18 (dezoito) anos;"
+              },
+              {
+                "tipo": "subitem",
+                "letra": "b)",
+                "texto": "Apresentar certidões negativas de antecedentes criminais (conforme descrito neste edital);"
+              },
+              {
+                "tipo": "subitem",
+                "letra": "c)",
+                "texto": "Apresentar atestado médico original comprovando a sanidade mental e a capacidade física do candidato, para o desempenho do serviço de salvamento aquático, emitido no máximo há 3 (três) meses; "
+              },
+              {
+                "tipo": "subitem",
+                "letra": "d)",
+                "texto": "Laudos de acuidade física e auditiva, originais, emitido no máximo há 3 (três) meses, se houver indicação de necessidade;"
+              },
+              {
+                "tipo": "subitem",
+                "letra": "e)",
+                "texto": "Comprovar a habilitação para o exercício da função mediante a apresentação do certificado do  Curso de Guarda-Vidas Civil Voluntário {deRio} ou do Curso de Recertificação de Guarda-Vidas Civil Voluntário {deRio}, conforme o caso;"
+              },
+              {
+                "tipo": "subitem",
+                "letra": "f)",
+                "texto": "Apresentar laudo original de exame toxicológico de urina, negativo para canabinóides e dosagem do metabólito da cocaína, conforme Portaria do Corpo de Bombeiros Militar de Santa Catarina."
+              },
+              {
+                "tipo": "subitem",
+                "letra": "g)",
+                "texto": "Apresentar “Termo de Adesão ao Serviço Voluntário de Salvamento do Corpo de Bombeiros Militar de Santa Catarina”, devidamente assinado e com firma reconhecida em cartório, conforme Portaria do Corpo de Bombeiros Militar de Santa Catarina."
+              },
+              {
+                "tipo": "subitem",
+                "letra": "h)",
+                "texto": "Apresentar declaração de abertura de conta corrente no Banco do Brasil, em nome do candidato, extrato recente (menos que 3 meses), no caso de já possuir conta corrente no citado banco."
+              }
+            ]
+          }
+        ],
+        "texto": "O SERVIÇO DE GUARDA-VIDAS CIVIL VOLUNTÁRIO{DERIO}",
+        "numero": "10"
+      },
+      {
+        "tipo": "capitulo",
+        "itens": [
+          {
+            "tipo": "item",
+            "texto": "É de inteira responsabilidade do candidato acompanhar a divulgação de todos os atos e comunicados referentes a este edital, incluídos os que forem publicados nos endereços eletrônicos do CBMSC (www.cbm.sc.gov.br).",
+            "numero": "11.1",
+            "subitens": []
+          },
+          {
+            "tipo": "item",
+            "texto": "Todas as despesas decorrentes do presente edital efetuadas pelo candidato, correrão por sua conta.",
+            "numero": "11.2",
+            "subitens": []
+          },
+          {
+            "tipo": "item",
+            "texto": "Ao final do curso, se aprovado, o participante receberá certificado de conclusão do Curso de Recertificação de Guarda-Vidas Civil Voluntário.",
+            "numero": "11.3",
+            "subitens": []
+          },
+          {
+            "tipo": "item",
+            "texto": "Para outros esclarecimentos o candidato deverá entrar em contato com o quartel do Corpo de Bombeiros Militar promotor do curso.",
+            "numero": "11.4",
+            "subitens": []
+          },
+          {
+            "tipo": "item",
+            "texto": "Caso não se atinja o número mínimo de alunos para o funcionamento do curso, a coordenação por meio da B-3 do batalhão, poderá solicitar à Diretoria de Instrução e Ensino (DIE), no SGPe e pelo mesmo processo do curso, o funcionamento com número menor de alunos, justificando a motivação, podendo a DIE autorizar ou não, conforme o caso.",
+            "numero": "11.5",
+            "subitens": []
+          },
+          {
+            "tipo": "item",
+            "texto": "As situações que porventura não estiverem previstas neste edital serão resolvidas pela Diretoria de Instrução e Ensino.",
+            "numero": "11.6",
+            "subitens": []
+          }
+        ],
+        "texto": "PRESCRIÇÕES DIVERSAS",
+        "numero": "11"
+      }
+    ]
+  }
