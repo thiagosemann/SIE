@@ -1,0 +1,329 @@
+{
+    "documento": [
+      {
+        "data": [
+          "RELATÓRIO FINAL DE CURSO {numeroProcesso}/{anoAtual}/DIE/CBMSC",
+          "Código de autenticação para uso da DIE: {auth}",
+          "{nomeCurso} ({sigla})"
+        ],
+        "tipo": "preambulo"
+      },
+      {
+        "tipo": "capitulo",
+        "itens": [
+          {
+            "tipo": "item",
+            "texto": "Consignar as informações do {nomeCurso} ({sigla}), realizado no Município de {localAtiMunicipio}/SC, para fins de publicidade, controle, avaliação, certificação e pagamento das indenizações de ensino correspondentes.",
+            "numero": "",
+            "subitens": []
+          }
+        ],
+        "texto": "FINALIDADE",
+        "numero": "1"
+      },
+      {
+        "tipo": "capitulo",
+        "itens": [
+          {
+            "tipo": "tabelaRFCSintese",
+            "dados": [
+              [
+                "Nome da atividade de ensino",
+                "{nomeCurso}"
+              ],
+              [
+                "Coordenador da atividade de ensino",
+                "{coordenadorDescricao}"
+              ],
+              [
+                "Período da atividade de ensino",
+                "{periodoAtividade}"
+              ],
+              [
+                "Carga horária total",
+                "{haCurso}h"
+              ],
+              [
+                "Carga horária indenizável",
+                "{localApresentacao}"
+              ],
+              [
+                "Finalidade",
+                "{Finalidade}"
+              ],
+              [
+                "Número de alunos matriculados",
+                "{alunosMatriculados}"
+              ],
+              [
+                "Número de alunos aprovados",
+                "{alunosAprovados}"
+              ],
+              [
+                "Número de alunos reprovados",
+                "{alunosReprovados}"
+              ],
+              [
+                "Número de alunos inaptos",
+                "{alunosInaptos}"
+              ],
+              [
+                "Número de alunos desistentes",
+                "{alunosDesistentes}"
+              ],
+              [
+                "Número de alunos excluídos",
+                "{alunosExcluidos}"
+              ]
+
+            ],
+            "content": "left",
+            "hasHeader": false
+          }
+        ],
+        "texto": "SÍNTESE",
+        "numero": "2"
+      },
+      {
+        "tipo": "capitulo",
+        "itens": [
+            {
+                "tipo": "tabelaRFC",
+                "dados": [
+                [
+                "Class",
+                "Posto/Grad",
+                "Mtcl/Cpf",
+                "Nome completo",
+                "Faltas",
+                "Nota",
+                "Nota Exame Final",
+                "Situação"
+                ],
+                [
+                "2",
+                "CB",
+                "1234567-8-9",
+                "Ana Silva",
+                "2",
+                "7",
+                "0",
+                "REPROVADO"
+                ],
+                [
+                "3",
+                "SGT",
+                "9876543-2-1",
+                "Pedro Almeida",
+                "1",
+                "8",
+                "0",
+                "APROVADO"
+                ],
+                [
+                "4",
+                "SD",
+                "0987654-3-2",
+                "Mariana Oliveira",
+                "0",
+                "9",
+                "0",
+                "APROVADO"
+                ]
+                ],
+                "content": "center",
+                "hasHeader": true
+                }
+        ],
+        "texto": "RELAÇÃO DOS ALUNOS COM CLASSIFICAÇÃO, NOTAS E SITUAÇÃO FINAL",
+        "numero": "3"
+      },
+      {
+        "tipo": "capitulo",
+        "itens": [
+            {
+              "tipo": "item",
+              "texto": "Instrutores e Professores",
+              "numero": "4.1",
+              "subitens": [
+                {
+                    "tipo": "tabelaRFCDespesas",
+                    "dados": [
+                    [
+                    "Posto/Grad",
+                    "Mtcl/Cpf",
+                    "Nome completo",
+                    "Escolaridade",
+                    "D.M Valor",
+                    "H/A Qtd",
+                    "H/A Valor",
+                    "Alimentação",
+                    "Soma"
+                    ],
+                    [
+                    "CB",
+                    "065.464.359-85",
+                    "THIAGO GHELFI SEMANN",
+                    "PÓS-GRADUAÇÃo",
+                    "R$ 15.133,00",
+                    "100",
+                    "R$ 15.133,00",
+                    "R$ 0,00",
+                    "R$ 115.133,00"
+                    ],
+                    [
+                    "CB",
+                    "065.464.359-85",
+                    "THIAGO GHELFI SEMANN",
+                    "PÓS-GRADUAÇÃo",
+                    "R$ 15.133,00",
+                    "100",
+                    "R$ 15.133,00",
+                    "R$ 0,00",
+                    "R$ 115.133,00"
+                    ]
+                    ],
+                    "content": "center",
+                    "hasHeader": true
+                    }
+              ]
+            },
+            {
+              "tipo": "item",
+              "texto": "Alunos",
+              "numero": "4.2",
+              "subitens": [
+                {
+                    "tipo": "tabelaRFCDespesas",
+                    "dados": [
+                    [
+                    "Posto/Grad",
+                    "Mtcl/Cpf",
+                    "Nome completo",
+                    "Escolaridade",
+                    "D.M Valor",
+                    "D.C Qtd",
+                    "D.C Valor",
+                    "Alimentação",
+                    "Soma"
+                    ],
+                    [
+                    "CB",
+                    "065.464.359-85",
+                    "THIAGO GHELFI SEMANN",
+                    "PÓS-GRADUAÇÃo",
+                    "R$ 15.133,00",
+                    "100",
+                    "R$ 15.133,00",
+                    "R$ 0,00",
+                    "R$ 115.133,00"
+                    ],
+                    [
+                    "CB",
+                    "065.464.359-85",
+                    "THIAGO GHELFI SEMANN",
+                    "PÓS-GRADUAÇÃo",
+                    "R$ 15.133,00",
+                    "100",
+                    "R$ 15.133,00",
+                    "R$ 0,00",
+                    "R$ 115.133,00"
+                    ]
+                    ],
+                    "content": "center",
+                    "hasHeader": true
+                }
+              ]
+            },
+            {
+                "tipo": "item",
+                "texto": "Total",
+                "numero": "4.3",
+                "subitens": [
+                  {
+                      "tipo": "tabelaRFC",
+                      "dados": [
+                      [
+                      "Class",
+                      "Posto/Grad",
+                      "Mtcl/Cpf",
+                      "Nome completo",
+                      "Faltas",
+                      "Nota",
+                      "Nota Exame Final",
+                      "Situação"
+                      ],
+                      [
+                      "2",
+                      "CB",
+                      "1234567-8-9",
+                      "Ana Silva",
+                      "2",
+                      "7",
+                      "0",
+                      "REPROVADO"
+                      ],
+                      [
+                      "3",
+                      "SGT",
+                      "9876543-2-1",
+                      "Pedro Almeida",
+                      "1",
+                      "8",
+                      "0",
+                      "APROVADO"
+                      ],
+                      [
+                      "4",
+                      "SD",
+                      "0987654-3-2",
+                      "Mariana Oliveira",
+                      "0",
+                      "9",
+                      "0",
+                      "APROVADO"
+                      ]
+                      ],
+                      "content": "center",
+                      "hasHeader": true
+                      }
+                ]
+              }
+          ],
+        "texto": "DESPESAS DA ATIVIDADE DE ENSINO",
+        "numero": "4"
+      },
+      {
+        "tipo": "capitulo",
+        "itens": [
+          {
+            "tipo": "item",
+            "texto": "O coordenador e os instrutores da presente atividade de ensino, por meio da assinatura eletrônica neste documento, declaram sob as penas da legislação que as informações prestadas são verdadeiras e que os serviços declarados foram efetivamente realizados de acordo as previsões legais e normativas, com o processo de homologação da atividade de ensino, com o plano de ensino apresentado e com o Quadro de Trabalho (QT) juntado ao processo da atividade de ensino. ",
+            "numero": "5.1",
+            "subitens": []
+          },
+          {
+            "tipo": "item",
+            "texto": "Declaram os instrutores, ainda, que as horas aulas ministradas não ultrapassam os limites máximos mensais (80 h/a) e anuais (500 h/a), mesmo que somadas a outras atividades de docência indenizáveis, estando cientes que em caso de descumprimento as horas excedentes não serão indenizadas, ficando o instrutor sujeito ainda à responsabilização disciplinar, exceto se houver autorização prévia do Diretor de Instrução e Ensino, juntada ao processo. ",
+            "numero": "5.2",
+            "subitens": []
+          }
+        ],
+        "texto": "TERMO DE DECLARAÇÃO DA COORDENAÇÃO E DOS INSTRUTORES",
+        "numero": "5"
+      },
+      {
+        "tipo": "capitulo",
+        "itens": [
+          {
+            "tipo": "item",
+            "texto": "Sugestões, melhorias ou reclamações referentes ao curso/treinamento, se houver, deverão ser encaminhadas pelo coordenador da atividade de ensino para a coordenadoria ou diretoria afeta à atividade de ensino em questão, a qual analisará as informações e adotará as providências necessárias, remetendo à Diretoria de Instrução e Ensino caso sejam demandas inerentes as atribuições da referida diretoria.",
+            "numero": "",
+            "subitens": []
+          }
+        ],
+        "texto": "PRESCRIÇÕES DIVERSAS",
+        "numero": "6"
+      } 
+    ]
+  }
