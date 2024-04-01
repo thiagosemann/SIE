@@ -87,55 +87,116 @@
       {
         "tipo": "capitulo",
         "itens": [
-            {
-                "tipo": "tabelaRFC",
-                "dados": [
-                [
-                "Class",
-                "Posto/Grad",
-                "Mtcl/Cpf",
-                "Nome completo",
-                "Faltas",
-                "Nota",
-                "Nota Exame Final",
-                "Situação"
-                ],
-                [
-                "2",
-                "CB",
-                "1234567-8-9",
-                "Ana Silva",
-                "2",
-                "7",
-                "0",
-                "REPROVADO"
-                ],
-                [
-                "3",
-                "SGT",
-                "9876543-2-1",
-                "Pedro Almeida",
-                "1",
-                "8",
-                "0",
-                "APROVADO"
-                ],
-                [
-                "4",
-                "SD",
-                "0987654-3-2",
-                "Mariana Oliveira",
-                "0",
-                "9",
-                "0",
-                "APROVADO"
-                ]
-                ],
-                "content": "center",
-                "hasHeader": true
-                }
+          {
+            "tipo": "item",
+            "texto": "Relação dos alunos com classificação, notas e situação final",
+            "numero": "3.1",
+            "subitens": [
+              {
+                  "tipo": "tabelaRFC",
+                  "dados": [
+                    [
+                      "Class",
+                      "Posto/Grad",
+                      "Mtcl/Cpf",
+                      "Nome completo",
+                      "Faltas",
+                      "Nota",
+                      "Nota Exame Final",
+                      "Situação"
+                      ],
+                      [
+                      "2",
+                      "CB",
+                      "1234567-8-9",
+                      "Ana Silva",
+                      "2",
+                      "7",
+                      "0",
+                      "REPROVADO"
+                      ],
+                      [
+                      "3",
+                      "SGT",
+                      "9876543-2-1",
+                      "Pedro Almeida",
+                      "1",
+                      "8",
+                      "0",
+                      "APROVADO"
+                      ],
+                      [
+                      "4",
+                      "SD",
+                      "0987654-3-2",
+                      "Mariana Oliveira",
+                      "0",
+                      "9",
+                      "0",
+                      "APROVADO"
+                      ]
+                  ],
+                  "content": "center",
+                  "hasHeader": true
+                  }
+            ]
+          },
+          {
+            "tipo": "item",
+            "texto": "Relação das faltas com justificativa",
+            "numero": "3.2",
+            "subitens": [
+              {
+                  "tipo": "tabelaRFC",
+                  "dados": [
+                    [
+                      "Class",
+                      "Posto/Grad",
+                      "Mtcl/Cpf",
+                      "Nome completo",
+                      "Faltas",
+                      "Nota",
+                      "Nota Exame Final",
+                      "Situação"
+                      ],
+                      [
+                      "2",
+                      "CB",
+                      "1234567-8-9",
+                      "Ana Silva",
+                      "2",
+                      "7",
+                      "0",
+                      "REPROVADO"
+                      ],
+                      [
+                      "3",
+                      "SGT",
+                      "9876543-2-1",
+                      "Pedro Almeida",
+                      "1",
+                      "8",
+                      "0",
+                      "APROVADO"
+                      ],
+                      [
+                      "4",
+                      "SD",
+                      "0987654-3-2",
+                      "Mariana Oliveira",
+                      "0",
+                      "9",
+                      "0",
+                      "APROVADO"
+                      ]
+                  ],
+                  "content": "center",
+                  "hasHeader": true
+                  }
+            ]
+          }  
         ],
-        "texto": "RELAÇÃO DOS ALUNOS COM CLASSIFICAÇÃO, NOTAS E SITUAÇÃO FINAL",
+        "texto": "ALUNOS",
         "numero": "3"
       },
       {
@@ -147,7 +208,7 @@
               "numero": "4.1",
               "subitens": [
                 {
-                    "tipo": "tabelaRFCDespesas",
+                    "tipo": "tabelaRFC",
                     "dados": [
                     [
                     "Posto/Grad",
@@ -194,7 +255,7 @@
               "numero": "4.2",
               "subitens": [
                 {
-                    "tipo": "tabelaRFCDespesas",
+                    "tipo": "tabelaRFC",
                     "dados": [
                     [
                     "Posto/Grad",
@@ -250,7 +311,7 @@
                       "Nome completo",
                       "Faltas",
                       "Nota",
-                      "Nota Exame Final",
+                      "Nota Exame",
                       "Situação"
                       ],
                       [

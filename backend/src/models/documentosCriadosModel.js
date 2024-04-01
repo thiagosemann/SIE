@@ -4,8 +4,6 @@ const createCourse = async (course) => {
   const { auth, dados, tipo, id_pge } = course;
   const query = 'INSERT INTO documentosCriados (auth, dados, tipo, id_pge) VALUES (?, ?, ?, ?)';
   const values = [auth, JSON.stringify(dados), tipo, id_pge];
-  console.log(values)
-  console.log(dados)
   
   try {
     const [result] = await connection.execute(query, values);

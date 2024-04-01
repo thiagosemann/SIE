@@ -1,4 +1,5 @@
 const cursosModel = require('../models/documentosCriadosModel');
+const professoresByDocumentoModel = require('../models/professoresByDocumentoModel'); // Importando o modelo dos professores
 
 const getAllCourses = async (_request, response) => {
   try {
@@ -13,6 +14,13 @@ const getAllCourses = async (_request, response) => {
 const createCourse = async (req, res) => {
   try {
     const createdCourse = await cursosModel.createCourse(req.body);
+    console.log("req.body",req.body.dados.docentesQTSObj)
+    console.log("createdCourse",createdCourse)
+    if(req.body.dados.docentesQTSObj){
+      const aux = await professoresByDocumentoModel.createProfessoresByDocumento(req.body.dados.docentesQTSObj,createdCourse.insertId)
+
+    }
+    
     return res.status(201).json(createdCourse);
   } catch (error) {
     console.error('Erro ao criar curso:', error);

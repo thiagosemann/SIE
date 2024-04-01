@@ -1,7 +1,6 @@
 const usersModel = require('../models/usersModel');
 const { checkLdapUser } = require('../models/ldap'); 
-const jwt = require('jsonwebtoken');
-const axios = require('axios');
+
 
 require('dotenv').config();
 
@@ -122,23 +121,6 @@ const batchUpdateUsers = async (request, response) => {
   }
 };
 
-
-
-  function scheduleFunction() {
-    const d = new Date();
-    const currentMinutes = d.getMinutes();
-  
-    // Verifica se o minuto atual é igual a 30
-    if (currentMinutes === 30) {
-      fetchUserDataAndSaveToDatabase();
-    }
-  }
-  
-  // Chamando a função inicialmente para verificar se deve ser executada imediatamente
- // scheduleFunction();
-
-  // Configurando o setInterval para chamar a função a cada minuto
-  //setInterval(scheduleFunction, 60000); // 60000 milissegundos = 1 minuto
 
 
 

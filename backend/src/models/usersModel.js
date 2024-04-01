@@ -25,10 +25,10 @@ const getUserByLdap = async (ldap) => {
 
 
 const createUser = async (user) => {
-  const { ldap, mtcl, name, cpf, graduacao, escolaridade, role, dateFilter } = user;
-  const query = 'INSERT INTO users (ldap, mtcl, name, cpf, graduacao, escolaridade, role, dateFilter) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
-  const values = [ldap, mtcl, name, cpf, graduacao, escolaridade, role, dateFilter];
-
+  const { ldap, mtcl, name, cpf, graduacao_id, escolaridade_id, role_id, dateFilter } = user;
+  const query = 'INSERT INTO users (ldap, mtcl, name, cpf, graduacao_id, escolaridade_id, role_id, dateFilter) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+  const values = [ldap, mtcl, name, cpf, graduacao_id, escolaridade_id, role_id, dateFilter];
+  console.log(user)
   try {
     const [result] = await connection.execute(query, values);
     return { insertId: result.insertId };
@@ -38,9 +38,9 @@ const createUser = async (user) => {
   }
 };
 const updateUserByMtcl = async ( updatedUserData) => {
-  const {mtcl, name, cpf, graduacao, escolaridade } = updatedUserData;
-  const query = 'UPDATE users SET name = ?, cpf = ?, graduacao = ?, escolaridade = ? WHERE mtcl = ?';
-  const values = [name, cpf, graduacao, escolaridade, mtcl];
+  const {mtcl, name, cpf, graduacao, escolaridade_id } = updatedUserData;
+  const query = 'UPDATE users SET name = ?, cpf = ?, graduacao = ?, escolaridade_id = ? WHERE mtcl = ?';
+  const values = [name, cpf, graduacao, escolaridade_id, mtcl];
 
   try {
     const [result] = await connection.execute(query, values);
@@ -57,9 +57,9 @@ const updateUserByMtcl = async ( updatedUserData) => {
 
 const updateUser = async (updatedUserData) => {
   console.log(updatedUserData)
-  const { name, cpf, graduacao, escolaridade, role, dateFilter, id } = updatedUserData;
-  const query = 'UPDATE users SET name = ?, cpf = ?, graduacao = ?, escolaridade = ?, role = ?, dateFilter = ? WHERE id = ?';
-  const values = [name, cpf, graduacao, escolaridade, role, dateFilter, id];
+  const { name, cpf, graduacao, escolaridade_id, role, dateFilter, id } = updatedUserData;
+  const query = 'UPDATE users SET name = ?, cpf = ?, graduacao = ?, escolaridade_id = ?, role = ?, dateFilter = ? WHERE id = ?';
+  const values = [name, cpf, graduacao, escolaridade_id, role, dateFilter, id];
   await connection.execute(query, values);
 
   return { success: true };
@@ -122,8 +122,6 @@ const getUserByMtcl = async (mtcl) => {
 
   return null; // Se não encontrarmos o usuário, lançamos um erro
 };
-
-
 
 
 module.exports = {

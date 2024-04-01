@@ -11,6 +11,10 @@ const licoesController = require('./controllers/licoesAtividadeHomologadaControl
 const usersCivisController = require('./controllers/usersCivilController'); // Adicione o controlador dos usuários civis
 const inscricoesController = require('./controllers/inscritionController'); // Importe o controlador das inscrições
 const editaisController = require('./controllers/editaisController'); // Importe o controlador dos editais
+const professoresController = require('./controllers/professoresByDocumentoController'); // Importe o controlador dos professores
+const graduacoesController = require('./controllers/graduacaoController'); // Importe o controlador das graduações
+const escolaridadeController = require('./controllers/escolaridadeController'); // Importe o controlador das escolaridades
+const rolesController = require('./controllers/rolesController'); // Importe o controlador de roles
 
 
 const verifyToken = require('./middlewares/authMiddleware'); // Importe o middleware de autenticação
@@ -78,6 +82,30 @@ router.put('/editais/:id', verifyToken, editaisController.updateEditalById);
 router.delete('/editais/:id', verifyToken, editaisController.deleteEditalById);
 router.get('/editais/bbm/:bbm', verifyToken, editaisController.getEditaisByBBM);
 
+// ROTAS PROFESSORES
+router.get('/professoresByDocumento', verifyToken, professoresController.getAllProfessoresByDocumento);
+router.post('/professoresByDocumento', verifyToken, professoresController.createProfessorByDocumento);
+
+// ROTAS GRADUACOES
+router.get('/graduacoes', verifyToken, graduacoesController.getAllGraduacoes);
+router.post('/graduacoes', verifyToken, graduacoesController.createGraduacao);
+router.delete('/graduacoes/:id', verifyToken, graduacoesController.deleteGraduacaoById);
+router.put('/graduacoes/:id', verifyToken, graduacoesController.updateGraduacaoById);
+router.get('/graduacoes/:id', verifyToken, graduacoesController.getGraduacaoById);
+
+// ROTAS ESCOLARIDADE
+router.get('/escolaridades', verifyToken, escolaridadeController.getAllEscolaridades);
+router.post('/escolaridades', verifyToken, escolaridadeController.createEscolaridade);
+router.delete('/escolaridades/:id', verifyToken, escolaridadeController.deleteEscolaridadeById);
+router.put('/escolaridades/:id', verifyToken, escolaridadeController.updateEscolaridadeById);
+router.get('/escolaridades/:id', verifyToken, escolaridadeController.getEscolaridadeById);
+
+// ROTAS PARA ROLES
+router.get('/roles', verifyToken, rolesController.getAllRoles);
+router.post('/roles', verifyToken, rolesController.createRole);
+router.delete('/roles/:id', verifyToken, rolesController.deleteRoleById);
+router.put('/roles/:id', verifyToken, rolesController.updateRoleById);
+router.get('/roles/:id', verifyToken, rolesController.getRoleById);
 
 
 module.exports = router;
