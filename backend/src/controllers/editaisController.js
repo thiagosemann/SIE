@@ -106,14 +106,21 @@ const updateEditaisPeriodically = async () => {
           if (todayDate.getTime() > endInscritiondate.getTime()) {
             // Passou da data limite
             // Verificar pendências nas inscrições.
+            let count=0;
             for (const inscricao of inscricoes) {
                 if (inscricao.situacao === "Pendente") {
                     await editaisModel.updatePendencias(edital.id, {
                         pendenciasMensagem: "Faltou homologar inscrições.",
                         pendenciasInscricoes: "Pendencia"
                     });
-                    // Pode dar problema em quantidade de cursos que não tenham as inscrições homologadas.
+                    count++;
                 }
+            }
+            if(count==0){
+              await editaisModel.updatePendencias(edital.id, {
+                pendenciasMensagem: "",
+                pendenciasInscricoes: "Finalizado"
+              });
             }
             if(inscricoes.length==0){
               await editaisModel.updatePendencias(edital.id, {

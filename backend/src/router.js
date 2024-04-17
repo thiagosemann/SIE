@@ -64,7 +64,9 @@ router.get('/licoes/sigla/:sigla', licoesController.getLicoesBySigla);
 // ROTAS USERSCIVIS
 router.get('/usersCivil', verifyToken, usersCivisController.getAllUsersCivil);
 router.post('/usersCivil', verifyToken, usersCivisController.createUserCivil);
+router.get('/usersCivil/BCorGVC', verifyToken, usersCivisController.getUsersWithBCorGVC); 
 router.get('/usersCivil/:id', verifyToken, usersCivisController.getUserCivilbyId);
+router.get('/usersCivil/cpf/:cpf', verifyToken, usersCivisController.getUserCivilByCPF); 
 
 // ROTAS INSCRICOES
 router.get('/inscricoes', verifyToken, inscricoesController.getAllInscricoes);

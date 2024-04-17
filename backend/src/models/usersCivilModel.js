@@ -9,7 +9,7 @@ const getAllUsersCivil = async () => {
 
 const createUserCivil = async (userCivil) => {
   try {
-    const { fullName,cpf, birthdate, gender, email, telefone, fatherName, motherName, nationality, birthState, birthCity, maritalStatus, raca, cep, estado, municipio, numero, complemento, logradouro, bairro, problemaSaudeBool, problemaSaude, conclusaoCBAEBool, conclusaoCBAEAno } = userCivil;
+    const { fullName,cpf, birthdate, gender, email, telefone, fatherName, motherName, nationality, birthState, birthCity, maritalStatus, raca, cep, estado, municipio, numero, complemento, logradouro, bairro, problemaSaudeBool, problemaSaude, conclusaoCBAEBool, conclusaoCBAEAno,BC,GVC } = userCivil;
     // Verificar se o CPF já existe na tabela usersCivis
     const existingUser = await getUserCivilByCPF(cpf);
 
@@ -23,8 +23,8 @@ const createUserCivil = async (userCivil) => {
       }
     } else {
       // Se o CPF não existe, continua com a inserção
-      const query = 'INSERT INTO usersCivis (fullName, cpf, birthdate, gender, email, telefone, fatherName, motherName, nationality, birthState, birthCity, maritalStatus, raca, cep, estado, municipio, numero, complemento, logradouro, bairro, problemaSaudeBool, problemaSaude, conclusaoCBAEBool, conclusaoCBAEAno) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
-      const values = [fullName, cpf, birthdate, gender, email, telefone, fatherName, motherName, nationality, birthState, birthCity, maritalStatus, raca, cep, estado, municipio, numero, complemento, logradouro, bairro, problemaSaudeBool, problemaSaude, conclusaoCBAEBool, conclusaoCBAEAno];
+      const query = 'INSERT INTO usersCivis (fullName, cpf, birthdate, gender, email, telefone, fatherName, motherName, nationality, birthState, birthCity, maritalStatus, raca, cep, estado, municipio, numero, complemento, logradouro, bairro, problemaSaudeBool, problemaSaude, conclusaoCBAEBool, conclusaoCBAEAno,BC,GVC) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+      const values = [fullName, cpf, birthdate, gender, email, telefone, fatherName, motherName, nationality, birthState, birthCity, maritalStatus, raca, cep, estado, municipio, numero, complemento, logradouro, bairro, problemaSaudeBool, problemaSaude, conclusaoCBAEBool, conclusaoCBAEAno,BC,GVC];
 
       // Executar a consulta dentro de uma transação (se necessário)
       const [result] = await connection.execute(query, values);
@@ -62,10 +62,10 @@ const getUserCivilByCPF = async (cpf) => {
 
 // Função para atualizar usuário civil por ID
 const updateUserCivil = async (userId, userCivil) => {
-  const { fullName, cpf, birthdate, gender, email, telefone, fatherName, motherName, nationality, birthState, birthCity, maritalStatus, raca, cep, estado, municipio, numero, complemento, logradouro, bairro, problemaSaudeBool, problemaSaude, conclusaoCBAEBool, conclusaoCBAEAno } = userCivil;
+  const { fullName, cpf, birthdate, gender, email, telefone, fatherName, motherName, nationality, birthState, birthCity, maritalStatus, raca, cep, estado, municipio, numero, complemento, logradouro, bairro, problemaSaudeBool, problemaSaude, conclusaoCBAEBool, conclusaoCBAEAno, BC, GVC } = userCivil;
 
-  const query = 'UPDATE usersCivis SET fullName=?, birthdate=?, gender=?, email=?, telefone=?, fatherName=?, motherName=?, nationality=?, birthState=?, birthCity=?, maritalStatus=?, raca=?, cep=?, estado=?, municipio=?, numero=?, complemento=?, logradouro=?, bairro=?, problemaSaudeBool=?, problemaSaude=?, conclusaoCBAEBool=?, conclusaoCBAEAno=? WHERE id=?';
-  const values = [fullName, birthdate, gender, email, telefone, fatherName, motherName, nationality, birthState, birthCity, maritalStatus, raca, cep, estado, municipio, numero, complemento, logradouro, bairro, problemaSaudeBool, problemaSaude, conclusaoCBAEBool, conclusaoCBAEAno, userId];
+  const query = 'UPDATE usersCivis SET fullName=?, birthdate=?, gender=?, email=?, telefone=?, fatherName=?, motherName=?, nationality=?, birthState=?, birthCity=?, maritalStatus=?, raca=?, cep=?, estado=?, municipio=?, numero=?, complemento=?, logradouro=?, bairro=?, problemaSaudeBool=?, problemaSaude=?, conclusaoCBAEBool=?, conclusaoCBAEAno=?, BC=?, GVC=? WHERE id=?';
+  const values = [fullName, birthdate, gender, email, telefone, fatherName, motherName, nationality, birthState, birthCity, maritalStatus, raca, cep, estado, municipio, numero, complemento, logradouro, bairro, problemaSaudeBool, problemaSaude, conclusaoCBAEBool, conclusaoCBAEAno, BC, GVC, userId];
 
   try {
     await connection.execute(query, values);
@@ -92,10 +92,23 @@ const getUserCivilbyId = async (id) => {
   }
 };
 
+const getUsersWithBCorGVC = async () => {
+  const query = 'SELECT * FROM usersCivis WHERE BC = true OR GVC = true';
+  try {
+    const [users] = await connection.execute(query);
+    return users;
+  } catch (error) {
+    console.error('Erro ao obter usuários com BC ou GVC igual a 1:', error);
+    throw error;
+  }
+};
+
 
 
 module.exports = {
   getAllUsersCivil,
   createUserCivil,
-  getUserCivilbyId
+  getUserCivilbyId,
+  getUserCivilByCPF,
+  getUsersWithBCorGVC
 };

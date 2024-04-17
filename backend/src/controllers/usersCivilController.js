@@ -36,10 +36,37 @@ const getUserCivilbyId = async (request, response) => {
   }
 };
 
+const getUserCivilByCPF = async (request, response) => {
+  try {
+    const { cpf } = request.params;
+    const user = await usersCivisModel.getUserCivilByCPF(cpf);
+
+    if (user) {
+      return response.status(200).json(user);
+    } else {
+      return response.status(404).json({ message: 'Usuário não encontrado' });
+    }
+  } catch (error) {
+    console.error('Erro ao obter usuário por CPF:', error);
+    return response.status(500).json({ error: 'Erro ao obter usuário por CPF' });
+  }
+};
+
+const getUsersWithBCorGVC = async (_request, response) => {
+  try {
+    const users = await usersCivisModel.getUsersWithBCorGVC();
+    return response.status(200).json(users);
+  } catch (error) {
+    console.error('Erro ao obter usuários com BC ou GVC igual a 1:', error);
+    return response.status(500).json({ error: 'Erro ao obter usuários com BC ou GVC igual a 1' });
+  }
+};
 
 
 module.exports = {
   getAllUsersCivil,
   createUserCivil,
-  getUserCivilbyId
+  getUserCivilbyId,
+  getUserCivilByCPF,
+  getUsersWithBCorGVC
 };

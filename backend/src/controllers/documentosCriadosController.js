@@ -18,7 +18,6 @@ const createCourse = async (req, res) => {
     console.log("createdCourse",createdCourse)
     if(req.body.dados.docentesQTSObj){
       const aux = await professoresByDocumentoModel.createProfessoresByDocumento(req.body.dados.docentesQTSObj,createdCourse.insertId)
-
     }
     
     return res.status(201).json(createdCourse);
