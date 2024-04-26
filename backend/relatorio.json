@@ -45,11 +45,11 @@
               ],
               [
                 "Carga horária indenizável",
-                "{localApresentacao}"
+                "{haiCurso}h"
               ],
               [
                 "Finalidade",
-                "{Finalidade}"
+                "{finalidade}"
               ],
               [
                 "Número de alunos matriculados",
@@ -94,51 +94,10 @@
             "subitens": [
               {
                   "tipo": "tabelaRFC",
-                  "dados": [
-                    [
-                      "Class",
-                      "Posto/Grad",
-                      "Mtcl/Cpf",
-                      "Nome completo",
-                      "Faltas",
-                      "Nota",
-                      "Nota Exame Final",
-                      "Situação"
-                      ],
-                      [
-                      "2",
-                      "CB",
-                      "1234567-8-9",
-                      "Ana Silva",
-                      "2",
-                      "7",
-                      "0",
-                      "REPROVADO"
-                      ],
-                      [
-                      "3",
-                      "SGT",
-                      "9876543-2-1",
-                      "Pedro Almeida",
-                      "1",
-                      "8",
-                      "0",
-                      "APROVADO"
-                      ],
-                      [
-                      "4",
-                      "SD",
-                      "0987654-3-2",
-                      "Mariana Oliveira",
-                      "0",
-                      "9",
-                      "0",
-                      "APROVADO"
-                      ]
-                  ],
+                  "dados": [],
                   "content": "center",
                   "hasHeader": true
-                  }
+              }
             ]
           }
         ],
@@ -155,41 +114,7 @@
               "subitens": [
                 {
                     "tipo": "tabelaRFC",
-                    "dados": [
-                    [
-                    "Posto/Grad",
-                    "Mtcl/Cpf",
-                    "Nome completo",
-                    "Escolaridade",
-                    "D.M Valor",
-                    "H/A Qtd",
-                    "H/A Valor",
-                    "Alimentação",
-                    "Soma"
-                    ],
-                    [
-                    "CB",
-                    "065.464.359-85",
-                    "THIAGO GHELFI SEMANN",
-                    "PÓS-GRADUAÇÃo",
-                    "R$ 15.133,00",
-                    "100",
-                    "R$ 15.133,00",
-                    "R$ 0,00",
-                    "R$ 115.133,00"
-                    ],
-                    [
-                    "CB",
-                    "065.464.359-85",
-                    "THIAGO GHELFI SEMANN",
-                    "PÓS-GRADUAÇÃo",
-                    "R$ 15.133,00",
-                    "100",
-                    "R$ 15.133,00",
-                    "R$ 0,00",
-                    "R$ 115.133,00"
-                    ]
-                    ],
+                    "dados": [],
                     "content": "center",
                     "hasHeader": true
                     }
@@ -202,41 +127,7 @@
               "subitens": [
                 {
                     "tipo": "tabelaRFC",
-                    "dados": [
-                    [
-                    "Posto/Grad",
-                    "Mtcl/Cpf",
-                    "Nome completo",
-                    "Escolaridade",
-                    "D.M Valor",
-                    "D.C Qtd",
-                    "D.C Valor",
-                    "Alimentação",
-                    "Soma"
-                    ],
-                    [
-                    "CB",
-                    "065.464.359-85",
-                    "THIAGO GHELFI SEMANN",
-                    "PÓS-GRADUAÇÃo",
-                    "R$ 15.133,00",
-                    "100",
-                    "R$ 15.133,00",
-                    "R$ 0,00",
-                    "R$ 115.133,00"
-                    ],
-                    [
-                    "CB",
-                    "065.464.359-85",
-                    "THIAGO GHELFI SEMANN",
-                    "PÓS-GRADUAÇÃo",
-                    "R$ 15.133,00",
-                    "100",
-                    "R$ 15.133,00",
-                    "R$ 0,00",
-                    "R$ 115.133,00"
-                    ]
-                    ],
+                    "dados": [],
                     "content": "center",
                     "hasHeader": true
                 }
@@ -247,53 +138,6 @@
                 "texto": "Total",
                 "numero": "4.3",
                 "subitens": [
-                  {
-                      "tipo": "tabelaRFC",
-                      "dados": [
-                      [
-                      "Class",
-                      "Posto/Grad",
-                      "Mtcl/Cpf",
-                      "Nome completo",
-                      "Faltas",
-                      "Nota",
-                      "Nota Exame",
-                      "Situação"
-                      ],
-                      [
-                      "2",
-                      "CB",
-                      "1234567-8-9",
-                      "Ana Silva",
-                      "2",
-                      "7",
-                      "0",
-                      "REPROVADO"
-                      ],
-                      [
-                      "3",
-                      "SGT",
-                      "9876543-2-1",
-                      "Pedro Almeida",
-                      "1",
-                      "8",
-                      "0",
-                      "APROVADO"
-                      ],
-                      [
-                      "4",
-                      "SD",
-                      "0987654-3-2",
-                      "Mariana Oliveira",
-                      "0",
-                      "9",
-                      "0",
-                      "APROVADO"
-                      ]
-                      ],
-                      "content": "center",
-                      "hasHeader": true
-                      }
                 ]
               }
           ],

@@ -87,6 +87,23 @@ const getEditaisByBBM = async (request, response) => {
     return response.status(500).json({ error: 'Erro ao obter editais por BBM' });
   }
 };
+const getEditaisByProcNum = async (request, response) => {
+  try {
+    const { numeroProcesso } = request.params;
+    const editais = await editaisModel.getEditaisByProcNum(numeroProcesso);
+
+    if (editais.length > 0) {
+      return response.status(200).json(editais);
+    } else {
+      return response.status(404).json({ message: 'Editais não encontrados para o numeroProcesso fornecido' });
+    }
+  } catch (error) {
+    console.error('Erro ao obter editais por BBM:', error);
+    return response.status(500).json({ error: 'Erro ao obter editais por numeroProcesso' });
+  }
+};
+
+
 
 
 
@@ -159,5 +176,6 @@ module.exports = {
   getEditalById,
   updateEditalById,
   deleteEditalById,
-  getEditaisByBBM
+  getEditaisByBBM,
+  getEditaisByProcNum
 };

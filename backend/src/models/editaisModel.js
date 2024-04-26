@@ -148,6 +148,22 @@ const getEditaisByBBM = async (bbm) => {
     }
 }
 
+
+const getEditaisByProcNum = async (numeroProcesso) => {
+    const query = 'SELECT * FROM editais WHERE numeroProcesso = ?';
+    try {
+        // Validar dados de entrada
+        if (!numeroProcesso) {
+            throw new Error('Código numeroProcesso não fornecido.');
+        }
+        const [editais] = await connection.execute(query, [numeroProcesso]);
+        return editais;
+    } catch (error) {
+        console.error('Erro ao obter editais por numeroProcesso', error);
+        throw error;
+    }
+}
+
 module.exports = {
     createEdital,
     getAllEditais,
@@ -155,5 +171,6 @@ module.exports = {
     updateEditalById,
     deleteEditalById,
     getEditaisByBBM,
-    updatePendencias
+    updatePendencias,
+    getEditaisByProcNum
 };

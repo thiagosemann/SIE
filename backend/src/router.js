@@ -15,6 +15,7 @@ const professoresController = require('./controllers/professoresByDocumentoContr
 const graduacoesController = require('./controllers/graduacaoController'); // Importe o controlador das graduações
 const escolaridadeController = require('./controllers/escolaridadeController'); // Importe o controlador das escolaridades
 const rolesController = require('./controllers/rolesController'); // Importe o controlador de roles
+const alunosController = require('./controllers/alunosByDocumentoController');
 
 
 const verifyToken = require('./middlewares/authMiddleware'); // Importe o middleware de autenticação
@@ -83,6 +84,10 @@ router.get('/editais/:id', verifyToken, editaisController.getEditalById);
 router.put('/editais/:id', verifyToken, editaisController.updateEditalById);
 router.delete('/editais/:id', verifyToken, editaisController.deleteEditalById);
 router.get('/editais/bbm/:bbm', verifyToken, editaisController.getEditaisByBBM);
+router.get('/editais/numeroProcesso/:numeroProcesso', verifyToken, editaisController.getEditaisByProcNum);
+
+
+
 
 // ROTAS PROFESSORES
 router.get('/professoresByDocumento', verifyToken, professoresController.getAllProfessoresByDocumento);
@@ -108,6 +113,14 @@ router.post('/roles', verifyToken, rolesController.createRole);
 router.delete('/roles/:id', verifyToken, rolesController.deleteRoleById);
 router.put('/roles/:id', verifyToken, rolesController.updateRoleById);
 router.get('/roles/:id', verifyToken, rolesController.getRoleById);
+
+
+// ROTAS ALUNOS
+router.get('/alunosByDocumento', verifyToken, alunosController.getAllAlunosByDocumento);
+router.post('/alunosByDocumento', verifyToken, alunosController.createAlunoByDocumento);
+router.get('/alunosByDocumento/:id', verifyToken, alunosController.getAlunoByDocumentoId);
+router.put('/alunosByDocumento/:id', verifyToken, alunosController.updateAlunoByDocumentoId);
+router.delete('/alunosByDocumento/:id', verifyToken, alunosController.deleteAlunoByDocumentoId);
 
 
 module.exports = router;
