@@ -16,6 +16,7 @@ const graduacoesController = require('./controllers/graduacaoController'); // Im
 const escolaridadeController = require('./controllers/escolaridadeController'); // Importe o controlador das escolaridades
 const rolesController = require('./controllers/rolesController'); // Importe o controlador de roles
 const alunosController = require('./controllers/alunosByDocumentoController');
+const rfcController = require('./controllers/rfcController'); // Importe o controlador da tabela RFC
 
 
 const verifyToken = require('./middlewares/authMiddleware'); // Importe o middleware de autenticação
@@ -64,14 +65,14 @@ router.get('/licoes/sigla/:sigla', licoesController.getLicoesBySigla);
 
 // ROTAS USERSCIVIS
 router.get('/usersCivil', verifyToken, usersCivisController.getAllUsersCivil);
-router.post('/usersCivil', verifyToken, usersCivisController.createUserCivil);
+router.post('/usersCivil', usersCivisController.createUserCivil);
 router.get('/usersCivil/BCorGVC', verifyToken, usersCivisController.getUsersWithBCorGVC); 
 router.get('/usersCivil/:id', verifyToken, usersCivisController.getUserCivilbyId);
 router.get('/usersCivil/cpf/:cpf', verifyToken, usersCivisController.getUserCivilByCPF); 
 
 // ROTAS INSCRICOES
 router.get('/inscricoes', verifyToken, inscricoesController.getAllInscricoes);
-router.post('/inscricoes', verifyToken, inscricoesController.createInscricao);
+router.post('/inscricoes', inscricoesController.createInscricao);
 router.delete('/inscricoes/:id', verifyToken, inscricoesController.deleteInscricaoById);
 router.put('/inscricoes/:id', verifyToken, inscricoesController.updateInscricaoById);
 router.get('/inscricoes/:id', verifyToken, inscricoesController.getInscricaoById);
@@ -85,9 +86,6 @@ router.put('/editais/:id', verifyToken, editaisController.updateEditalById);
 router.delete('/editais/:id', verifyToken, editaisController.deleteEditalById);
 router.get('/editais/bbm/:bbm', verifyToken, editaisController.getEditaisByBBM);
 router.get('/editais/numeroProcesso/:numeroProcesso', verifyToken, editaisController.getEditaisByProcNum);
-
-
-
 
 // ROTAS PROFESSORES
 router.get('/professoresByDocumento', verifyToken, professoresController.getAllProfessoresByDocumento);
@@ -121,6 +119,14 @@ router.post('/alunosByDocumento', verifyToken, alunosController.createAlunoByDoc
 router.get('/alunosByDocumento/:id', verifyToken, alunosController.getAlunoByDocumentoId);
 router.put('/alunosByDocumento/:id', verifyToken, alunosController.updateAlunoByDocumentoId);
 router.delete('/alunosByDocumento/:id', verifyToken, alunosController.deleteAlunoByDocumentoId);
+
+
+// ROTAS PARA RFC
+router.get('/rfc', verifyToken, rfcController.getAllRFCs);
+router.post('/rfc', verifyToken, rfcController.createRFC);
+router.get('/rfc/:id', verifyToken, rfcController.getRFCById);
+router.put('/rfc/:id', verifyToken, rfcController.updateRFCById);
+router.delete('/rfc/:id', verifyToken, rfcController.deleteRFCById);
 
 
 module.exports = router;

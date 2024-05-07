@@ -1,0 +1,77 @@
+{
+    "documento": [
+      {
+        "data": [
+          "RELATÓRIO PARCIAL DE CURSO {numeroProcesso}/{anoAtual}/DIE/CBMSC",
+          "Código de autenticação para uso da DIE: {auth}",
+          "{nomeCurso} ({sigla})"
+        ],
+        "tipo": "preambulo"
+      },
+      {
+        "tipo": "capitulo",
+        "itens": [
+          {
+            "tipo": "item",
+            "texto": "Consignar as informações do {nomeCurso} ({sigla}), realizado no Município de {localAtiMunicipio}/SC, para fins de publicidade, controle, avaliação, certificação e pagamento das indenizações de ensino correspondentes.",
+            "numero": "",
+            "subitens": []
+          }
+        ],
+        "texto": "FINALIDADE",
+        "numero": "1"
+      },
+      {
+        "tipo": "capitulo",
+        "itens": [
+            {
+              "tipo": "item",
+              "texto": "Instrutores e Professores",
+              "numero": "2.1",
+              "subitens": [
+                {
+                    "tipo": "tabelaRFC",
+                    "dados": [],
+                    "content": "center",
+                    "hasHeader": true
+                    }
+              ]
+            },
+            {
+                "tipo": "item",
+                "texto": "Termo de declaração da coordenação e dos instrutores:",
+                "numero": "2.2",
+                "subitens": [
+                    {
+                        "tipo": "subsubitem",
+                        "letra": "a)",
+                        "texto": "O coordenador e os instrutores da presente atividade de ensino, por meio da assinatura eletrônica neste documento, declaram sob as penas da legislação que as informações prestadas são verdadeiras e que os serviços declarados foram efetivamente realizados de acordo as previsões legais e normativas, com o processo de homologação da atividade de ensino, com o plano de ensino apresentado e com o Quadro de Trabalho (QT) juntado ao processo da atividade de ensino. ",
+                        "subsubitens": []
+                    },
+                    {
+                        "tipo": "subsubitem",
+                        "letra": "b)",
+                        "texto": "Declaram os instrutores, ainda, que as horas aulas ministradas não ultrapassam os limites máximos mensais (80 h/a) e anuais (500 h/a), mesmo que somadas a outras atividades de docência indenizáveis, estando cientes que em caso de descumprimento as horas excedentes não serão indenizadas, ficando o instrutor sujeito ainda à responsabilização disciplinar, exceto se houver autorização prévia do Diretor de Instrução e Ensino, juntada ao processo. ",
+                        "subsubitens": []
+                      }
+                ]
+            }
+          ],
+        "texto": "CORPO DOCENTE",
+        "numero": "2"
+      },
+      {
+        "tipo": "capitulo",
+        "itens": [
+          {
+            "tipo": "item",
+            "texto": "Este documento não substitui o relatório final do curso. No final da atividade de ensino deverá ser construído o relatório final de curso. ",
+            "numero": "",
+            "subitens": []
+          }
+        ],
+        "texto": "PRESCRIÇÕES DIVERSAS",
+        "numero": "3"
+      }
+    ]
+  }

@@ -1,42 +1,77 @@
 const connection = require('./connection');
 
+
 const createEdital = async (edital) => {
-    const {
-        documentosCriadosId,
-        numeroProcesso,
-        statusAssinatura,
-        statusPublicacao,
-        statusNotaEletronica,
-        statusSgpe,
-        statusNb,
-        statusFinalizacao,
-        auth,
-        sgpe,
-        dataEntrada,
-        sigla,
-        localAtiMunicipio,
-        bbm,
-        startInscritiondate,
-        endInscritiondate,
-        iniCur,
-        fimCur,
-        vagas,
-        pgeId
-    } = edital;
-
-    // Adicione os valores fixos para as colunas pendenciasInscricoes e pendenciasMensagem
-    const pendenciasInscricoes = "Homologar";
-    const pendenciasMensagem = "";
-
-    const query = 'INSERT INTO editais (documentosCriadosId, numeroProcesso, statusAssinatura, statusPublicacao, statusNotaEletronica, statusSgpe, statusNb, statusFinalizacao, auth, sgpe, dataEntrada, sigla, localAtiMunicipio, bbm, startInscritiondate, endInscritiondate,iniCur,fimCur,vagas,pgeId, pendenciasInscricoes, pendenciasMensagem) VALUES (?, ?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?, ?, ?)';
-    const values = [documentosCriadosId, numeroProcesso, statusAssinatura, statusPublicacao, statusNotaEletronica, statusSgpe, statusNb, statusFinalizacao, auth, sgpe, dataEntrada, sigla, localAtiMunicipio, bbm, startInscritiondate, endInscritiondate,iniCur,fimCur,vagas,pgeId, pendenciasInscricoes, pendenciasMensagem];
-
     try {
-        // Restante do seu código...
+        const {
+            documentosCriadosId,
+            numeroProcesso,
+            statusAssinatura,
+            statusPublicacao,
+            statusNotaEletronica,
+            statusSgpe,
+            statusNb,
+            statusFinalizacao,
+            auth,
+            sgpe,
+            dataEntrada,
+            sigla,
+            localAtiMunicipio,
+            bbm,
+            startInscritiondate,
+            endInscritiondate,
+            iniCur,
+            fimCur,
+            vagas,
+            pgeId
+        } = edital;
+
+        // Validação dos dados de entrada
+        if (!documentosCriadosId || !numeroProcesso || !sigla || !startInscritiondate || !endInscritiondate) {
+            throw new Error('Dados insuficientes para criar um novo edital.');
+        }
+
+        // Adicione os valores fixos para as colunas pendenciasInscricoes e pendenciasMensagem
+        const pendenciasInscricoes = "Homologar";
+        const pendenciasMensagem = "";
+
+        const query = `INSERT INTO editais (documentosCriadosId, numeroProcesso, statusAssinatura, statusPublicacao, statusNotaEletronica, statusSgpe, statusNb, statusFinalizacao, auth, sgpe, dataEntrada, sigla, localAtiMunicipio, bbm, startInscritiondate, endInscritiondate, iniCur, fimCur, vagas, pgeId, pendenciasInscricoes, pendenciasMensagem) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+
+        const values = [
+            documentosCriadosId,
+            numeroProcesso,
+            statusAssinatura,
+            statusPublicacao,
+            statusNotaEletronica,
+            statusSgpe,
+            statusNb,
+            statusFinalizacao,
+            auth,
+            sgpe,
+            dataEntrada,
+            sigla,
+            localAtiMunicipio,
+            bbm,
+            startInscritiondate,
+            endInscritiondate,
+            iniCur,
+            fimCur,
+            vagas,
+            pgeId,
+            pendenciasInscricoes,
+            pendenciasMensagem
+        ];
+
+        const result = await connection.execute(query, values);
+
+        return { success: true, insertId: result.insertId };
     } catch (error) {
-        // Restante do seu código...
+        console.error('Erro ao criar novo edital:', error);
+        throw error;
     }
-}
+};
+
+
 const updatePendencias = async (id, obj) => {
     const {
         pendenciasInscricoes,

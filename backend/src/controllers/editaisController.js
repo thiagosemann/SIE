@@ -1,6 +1,7 @@
 const editaisModel = require('../models/editaisModel');
 const inscricoesModel = require('../models/inscritionModel');
 const pgeModel = require('../models/pgeModel');
+const documentosCriadoModel = require('../models/documentosCriadosModel');
 
 const getAllEditais = async (_request, response) => {
   try {
@@ -120,38 +121,46 @@ const updateEditaisPeriodically = async () => {
           const [day, month, year] = edital.endInscritiondate.split('/');
           const endInscritiondate = new Date(`${year}-${month}-${day}`);
           const inscricoes = await inscricoesModel.getInscricoesByDocument(edital.documentosCriadosId);
+          const documentosCriado = await documentosCriadoModel.getCourseById(edital.documentosCriadosId);
+          
           if (todayDate.getTime() > endInscritiondate.getTime()) {
             // Passou da data limite
             // Verificar pendências nas inscrições.
-            let count=0;
-            for (const inscricao of inscricoes) {
-                if (inscricao.situacao === "Pendente") {
-                    await editaisModel.updatePendencias(edital.id, {
-                        pendenciasMensagem: "Faltou homologar inscrições.",
-                        pendenciasInscricoes: "Pendencia"
-                    });
-                    count++;
-                }
-            }
-            if(count==0){
+            if(documentosCriado.tipo=="aberturaTBC" || documentosCriado.tipo=="aberturaCursoMilitar" || documentosCriado.tipo=="aberturaTreinamentoMilitar" ){
               await editaisModel.updatePendencias(edital.id, {
                 pendenciasMensagem: "",
                 pendenciasInscricoes: "Finalizado"
               });
+            }else{
+              let count=0;
+              for (const inscricao of inscricoes) {
+                  if (inscricao.situacao === "Pendente") {
+                      await editaisModel.updatePendencias(edital.id, {
+                          pendenciasMensagem: "Faltou homologar inscrições.",
+                          pendenciasInscricoes: "Pendencia"
+                      });
+                      count++;
+                  }
+              }
+              if(count==0){
+                await editaisModel.updatePendencias(edital.id, {
+                  pendenciasMensagem: "",
+                  pendenciasInscricoes: "Finalizado"
+                });
+              }
+              if(inscricoes.length==0){
+                await editaisModel.updatePendencias(edital.id, {
+                  pendenciasMensagem: "Curso com zero inscrições.",
+                  pendenciasInscricoes: "Pendencia"
+                });
+              }
+              if(inscricoes.length> edital.vagas){
+                await editaisModel.updatePendencias(edital.id, {
+                  pendenciasMensagem: "Curso com maior quantidade de inscritos que vagas.",
+                  pendenciasInscricoes: "Pendencia"
+                });
+              }
             }
-            if(inscricoes.length==0){
-              await editaisModel.updatePendencias(edital.id, {
-                pendenciasMensagem: "Curso com zero inscrições.",
-                pendenciasInscricoes: "Pendencia"
-              });
-            }
-            if(inscricoes.length> edital.vagas){
-              await editaisModel.updatePendencias(edital.id, {
-                pendenciasMensagem: "Curso com maior quantidade de inscritos que vagas.",
-                pendenciasInscricoes: "Pendencia"
-              });
-            }
-
           }
         }
     } catch (error) {

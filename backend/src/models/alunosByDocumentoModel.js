@@ -40,43 +40,42 @@ const createAlunosByDocumento = async (alunosDataArray,documentosCriadosId) => {
         user_id,
         userCivil_id
       } = alunoData;
-
       const query = `
-        INSERT INTO alunosByDocumento (
-          classificacao, name, cpf, mtcl, birthdate, situacaoInscricao, situacao,
-          pesoGraduacao, nota, mediaFinal, exame, faltas, excluido, motivoExcluido,
-          desistente, motivoDesistente, type, diariaDeCurso, diariaMilitar, diariaDeCursoQtd,
-          escolaridade_id, graduacao_id, user_id, userCivil_id,documentosCriadosId
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
-
-        const values = [
-          classificacao || null,
-          name || null,
-          cpf || null,
-          mtcl || null,
-          birthdate || null,
-          situacaoInscricao || null,
-          situacao || null,
-          pesoGraduacao || null,
-          nota || null,
-          mediaFinal || null,
-          exame || null,
-          faltas || null,
-          excluido || null,
-          motivoExcluido || null,
-          desistente || null,
-          motivoDesistente || null,
-          type || null,
-          diariaDeCurso || null,
-          diariaMilitar || null,
-          diariaDeCursoQtd || null,
-          escolaridade_id || null,
-          graduacao_id || null,
-          user_id || null,
-          userCivil_id || null,
-          documentosCriadosId
-        ];
-  
+      INSERT INTO alunosByDocumento (
+        classificacao, name, cpf, mtcl, birthdate, situacaoInscricao, situacao,
+        pesoGraduacao, nota, mediaFinal, exame, faltas, excluido, motivoExcluido,
+        desistente, motivoDesistente, type, diariaDeCurso, diariaMilitar, diariaDeCursoQtd,
+        escolaridade_id, graduacao_id, user_id, userCivil_id, documentosCriadosId
+      ) VALUES (?, ?, ?, ?, STR_TO_DATE(?, '%d/%m/%Y'), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+    
+    const values = [
+      classificacao || null,
+      name || null,
+      cpf || null,
+      mtcl || null,
+      birthdate || null, // Mantenha o valor da data como está para a função STR_TO_DATE
+      situacaoInscricao || null,
+      situacao || null,
+      pesoGraduacao || null,
+      nota || 0,
+      mediaFinal || 0,
+      exame || 0,
+      faltas || 0,
+      excluido,
+      motivoExcluido || null,
+      desistente,
+      motivoDesistente || null,
+      type || null,
+      diariaDeCurso || 0,
+      diariaMilitar || 0,
+      diariaDeCursoQtd || 0,
+      escolaridade_id || null,
+      graduacao_id || null,
+      user_id || null,
+      userCivil_id || null,
+      documentosCriadosId
+    ];
+    
 
       const [result] = await connection.execute(query, values);
       results.push({ insertId: result.insertId });

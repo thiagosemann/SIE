@@ -1,8 +1,9 @@
 const connection = require('./connection');
 
 const createInscricao = async (inscricao) => {
+  console.log(inscricao)
   const { procNum, documentosCriadosId, userCivilId, situacao,mensagem } = inscricao;
-  const query = 'INSERT INTO inscricoes (procNum, documentosCriadosId, userCivilId, situacao,mensagem) VALUES (?, ?, ?, ?)';
+  const query = 'INSERT INTO inscricoes (procNum, documentosCriadosId, userCivilId, situacao,mensagem) VALUES (?, ?, ?, ?, ?)';
   const values = [procNum, documentosCriadosId, userCivilId, situacao,mensagem];
 
   try {
