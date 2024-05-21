@@ -39,21 +39,45 @@ const createProfessoresByDocumento = async (professoresDataArray,documentosCriad
     }
   };
 
-const getProfessorByDocumentoId = async (id) => {
-  const query = 'SELECT * FROM professoresByDocumento WHERE id = ?';
-  const values = [id];
-
-  try {
-    const [rows] = await connection.execute(query, values);
-    if (rows.length === 0) {
-      return null;
+  const getProfessoresByDocumentoId = async (id) => {
+    const query = `
+      SELECT 
+          p.*,
+          u.name,
+          u.mtcl,
+          e.nome AS escolaridade,
+          g.nome AS graduacao
+      FROM 
+          professoresByDocumento AS p
+      JOIN 
+          users AS u 
+      ON 
+          p.usersId = u.id
+      LEFT JOIN 
+          escolaridade AS e 
+      ON 
+          u.escolaridade_id = e.id
+      LEFT JOIN 
+          graduacao AS g 
+      ON 
+          u.graduacao_id = g.id
+      WHERE 
+          p.documentosCriadosId = ?`;
+    const values = [id];
+  
+    try {
+      const [rows] = await connection.execute(query, values);
+      if (rows.length === 0) {
+        return null; // Retorna null se nenhum professor for encontrado
+      }
+      return rows; // Retorna todos os professores encontrados
+    } catch (error) {
+      console.error('Erro ao obter professores por ID:', error);
+      throw error;
     }
-    return rows[0];
-  } catch (error) {
-    console.error('Erro ao obter professor por ID:', error);
-    throw error;
-  }
-};
+  };
+  
+  
 
 const updateProfessorByDocumentoId = async (updatedProfessorData) => {
   const { documentosCriadosId, usersId, diariaMilitar, horaAulaQtd, horaAulaValor, alimentacao, id } = updatedProfessorData;
@@ -93,7 +117,7 @@ const deleteProfessorByDocumentoId = async (id) => {
 module.exports = {
   getAllProfessoresByDocumento,
   createProfessorByDocumento,
-  getProfessorByDocumentoId,
+  getProfessoresByDocumentoId,
   updateProfessorByDocumentoId,
   deleteProfessorByDocumentoId,
   createProfessoresByDocumento

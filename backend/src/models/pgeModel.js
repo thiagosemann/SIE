@@ -186,6 +186,22 @@ const updatePgeById = async (id, pge) => {
     throw error;
   }
 };
+const updateSituacaoByProcNum = async (procNum, situacao) => {
+  const query = `UPDATE pge SET situacao = ? WHERE procNum = ?`;
+  const values = [
+    situacao,
+    procNum
+  ];
+
+  try {
+    const [result] = await connection.execute(query, values);
+    return { affectedRows: result.affectedRows };
+  } catch (error) {
+    console.error('Erro ao atualizar PGE:', error);
+    throw error;
+  }
+};
+
 
 // Supondo que você tenha um modelo para inscrições chamado `inscricoesModel`
 
@@ -211,5 +227,6 @@ module.exports = {
   updatePgeByProcNum,
   createPge,
   updatePgeById,
-  updateSituacaoInscricao
+  updateSituacaoInscricao,
+  updateSituacaoByProcNum
 };

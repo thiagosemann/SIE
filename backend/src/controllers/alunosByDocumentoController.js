@@ -20,19 +20,20 @@ const createAlunoByDocumento = async (request, response) => {
   }
 };
 
-const getAlunoByDocumentoId = async (request, response) => {
+const getAlunosByDocumentoId = async (request, response) => {
   const { id } = request.params;
   try {
-    const aluno = await alunosModel.getAlunoByDocumentoId(id);
-    if (!aluno) {
-      return response.status(404).json({ error: 'Aluno não encontrado' });
+    const alunos = await alunosModel.getAlunosByDocumentoId(id);
+    if (!alunos) {
+      return response.status(404).json({ error: 'Nenhum aluno encontrado com o documento ID fornecido' });
     }
-    return response.status(200).json(aluno);
+    return response.status(200).json(alunos);
   } catch (error) {
-    console.error('Erro ao obter aluno por ID:', error);
-    return response.status(500).json({ error: 'Erro ao obter aluno por ID' });
+    console.error('Erro ao obter alunos por documento ID:', error);
+    return response.status(500).json({ error: 'Erro ao obter alunos por documento ID' });
   }
 };
+
 
 const updateAlunoByDocumentoId = async (request, response) => {
   const { id } = request.params;
@@ -66,7 +67,7 @@ const deleteAlunoByDocumentoId = async (request, response) => {
 module.exports = {
   getAllAlunosByDocumento,
   createAlunoByDocumento,
-  getAlunoByDocumentoId,
+  getAlunosByDocumentoId,
   updateAlunoByDocumentoId,
   deleteAlunoByDocumentoId
 };

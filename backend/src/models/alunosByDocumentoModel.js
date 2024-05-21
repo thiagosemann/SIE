@@ -140,21 +140,22 @@ const createAlunoByDocumento = async (alunoData) => {
   }
 };
 
-const getAlunoByDocumentoId = async (id) => {
-  const query = 'SELECT * FROM alunosByDocumento WHERE id = ?';
+const getAlunosByDocumentoId = async (id) => {
+  const query = 'SELECT * FROM alunosByDocumento WHERE documentosCriadosId = ?';
   const values = [id];
 
   try {
     const [rows] = await connection.execute(query, values);
     if (rows.length === 0) {
-      return null;
+      return null; // Retorna null se nenhum aluno for encontrado
     }
-    return rows[0];
+    return rows; // Retorna todos os alunos encontrados
   } catch (error) {
     console.error('Erro ao obter aluno por ID:', error);
     throw error;
   }
 };
+
 
 const updateAlunoByDocumentoId = async (updatedAlunoData) => {
   const { id, ...alunoData } = updatedAlunoData;
@@ -198,7 +199,7 @@ const deleteAlunoByDocumentoId = async (id) => {
 module.exports = {
   getAllAlunosByDocumento,
   createAlunoByDocumento,
-  getAlunoByDocumentoId,
+  getAlunosByDocumentoId,
   updateAlunoByDocumentoId,
   deleteAlunoByDocumentoId,
   createAlunosByDocumento

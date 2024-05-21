@@ -20,10 +20,23 @@ const createProfessorByDocumento = async (request, response) => {
   }
 };
 
-// Defina outras funções de controller conforme necessário
+const getProfessoresByDocumentoId = async (request, response) => {
+  const { id } = request.params;
+  try {
+    const docentes = await professoresModel.getProfessoresByDocumentoId(id);
+    if (!docentes) {
+      return response.status(404).json({ error: 'Nenhum aluno encontrado com o documento ID fornecido' });
+    }
+    return response.status(200).json(docentes);
+  } catch (error) {
+    console.error('Erro ao obter docentes por documento ID:', error);
+    return response.status(500).json({ error: 'Erro ao obter docentes por documento ID' });
+  }
+};
 
 module.exports = {
   getAllProfessoresByDocumento,
-  createProfessorByDocumento
+  createProfessorByDocumento,
+  getProfessoresByDocumentoId
   // Adicione outras funções de controller aqui conforme necessário
 };

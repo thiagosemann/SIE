@@ -30,6 +30,11 @@ const createRFC = async (rfcData) => {
     compiladoHoraAulaNr,
     compiladoDiariaCurso,
     compiladoDiariaCursoNr,
+    iniCur,
+    fimCur,
+    haCurso,
+    haiCurso,
+    bbm,
     observacoes
   } = rfcData;
 
@@ -38,8 +43,8 @@ const createRFC = async (rfcData) => {
       documentosCriadosId, numeroProcesso, auth, dataEntrada, matriculados, 
       excluidos, desistentes, reprovados, aprovados, statusCertificado, statusDrive, 
       statusNb, statusFinalizacao, sigla, compiladoHoraAula, compiladoHoraAulaNr, 
-      compiladoDiariaCurso, compiladoDiariaCursoNr, observacoes
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+      compiladoDiariaCurso, compiladoDiariaCursoNr,iniCur, fimCur, haCurso, haiCurso, bbm,observacoes)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
   const values = [
     documentosCriadosId,
@@ -60,6 +65,11 @@ const createRFC = async (rfcData) => {
     compiladoHoraAulaNr,
     compiladoDiariaCurso,
     compiladoDiariaCursoNr,
+    iniCur,
+    fimCur,
+    haCurso,
+    haiCurso,
+    bbm,
     observacoes
   ];
 

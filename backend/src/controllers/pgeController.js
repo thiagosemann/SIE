@@ -23,6 +23,19 @@ const updatePgeById = async (request, response) => {
   }
 };
 
+const updateSituacaoByProcNum = async (request, response) => {
+  try {
+    const { procNum } = request.params; // Assuming you are passing the ID in the request parameters
+    const { situacao } = request.body; // Assuming you are updating only the 'situacao' field
+    const result = await pgeModel.updateSituacaoByProcNum(procNum, situacao);
+    return response.status(200).json(result);
+  } catch (error) {
+    console.error('Erro ao atualizar PGE:', error);
+    return response.status(500).json({ error: 'Erro ao atualizar PGE' });
+  }
+};
+
+
 
 
 
@@ -30,5 +43,6 @@ const updatePgeById = async (request, response) => {
 
 module.exports = {
   getAllPge,
-  updatePgeById
+  updatePgeById,
+  updateSituacaoByProcNum
 };
