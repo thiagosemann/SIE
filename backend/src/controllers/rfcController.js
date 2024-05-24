@@ -63,10 +63,23 @@ const deleteRFCById = async (request, response) => {
   }
 };
 
+// Nova função para obter RFCs por ID do compilado de diária de curso
+const getRFCByCompiladoId = async (request, response) => {
+  const { compiladoId } = request.params;
+  try {
+    const rfcs = await rfcModel.getRFCByCompiladoId(compiladoId);
+    return response.status(200).json(rfcs);
+  } catch (error) {
+    console.error('Erro ao obter RFCs por ID do compilado:', error);
+    return response.status(500).json({ error: 'Erro ao obter RFCs por ID do compilado' });
+  }
+};
+
 module.exports = {
   getAllRFCs,
   createRFC,
   getRFCById,
   updateRFCById,
-  deleteRFCById
+  deleteRFCById,
+  getRFCByCompiladoId 
 };

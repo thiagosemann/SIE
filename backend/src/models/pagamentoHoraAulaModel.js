@@ -14,9 +14,9 @@ const createPagamentoHoraAula = async (pagamentosHoraAulaData) => {
   try {
     const results = [];
     for (const pagamento of pagamentosHoraAulaData) {
-      const {user_id, compilado_id, name, escolaridade,hai,haiValor,mes,procNum  } = pagamento;
+      const { user_id, compilado_id, name, escolaridade, hai, haiValor, mes, procNum } = pagamento;
       const query = 'INSERT INTO pagamentoHoraAula (user_id, compilado_id, name, escolaridade, hai, haiValor, mes, procNum) VALUES (?,?,?,?,?,?,?,?)';
-      const values = [user_id, compilado_id, name, escolaridade,hai,haiValor,mes,procNum];
+      const values = [user_id, compilado_id, name, escolaridade, hai, haiValor, mes, procNum];
 
       const [result] = await connection.execute(query, values);
       results.push({ insertId: result.insertId });
@@ -27,7 +27,6 @@ const createPagamentoHoraAula = async (pagamentosHoraAulaData) => {
     console.error('Erro ao inserir professores:', error);
     throw error;
   }
-
 };
 
 const getPagamentoHoraAulaById = async (id) => {
@@ -84,10 +83,24 @@ const deletePagamentoHoraAulaById = async (id) => {
   }
 };
 
+const getPagamentoByCompiladoId = async (compiladoId) => {
+  const query = 'SELECT * FROM pagamentoHoraAula WHERE compilado_id = ?';
+  const values = [compiladoId];
+
+  try {
+    const [rows] = await connection.execute(query, values);
+    return rows;
+  } catch (error) {
+    console.error('Erro ao obter pagamento de hora/aula por compilado_id:', error);
+    throw error;
+  }
+};
+
 module.exports = {
   getAllPagamentosHoraAula,
   createPagamentoHoraAula,
   getPagamentoHoraAulaById,
   updatePagamentoHoraAulaById,
-  deletePagamentoHoraAulaById
+  deletePagamentoHoraAulaById,
+  getPagamentoByCompiladoId
 };

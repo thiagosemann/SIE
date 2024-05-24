@@ -63,10 +63,23 @@ const deleterpcById = async (request, response) => {
   }
 };
 
+// Nova função para obter RFCs por ID do compilado de diária de curso
+const getRPCByCompiladoId = async (request, response) => {
+  const { compiladoId } = request.params;
+  try {
+    const rfcs = await rpcModel.getRPCByCompiladoId(compiladoId);
+    return response.status(200).json(rfcs);
+  } catch (error) {
+    console.error('Erro ao obter RPCs por ID do compilado:', error);
+    return response.status(500).json({ error: 'Erro ao obter RPCs por ID do compilado' });
+  }
+};
+
 module.exports = {
   getAllrpcs,
   createrpc,
   getrpcById,
   updaterpcById,
-  deleterpcById
+  deleterpcById,
+  getRPCByCompiladoId
 };

@@ -108,13 +108,13 @@
             "numero": "2.4",
             "subitens": [
               {
-                "tipo": "item",
+                "tipo": "subitem",
                 "letra": "a)",
                 "texto": "A atividade de ensino ocorrerá dentro do período {dataAtiviExtenso} e observará o currículo e o programa de matérias/plano de unidades didáticas (PROMAPUD), mais atuais, constante do processo de homologação, conforme SGPe {sgpe}.",
                 "subsubitens":[]
               },
               {
-                "tipo": "item",
+                "tipo": "subitem",
                 "letra": "b)",
                 "texto": "É responsabilidade do coordenador distribuir a execução do conteúdo dentro do período previsto para a realização da atividade de ensino. "
               }

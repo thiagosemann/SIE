@@ -18,14 +18,14 @@ const createrpc = async (rpcData) => {
     dataEntrada,
     sigla,
     compiladoHoraAula,
-    compiladoHoraAulaNr,
+    compilado_id,
     observacoes
   } = rpcData;
 
   const query = `
     INSERT INTO rpc (
       documentosCriadosId, numeroProcesso, auth, dataEntrada, sigla, 
-      compiladoHoraAula, compiladoHoraAulaNr, observacoes)
+      compiladoHoraAula, compilado_id, observacoes)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
 
   const values = [
@@ -35,7 +35,7 @@ const createrpc = async (rpcData) => {
     dataEntrada,
     sigla,
     compiladoHoraAula,
-    compiladoHoraAulaNr,
+    compilado_id,
     observacoes
   ];
 
@@ -102,10 +102,24 @@ const deleterpcById = async (id) => {
   }
 };
 
+const getRPCByCompiladoId = async (compiladoId) => {
+  const query = 'SELECT * FROM rpc WHERE compilado_id = ?'; // Assumindo que compilado_id é o campo correspondente ao compilado
+  const values = [compiladoId];
+
+  try {
+    const [rows] = await connection.execute(query, values);
+    return rows;
+  } catch (error) {
+    console.error('Erro ao obter RPC por ID do compilado:', error);
+    throw error;
+  }
+};
+
 module.exports = {
   getAllrpcs,
   createrpc,
   getrpcById,
   updaterpcById,
-  deleterpcById
+  deleterpcById,
+  getRPCByCompiladoId
 };

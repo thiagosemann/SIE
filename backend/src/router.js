@@ -6,7 +6,7 @@ const usersController = require('./controllers/usersController');
 const documentsController = require('./controllers/documentoController'); // Importe o controlador dos documentos
 const pgeController = require('./controllers/pgeController');
 const atividadeHomologadaController = require('./controllers/atividadeHomologadaController');
-const documentosCriadosController = require('./controllers/documentosCriadosController')
+const documentosCriadosController = require('./controllers/documentosCriadosController');
 const licoesController = require('./controllers/licoesAtividadeHomologadaController');
 const usersCivisController = require('./controllers/usersCivilController'); // Adicione o controlador dos usuários civis
 const inscricoesController = require('./controllers/inscritionController'); // Importe o controlador das inscrições
@@ -17,12 +17,10 @@ const escolaridadeController = require('./controllers/escolaridadeController'); 
 const rolesController = require('./controllers/rolesController'); // Importe o controlador de roles
 const alunosController = require('./controllers/alunosByDocumentoController');
 const rfcController = require('./controllers/rfcController'); // Importe o controlador da tabela RFC
-const rpcController = require('./controllers/rpcController'); // Importe o controlador da tabela RFC
+const rpcController = require('./controllers/rpcController'); // Importe o controlador da tabela RPC
 const pagamentoHoraAulaController = require('./controllers/pagamentoHoraAulaController'); // Importe o controlador da tabela pagamentoHoraAula
 const pagamentoDiariaDeCursoController = require('./controllers/pagamentoDiariaDeCursoController'); // Importe o controlador da tabela pagamentoDiariaDeCurso
 const compiladoPagamentoController = require('./controllers/compiladoPagamentoController');
-
-
 
 const verifyToken = require('./middlewares/authMiddleware'); // Importe o middleware de autenticação
 
@@ -47,17 +45,16 @@ router.get('/documents/:id', verifyToken, documentsController.getDocumentById);
 router.get('/documents/name/:name', documentsController.getDocumentByName);
 
 // ROTAS PGE
-router.get('/pge',verifyToken,pgeController.getAllPge)
+router.get('/pge', verifyToken, pgeController.getAllPge);
 router.put('/pge/:procNum', verifyToken, pgeController.updateSituacaoByProcNum);
 
-
-//ROTAS ATIVIDADE DE ENSINO HOMOLOGADA
-router.get('/atividadeHomologada',verifyToken,atividadeHomologadaController.getAllAtividadeHomologada)
-router.get('/atividadeHomologada/sigla/:sigla',verifyToken,atividadeHomologadaController.getAtividadeHomologadaBySigla)
+// ROTAS ATIVIDADE DE ENSINO HOMOLOGADA
+router.get('/atividadeHomologada', verifyToken, atividadeHomologadaController.getAllAtividadeHomologada);
+router.get('/atividadeHomologada/sigla/:sigla', verifyToken, atividadeHomologadaController.getAtividadeHomologadaBySigla);
 router.get('/atividadeHomologada/versions/:id', verifyToken, atividadeHomologadaController.getAllAtividadeHomologadaVersionsById);
 router.put('/atividadeHomologada/:id', verifyToken, atividadeHomologadaController.updateAtividadeHomologadaById);
-router.delete('/atividadehomologada/:id',verifyToken, atividadeHomologadaController.deleteAtividadeHomologadaById);
-router.post('/atividadehomologada/',verifyToken, atividadeHomologadaController.createAtividadeHomologada);
+router.delete('/atividadehomologada/:id', verifyToken, atividadeHomologadaController.deleteAtividadeHomologadaById);
+router.post('/atividadehomologada/', verifyToken, atividadeHomologadaController.createAtividadeHomologada);
 
 // ROTAS CURSOS
 router.get('/documentosCriados', verifyToken, documentosCriadosController.getAllCourses);
@@ -74,9 +71,9 @@ router.get('/licoes/sigla/:sigla', licoesController.getLicoesBySigla);
 // ROTAS USERSCIVIS
 router.get('/usersCivil', verifyToken, usersCivisController.getAllUsersCivil);
 router.post('/usersCivil', usersCivisController.createUserCivil);
-router.get('/usersCivil/BCorGVC', verifyToken, usersCivisController.getUsersWithBCorGVC); 
+router.get('/usersCivil/BCorGVC', verifyToken, usersCivisController.getUsersWithBCorGVC);
 router.get('/usersCivil/:id', verifyToken, usersCivisController.getUserCivilbyId);
-router.get('/usersCivil/cpf/:cpf', verifyToken, usersCivisController.getUserCivilByCPF); 
+router.get('/usersCivil/cpf/:cpf', verifyToken, usersCivisController.getUserCivilByCPF);
 
 // ROTAS INSCRICOES
 router.get('/inscricoes', verifyToken, inscricoesController.getAllInscricoes);
@@ -121,7 +118,6 @@ router.delete('/roles/:id', verifyToken, rolesController.deleteRoleById);
 router.put('/roles/:id', verifyToken, rolesController.updateRoleById);
 router.get('/roles/:id', verifyToken, rolesController.getRoleById);
 
-
 // ROTAS ALUNOS
 router.get('/alunosByDocumento', verifyToken, alunosController.getAllAlunosByDocumento);
 router.post('/alunosByDocumento', verifyToken, alunosController.createAlunoByDocumento);
@@ -129,20 +125,21 @@ router.get('/alunosByDocumento/:id', verifyToken, alunosController.getAlunosByDo
 router.put('/alunosByDocumento/:id', verifyToken, alunosController.updateAlunoByDocumentoId);
 router.delete('/alunosByDocumento/:id', verifyToken, alunosController.deleteAlunoByDocumentoId);
 
-
 // ROTAS PARA RFC
 router.get('/rfc', verifyToken, rfcController.getAllRFCs);
 router.post('/rfc', verifyToken, rfcController.createRFC);
 router.get('/rfc/:id', verifyToken, rfcController.getRFCById);
 router.put('/rfc/:id', verifyToken, rfcController.updateRFCById);
 router.delete('/rfc/:id', verifyToken, rfcController.deleteRFCById);
+router.get('/rfc/compilado/:compiladoId', verifyToken, rfcController.getRFCByCompiladoId);
 
-// ROTAS PARA RFC
+// ROTAS PARA RPC
 router.get('/rpc', verifyToken, rpcController.getAllrpcs);
 router.post('/rpc', verifyToken, rpcController.createrpc);
 router.get('/rpc/:id', verifyToken, rpcController.getrpcById);
 router.put('/rpc/:id', verifyToken, rpcController.updaterpcById);
 router.delete('/rpc/:id', verifyToken, rpcController.deleterpcById);
+router.get('/rpc/compilado/:compiladoId', verifyToken, rpcController.getRPCByCompiladoId);
 
 // ROTAS PARA PAGAMENTOS DE HORA/AULA
 router.get('/pagamentoHoraAula', verifyToken, pagamentoHoraAulaController.getAllPagamentosHoraAula);
@@ -150,6 +147,7 @@ router.post('/pagamentoHoraAula', verifyToken, pagamentoHoraAulaController.creat
 router.get('/pagamentoHoraAula/:id', verifyToken, pagamentoHoraAulaController.getPagamentoHoraAulaById);
 router.put('/pagamentoHoraAula/:id', verifyToken, pagamentoHoraAulaController.updatePagamentoHoraAulaById);
 router.delete('/pagamentoHoraAula/:id', verifyToken, pagamentoHoraAulaController.deletePagamentoHoraAulaById);
+router.get('/pagamentoHoraAula/compilado/:compiladoId', verifyToken, pagamentoHoraAulaController.getPagamentoByCompiladoId); // Nova rota
 
 // ROTAS PARA PAGAMENTOS DE DIÁRIA DE CURSO
 router.get('/pagamentoDiariaDeCurso', verifyToken, pagamentoDiariaDeCursoController.getAllPagamentosDiariaDeCurso);
@@ -157,6 +155,7 @@ router.post('/pagamentoDiariaDeCurso', verifyToken, pagamentoDiariaDeCursoContro
 router.get('/pagamentoDiariaDeCurso/:id', verifyToken, pagamentoDiariaDeCursoController.getPagamentoDiariaDeCursoById);
 router.put('/pagamentoDiariaDeCurso/:id', verifyToken, pagamentoDiariaDeCursoController.updatePagamentoDiariaDeCursoById);
 router.delete('/pagamentoDiariaDeCurso/:id', verifyToken, pagamentoDiariaDeCursoController.deletePagamentoDiariaDeCursoById);
+router.get('/pagamentoDiariaDeCurso/compilado/:compiladoId', verifyToken, pagamentoDiariaDeCursoController.getPagamentoByCompiladoId);
 
 // Rotas para compiladoPagamento
 router.get('/compiladoPagamento', verifyToken, compiladoPagamentoController.getAllCompiladoPagamento);
@@ -164,6 +163,5 @@ router.post('/compiladoPagamento', verifyToken, compiladoPagamentoController.cre
 router.get('/compiladoPagamento/:id', verifyToken, compiladoPagamentoController.getCompiladoPagamentoById);
 router.put('/compiladoPagamento/:id', verifyToken, compiladoPagamentoController.updateCompiladoPagamentoById);
 router.delete('/compiladoPagamento/:id', verifyToken, compiladoPagamentoController.deleteCompiladoPagamentoById);
-
 
 module.exports = router;

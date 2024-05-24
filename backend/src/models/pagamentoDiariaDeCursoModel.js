@@ -83,10 +83,26 @@ const deletePagamentoDiariaDeCursoById = async (id) => {
   }
 };
 
+const getPagamentoByCompiladoId = async (compiladoId) => {
+  const query = 'SELECT * FROM pagamentoDiariaDeCurso WHERE compilado_id = ?';
+  const values = [compiladoId];
+
+  try {
+    const [rows] = await connection.execute(query, values);
+    return rows;
+  } catch (error) {
+    console.error('Erro ao obter pagamento de hora/aula por compilado_id:', error);
+    throw error;
+  }
+};
+
+  
+
 module.exports = {
   getAllPagamentosDiariaDeCurso,
   createPagamentoDiariaDeCurso,
   getPagamentoDiariaDeCursoById,
   updatePagamentoDiariaDeCursoById,
-  deletePagamentoDiariaDeCursoById
+  deletePagamentoDiariaDeCursoById,
+  getPagamentoByCompiladoId
 };

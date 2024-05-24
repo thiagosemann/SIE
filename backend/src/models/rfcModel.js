@@ -29,7 +29,7 @@ const createRFC = async (rfcData) => {
     compiladoHoraAula,
     compiladoHoraAulaNr,
     compiladoDiariaCurso,
-    compiladoDiariaCursoNr,
+    compilado_id,
     iniCur,
     fimCur,
     haCurso,
@@ -43,7 +43,7 @@ const createRFC = async (rfcData) => {
       documentosCriadosId, numeroProcesso, auth, dataEntrada, matriculados, 
       excluidos, desistentes, reprovados, aprovados, statusCertificado, statusDrive, 
       statusNb, statusFinalizacao, sigla, compiladoHoraAula, compiladoHoraAulaNr, 
-      compiladoDiariaCurso, compiladoDiariaCursoNr,iniCur, fimCur, haCurso, haiCurso, bbm,observacoes)
+      compiladoDiariaCurso, compilado_id,iniCur, fimCur, haCurso, haiCurso, bbm,observacoes)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
   const values = [
@@ -64,7 +64,7 @@ const createRFC = async (rfcData) => {
     compiladoHoraAula,
     compiladoHoraAulaNr,
     compiladoDiariaCurso,
-    compiladoDiariaCursoNr,
+    compilado_id,
     iniCur,
     fimCur,
     haCurso,
@@ -136,10 +136,24 @@ const deleteRFCById = async (id) => {
   }
 };
 
+const getRFCByCompiladoId = async (compiladoId) => {
+  const query = 'SELECT * FROM rfc WHERE compilado_id = ?'; // Assumindo que compilado_id é o campo correspondente ao compilado
+  const values = [compiladoId];
+
+  try {
+    const [rows] = await connection.execute(query, values);
+    return rows;
+  } catch (error) {
+    console.error('Erro ao obter RFC por ID do compilado:', error);
+    throw error;
+  }
+};
+
 module.exports = {
   getAllRFCs,
   createRFC,
   getRFCById,
   updateRFCById,
-  deleteRFCById
+  deleteRFCById,
+  getRFCByCompiladoId
 };

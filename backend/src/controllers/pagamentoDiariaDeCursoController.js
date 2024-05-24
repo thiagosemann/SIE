@@ -63,10 +63,22 @@ const deletePagamentoDiariaDeCursoById = async (request, response) => {
   }
 };
 
+const getPagamentoByCompiladoId = async (request, response) => {
+  const { compiladoId } = request.params;
+  try {
+    const pagamentos = await pagamentoDiariaDeCursoModel.getPagamentoByCompiladoId(compiladoId);
+    return response.status(200).json(pagamentos);
+  } catch (error) {
+    console.error('Erro ao obter pagamentos de diária de curso por compilado_id:', error);
+    return response.status(500).json({ error: 'Erro ao obter pagamentos de diária de curso por compilado_id' });
+  }
+};
+
 module.exports = {
   getAllPagamentosDiariaDeCurso,
   createPagamentoDiariaDeCurso,
   getPagamentoDiariaDeCursoById,
   updatePagamentoDiariaDeCursoById,
-  deletePagamentoDiariaDeCursoById
+  deletePagamentoDiariaDeCursoById,
+  getPagamentoByCompiladoId
 };
